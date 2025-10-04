@@ -11,11 +11,14 @@ function updateSlider() {
     const indicatorPosition = (currentSlide / 3) * maxMove;
     if (indicator) indicator.style.left = indicatorPosition + 'px';
     
-    // Slide the projects
+    // Slide the projects one at a time
     if (projectsContainer) {
-        const slideWidth = projectsContainer.offsetWidth / 4 + 36; // card width + gap
-        const translateX = -(currentSlide * slideWidth);
-        projectsContainer.style.transform = `translateX(${translateX}px)`;
+        const firstProject = projectsContainer.querySelector('.project');
+        if (firstProject) {
+            const slideWidth = firstProject.offsetWidth + 36; // card width + gap
+            const translateX = -(currentSlide * slideWidth);
+            projectsContainer.style.transform = `translateX(${translateX}px)`;
+        }
     }
 }
 
@@ -33,5 +36,8 @@ if (nextBtn) {
     });
 }
 
+// Initialize on load and window resize
 updateSlider();
+window.addEventListener('resize', updateSlider);
+
 
