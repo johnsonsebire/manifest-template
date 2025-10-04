@@ -18,15 +18,17 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 .hero .tagline { font-weight: 400; font-size: 20px; line-height: 40px; font-style: italic; }
 
 /* Slider: y:700-1140 */
-.slider { padding: 0 147px; margin-bottom: 60px; }
-.projects { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-bottom: 67px; }
-.project { width: 100%; aspect-ratio: 354/320; background: #D9D9D9; border-radius: 15px; border: 1px solid #000000; position: relative; }
+.slider { padding: 0 147px; margin-bottom: 60px; overflow: hidden; }
+.projects { display: flex; gap: 36px; margin-bottom: 67px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.project { min-width: calc((100% - 72px) / 3.5); flex-shrink: 0; aspect-ratio: 354/320; background: #D9D9D9; border-radius: 15px; border: 1px solid #000000; position: relative; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
 .project-label { position: absolute; top: 10px; left: 13px; background: #000000; color: #FFFCFA; font-weight: 600; font-size: 18px; padding: 10px 20px; border-radius: 10px; width: 237px; height: 57px; display: flex; align-items: center; justify-content: center; }
-.slider-nav { display: flex; justify-content: space-between; align-items: center; }
-.progress-bar { width: 663px; height: 3px; background: #B9B2B2; position: relative; }
-.progress-indicator { width: 183px; height: 3px; background: #000000; position: absolute; top: 0; left: 0; transition: left 0.3s ease; }
+.slider-nav { display: flex; justify-content: flex-end; align-items: center; gap: 20px; }
+.progress-bar { width: 663px; height: 2px; background: #B9B2B2; position: relative; }
+.progress-indicator { width: 183px; height: 8px; background: #000000; position: absolute; top: -3px; left: 0; transition: left 0.5s ease; }
 .slider-buttons { display: flex; gap: 10px; }
-.slider-buttons button { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #D9D9D9; background: none; cursor: pointer; }
+.slider-buttons button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #E8E8E8; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease; }
+.slider-buttons button:hover { background: #D9D9D9; }
+.slider-buttons button i { color: #666666; font-size: 20px; }
 
 /* Section Four: y:1224-1756 */
 .section-four { max-width: 1046px; margin: 0 auto 88px; padding: 0 20px; }
