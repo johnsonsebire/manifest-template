@@ -159,7 +159,8 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
     text-align: center; 
     padding: 87px 0 92px; 
     position: relative; 
-    overflow: hidden; /* Contain the decorative elements */
+    overflow: visible; /* Allow decorative elements to overflow */
+    z-index: 1; /* Set a base z-index for proper stacking */
 }
 .hero h1 { 
     font-weight: 800; 
@@ -178,20 +179,22 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 .hero h1 .underlined {
     position: relative;
     display: inline-block;
-    padding-bottom: 2px; /* Small padding to ensure the underline doesn't touch the text */
+    padding-bottom: 0; /* Remove padding to close gap between text and underline */
+    box-sizing: border-box;
 }
 
 .hero h1 .underlined::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 8px; /* Slightly reduced height to match the image */
-    background-color: #FF4900; /* Use solid color for consistent appearance */
-    opacity: 0.3; /* Make it semi-transparent to match the design */
+    bottom: -2px; /* Position slightly below the text for better visual alignment */
+    width: 100%; /* Ensures the underline covers the full text width */
+    height: 10px; /* Slightly increase height to ensure full coverage */
+    background-image: url('images/decorative/hero_underline.svg');
+    background-repeat: repeat-x; /* Repeat horizontally to ensure coverage */
+    background-position: center bottom;
+    background-size: auto 8px; /* Set height only, let width auto-repeat */
     z-index: -1;
-    border-radius: 2px; /* Slight rounding of the edges */
 }
 
 /* Decorative elements for hero section */
@@ -250,11 +253,13 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 }
 
 .decorative-element.top-circle {
-    width: 120px;
+    width: 60px; /* Reduced by 50% from 120px */
     height: auto;
     right: 150px;
     top: -10px;
     animation: pulse 8s infinite ease-in-out;
+    z-index: 100; /* Significantly increase z-index to ensure it's above all elements */
+    position: absolute; /* Reinforce absolute positioning */
 }
 .hero .subtitle { font-weight: 600; font-size: 30px; line-height: 40px; margin: 0 auto 19px; }
 .hero .btn-primary { margin: 0 auto 20px; display: inline-flex; width: 237px; }
@@ -421,15 +426,18 @@ footer { padding: 368px 132px 0; }
     }
     
     .decorative-element.top-circle {
-        width: 70px;
+        width: 35px; /* Reduced by 50% from 70px */
         right: 20px;
         top: -5px;
+        z-index: 100; /* Maintain high z-index on mobile */
     }
     
     /* Adjust the underline for mobile */
     .hero h1 .underlined::after {
-        height: 8px;
-        bottom: 0;
+        height: 10px;
+        bottom: -2px;
+        background-size: auto 8px;
+        background-repeat: repeat-x;
     }
     
     /* Adjust logo for mobile */
