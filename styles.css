@@ -879,6 +879,130 @@ body {
 .column p { font-weight: 400; font-size: 24px; line-height: 36px; color: #666666; }
 .cta-text { font-weight: 600; font-size: 32px; line-height: 88px; }
 
+/* ========================
+   Forget About Section
+   ======================== */
+
+.forget-about {
+    padding: 120px 180px;
+    background: #F5F5F5;
+    text-align: center;
+}
+
+.forget-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.forget-header h2 {
+    font-weight: 800;
+    font-size: 70px;
+    line-height: 88px;
+    color: #000000;
+    margin: 0;
+}
+
+.forget-star-left,
+.forget-star-right {
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+}
+
+.forget-star-left {
+    filter: hue-rotate(-20deg) saturate(1.5);
+}
+
+.forget-star-right {
+    filter: hue-rotate(10deg) saturate(1.2) brightness(1.1);
+}
+
+.forget-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.forget-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.forget-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.forget-icon i {
+    font-size: 48px;
+    color: #000000;
+}
+
+.forget-icon-small {
+    position: absolute;
+    font-size: 28px !important;
+    background: #F5F5F5;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.forget-item:nth-child(3) .forget-icon-small {
+    bottom: -5px;
+    right: -5px;
+}
+
+.forget-item:nth-child(4) .forget-icon-small {
+    bottom: -5px;
+    right: -5px;
+}
+
+.forget-item:nth-child(5) .forget-icon-small {
+    bottom: 5px;
+    right: 5px;
+}
+
+.forget-item:nth-child(6) .forget-icon-small {
+    bottom: -5px;
+    right: -5px;
+}
+
+/* Orange circle accent for 5th item */
+.forget-item:nth-child(5) .forget-icon::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    right: -25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid #FF4900;
+    background: transparent;
+}
+
+.forget-item h3 {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 36px;
+    color: #000000;
+    margin: 0;
+    max-width: 280px;
+}
+
 /* CTA + Footer: y:2593-4211 */
 .cta-footer { 
     background: #000000; 
@@ -1338,6 +1462,59 @@ footer {
         width: 90px;
         right: -35px;
         bottom: 50px;
+    }
+    
+    /* Adjust forget-about section for mobile */
+    .forget-about {
+        padding: 80px 20px;
+    }
+    
+    .forget-header {
+        gap: 15px;
+        margin-bottom: 50px;
+    }
+    
+    .forget-header h2 {
+        font-size: 42px;
+        line-height: 52px;
+    }
+    
+    .forget-star-left,
+    .forget-star-right {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .forget-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .forget-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .forget-icon i {
+        font-size: 36px;
+    }
+    
+    .forget-icon-small {
+        font-size: 22px !important;
+        padding: 3px;
+    }
+    
+    .forget-item:nth-child(5) .forget-icon::before {
+        top: -20px;
+        right: -20px;
+        width: 24px;
+        height: 24px;
+        border: 2px solid #FF4900;
+    }
+    
+    .forget-item h3 {
+        font-size: 22px;
+        line-height: 30px;
     }
     
     /* Adjust section-four decorative elements for mobile */
