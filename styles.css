@@ -371,7 +371,7 @@ body {
 /* Hero: y:137-641 */
 .hero { 
     text-align: center; 
-    padding: 87px 0 92px; 
+    padding: 100px 0 100px; 
     position: relative; 
     overflow: visible; /* Allow decorative elements to overflow */
     z-index: 1; /* Set a base z-index for proper stacking */
@@ -379,8 +379,8 @@ body {
 .hero h1 { 
     font-weight: 800; 
     font-size: 64px; 
-    line-height: 88px; 
-    margin: 0 auto 20px; 
+    line-height: 1.15; /* Tighter line-height for better visual balance (73.6px) */
+    margin: 0 auto 24px; 
     max-width: 1169px; 
 }
 
@@ -417,7 +417,7 @@ body {
 .text-rotate-container {
     position: relative;
     display: inline-block;
-    height: 88px; /* Match the line-height of h1 */
+    height: 74px; /* Match the new calculated line-height of h1 (64px * 1.15) */
     overflow: visible; /* Changed back to visible to show underline */
     vertical-align: bottom; /* Important for text alignment */
     white-space: nowrap; /* Prevent text from wrapping */
@@ -428,7 +428,7 @@ body {
 .text-rotate-inner {
     position: relative;
     width: 100%;
-    height: 88px; /* Match the line-height of h1 */
+    height: 74px; /* Match the new calculated line-height of h1 */
     overflow: hidden; /* Hide overflow text */
 }
 
@@ -442,8 +442,8 @@ body {
 
 .text-rotate-item {
     display: block;
-    height: 88px; /* Match the line-height of h1 */
-    line-height: 88px; /* Match the line-height of h1 */
+    height: 74px; /* Match the new calculated line-height of h1 */
+    line-height: 74px; /* Match the new calculated line-height of h1 */
     white-space: nowrap;
     font-weight: 800; /* Match the h1 font weight */
     width: fit-content; /* Set width to fit content */
@@ -478,16 +478,16 @@ body {
         transform: translateY(0);
     }
     20%, 40% {
-        transform: translateY(-88px); /* Use exact pixel values */
+        transform: translateY(-74px); /* Use exact pixel values matching new line-height */
     }
     45%, 65% {
-        transform: translateY(-176px); /* 2 × 88px */
+        transform: translateY(-148px); /* 2 × 74px */
     }
     70%, 90% {
-        transform: translateY(-264px); /* 3 × 88px */
+        transform: translateY(-222px); /* 3 × 74px */
     }
     95%, 100% {
-        transform: translateY(-352px); /* 4 × 88px */
+        transform: translateY(-296px); /* 4 × 74px */
     }
 }
 
@@ -557,9 +557,26 @@ body {
     z-index: 100; /* Significantly increase z-index to ensure it's above all elements */
     position: absolute; /* Reinforce absolute positioning */
 }
-.hero .subtitle { font-weight: 600; font-size: 30px; line-height: 40px; margin: 0 auto 19px; }
-.hero .btn-primary { margin: 0 auto 20px; display: inline-flex; width: 237px; }
-.hero .tagline { font-weight: 400; font-size: 20px; line-height: 40px; font-style: italic; }
+.hero .subtitle { 
+    font-weight: 600; 
+    font-size: 24px; 
+    line-height: 1.5; 
+    margin: 0 auto 24px; 
+    max-width: 700px;
+    color: rgba(0, 0, 0, 0.85);
+}
+.hero .btn-primary { 
+    margin: 0 auto 16px; 
+    display: inline-flex; 
+    width: 237px; 
+}
+.hero .tagline { 
+    font-weight: 400; 
+    font-size: 18px; 
+    line-height: 1.6; 
+    font-style: italic; 
+    color: rgba(0, 0, 0, 0.7);
+}
 
 /* Slider: y:700-1140 */
 .slider { 
@@ -648,31 +665,33 @@ body {
 /* Section Four: y:1224-1756 */
 .section-four { 
     max-width: 1046px; 
-    margin: 0 auto 88px; 
+    margin: 0 auto 100px; 
     padding: 0 20px; 
     position: relative; /* Add relative positioning for decorative elements */
     overflow: visible; /* Allow decorative elements to overflow */
 }
 .content-box { 
-    background: #FCEDE5; 
-    border-radius: 15px; 
-    padding: 70px 57px; 
+    background: linear-gradient(135deg, #FCEDE5 0%, #FFF5F0 100%);
+    border-radius: 20px; 
+    padding: 80px 60px; 
     text-align: center; 
-    position: relative; 
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 .content-box h2 { 
     font-weight: 700; 
-    font-size: 40px; 
-    line-height: 50px; 
-    margin: 0 auto 54px; 
-    max-width: 833px; 
+    font-size: 48px; 
+    line-height: 1.2; 
+    margin: 0 auto 56px; 
+    max-width: 833px;
+    color: #000000;
 }
 
 /* Foundations grid layout */
 .foundations-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 48px 40px;
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
@@ -681,31 +700,36 @@ body {
 .foundation-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+    transition: transform 0.3s ease;
+}
+
+.foundation-item:hover {
+    transform: translateY(-4px);
 }
 
 .foundation-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
     background: linear-gradient(135deg, #FF4900 0%, #FF6B35 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
-    font-size: 24px;
-    box-shadow: 0 4px 12px rgba(255, 73, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-size: 28px;
+    box-shadow: 0 6px 16px rgba(255, 73, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .foundation-item:hover .foundation-icon {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 16px rgba(255, 73, 0, 0.35);
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(255, 73, 0, 0.4);
 }
 
 .foundation-item h3 {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.3;
     color: #000000;
     margin: 0;
@@ -714,7 +738,7 @@ body {
 .foundation-item p {
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.6;
     color: #666666;
     margin: 0;
 }
@@ -2025,8 +2049,27 @@ body.notification-visible .hero {
         gap: 30px;
     }
     
+    .content-box {
+        padding: 70px 50px;
+    }
+    
+    .content-box h2 {
+        font-size: 44px;
+        margin-bottom: 48px;
+    }
+    
     .foundations-grid {
-        gap: 30px;
+        gap: 40px 32px;
+    }
+    
+    .foundation-icon {
+        width: 68px;
+        height: 68px;
+        font-size: 26px;
+    }
+    
+    .foundation-item h3 {
+        font-size: 21px;
     }
     
     .services-grid {
@@ -2090,14 +2133,35 @@ body.notification-visible .hero {
     }
     
     /* Hero section */
+    .hero {
+        padding: 90px 0 90px;
+    }
+    
     .hero h1 {
-        font-size: 70px;
-        line-height: 84px;
+        font-size: 56px;
+        line-height: 1.15;
+        margin-bottom: 22px;
     }
     
     .hero .subtitle {
-        font-size: 28px;
-        line-height: 38px;
+        font-size: 22px;
+        line-height: 1.5;
+        margin-bottom: 22px;
+    }
+    
+    .hero .tagline {
+        font-size: 17px;
+    }
+    
+    /* Adjust rotating text for laptop/tablet */
+    .text-rotate-container,
+    .text-rotate-inner {
+        height: 64px; /* 56px * 1.15 = 64.4px */
+    }
+    
+    .text-rotate-item {
+        height: 64px;
+        line-height: 64px;
     }
     
     /* Section padding adjustments */
@@ -2134,8 +2198,32 @@ body.notification-visible .hero {
         gap: 35px;
     }
     
+    .content-box {
+        padding: 60px 40px;
+    }
+    
+    .content-box h2 {
+        font-size: 40px;
+        margin-bottom: 44px;
+    }
+    
     .foundations-grid {
-        gap: 35px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px 32px;
+    }
+    
+    .foundation-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 24px;
+    }
+    
+    .foundation-item h3 {
+        font-size: 20px;
+    }
+    
+    .foundation-item p {
+        font-size: 15px;
     }
     
     .services-grid {
@@ -2261,8 +2349,29 @@ body.notification-visible .hero {
         display: block;
     }
     
-    .hero h1 { font-size: 36px; line-height: 48px; padding: 0 20px; }
-    .hero .subtitle { font-size: 20px; line-height: 28px; padding: 0 20px; }
+    .hero {
+        padding: 80px 0 80px;
+    }
+    
+    .hero h1 { 
+        font-size: 36px; 
+        line-height: 1.2; /* Better mobile line-height (43.2px) */
+        padding: 0 20px; 
+        margin-bottom: 20px;
+    }
+    
+    .hero .subtitle { 
+        font-size: 18px; 
+        line-height: 1.5; 
+        padding: 0 20px; 
+        margin-bottom: 20px;
+    }
+    
+    .hero .tagline {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 0 20px;
+    }
     
     /* Adjust decorative elements for mobile */
     .hero .decorative-element.hero-left-dots {
@@ -2296,18 +2405,18 @@ body.notification-visible .hero {
     
     /* Adjust rotating text for mobile */
     .text-rotate-container {
-        height: 48px; /* Match the mobile line-height of h1 */
+        height: 44px; /* Match the mobile calculated line-height of h1 (36px * 1.2 = 43.2px) */
         overflow: visible; /* Show underline */
     }
     
     .text-rotate-inner {
-        height: 48px; /* Match the mobile line-height of h1 */
+        height: 44px; /* Match the mobile calculated line-height of h1 */
         overflow: hidden; /* Hide overflow text */
     }
     
     .text-rotate-item {
-        height: 48px;
-        line-height: 48px; /* Match the mobile line-height */
+        height: 44px;
+        line-height: 44px; /* Match the mobile calculated line-height */
     }
     
     .underline-container {
@@ -2325,16 +2434,16 @@ body.notification-visible .hero {
             transform: translateY(0);
         }
         20%, 40% {
-            transform: translateY(-48px); /* Use exact pixel values for mobile */
+            transform: translateY(-44px); /* Use exact pixel values for mobile */
         }
         45%, 65% {
-            transform: translateY(-96px); /* 2 × 48px */
+            transform: translateY(-88px); /* 2 × 44px */
         }
         70%, 90% {
-            transform: translateY(-144px); /* 3 × 48px */
+            transform: translateY(-132px); /* 3 × 44px */
         }
         95%, 100% {
-            transform: translateY(-192px); /* 4 × 48px */
+            transform: translateY(-176px); /* 4 × 44px */
         }
     }
     
@@ -2381,7 +2490,18 @@ body.notification-visible .hero {
     /* Mobile foundations grid */
     .foundations-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 36px;
+    }
+    
+    .foundation-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 24px;
+    }
+    
+    .foundation-item {
+        text-align: center;
+        align-items: center;
     }
     
     .foundation-item h3 {
@@ -2390,7 +2510,8 @@ body.notification-visible .hero {
     
     .foundation-item p {
         font-size: 15px;
-        line-height: 22px;
+        line-height: 1.6;
+        text-align: center;
     }
     
     .content-box {
@@ -2398,8 +2519,8 @@ body.notification-visible .hero {
     }
     
     .content-box h2 {
-        font-size: 28px;
-        line-height: 38px;
+        font-size: 32px;
+        line-height: 1.25;
         margin-bottom: 40px;
     }
     
