@@ -4,6 +4,77 @@ document.addEventListener('DOMContentLoaded', () => {
     const projects = document.querySelectorAll('.project');
     const totalOriginalSlides = projects.length;
     
+    // Check if we're on mobile
+    const isMobile = window.innerWidth <= 768;
+    
+    // Setup tilt effect to primary buttons
+    const setupTiltEffect = () => {
+        const primaryButtons = document.querySelectorAll('.btn-primary, .btn-cta');
+        
+        primaryButtons.forEach(button => {
+            // Don't add the class if already present
+            if (!button.classList.contains('tilt')) {
+                button.classList.add('tilt');
+            }
+            
+            // Remove any existing event listeners to prevent duplicates
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+            button = newButton;
+            
+            // Mouse enter event for tracking entry point
+            button.addEventListener('mouseenter', (e) => {
+                // Only apply on non-mobile
+                if (window.innerWidth <= 768) return;
+                
+                // Get the position of mouse entry relative to the button center
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Calculate the tilt angle based on entry point (max 10 degrees)
+                const tiltX = y / rect.height * 10;
+                const tiltY = -x / rect.width * 10;
+                
+                // Apply the tilt effect with transition
+                button.style.transition = 'transform 0.1s ease-out';
+                button.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(0)`;
+            });
+            
+            // Mouse move for real-time updates
+            button.addEventListener('mousemove', (e) => {
+                // Only apply on non-mobile
+                if (window.innerWidth <= 768) return;
+                
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Calculate the tilt angle based on mouse position (max 10 degrees)
+                const tiltX = y / rect.height * 10;
+                const tiltY = -x / rect.width * 10;
+                
+                // Apply the tilt effect
+                button.style.transition = '';
+                button.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(0)`;
+            });
+            
+            // Mouse leave for reset
+            button.addEventListener('mouseleave', () => {
+                button.style.transition = 'transform 0.3s ease';
+                button.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+    };
+    
+    // Initialize tilt effect
+    setupTiltEffect();
+    
+    // Re-initialize tilt effect on window resize
+    window.addEventListener('resize', () => {
+        setupTiltEffect();
+    });
+    
     // Clone first and last items for the infinite loop effect
     if (projectsContainer && projects.length > 0) {
         // Clone first set of items and add to end
@@ -43,13 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const progressSlide = (currentSlide - 3) % totalOriginalSlides;
         const normalizedSlide = progressSlide < 0 ? totalOriginalSlides + progressSlide : progressSlide;
         
-        const maxMove = 480;
+        // Adjust the indicator movement based on screen size
+        const isMobileView = window.innerWidth <= 768;
+        const maxMove = isMobileView ? 220 : 480;
         const indicatorPosition = (normalizedSlide / (totalOriginalSlides - 1)) * maxMove;
         if (indicator) indicator.style.left = indicatorPosition + 'px';
         
         // Slide the projects
         if (projectsContainer) {
-            const slideWidth = projectsContainer.querySelector('.project').offsetWidth + 36; // card width + gap
+            // Calculate the slide width based on the current viewport
+            const slideWidth = projectsContainer.querySelector('.project').offsetWidth + 
+                (isMobileView ? 20 : 36); // Smaller gap on mobile
             
             if (skipTransition) {
                 projectsContainer.style.transition = 'none';
@@ -121,6 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function touchStart(event) {
         if (isTransitioning) return;
         
+        // Immediately set transition to none for smoother start
+        projectsContainer.style.transition = 'none';
+        
+        // Add dragging class for visual feedback
+        projectsContainer.classList.add('dragging');
+        
         // Get touch or mouse position
         const clientX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
         startX = clientX;
@@ -136,35 +217,55 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add events for mouse and touch
         document.addEventListener('mousemove', touchMove);
-        document.addEventListener('touchmove', touchMove, { passive: true });
+        document.addEventListener('touchmove', touchMove, { passive: false }); // Changed to false to allow preventDefault
         document.addEventListener('mouseup', touchEnd);
         document.addEventListener('touchend', touchEnd);
         
         // Change cursor and prevent text selection
         slider.style.cursor = 'grabbing';
         slider.style.userSelect = 'none';
+        
+        // Prevent default to avoid page scroll while dragging on mobile
+        if (event.type === 'touchstart') {
+            event.preventDefault();
+        }
     }
     
     function touchMove(event) {
         if (!isDragging) return;
+        
+        // Prevent default behavior to avoid scrolling while dragging
+        if (event.cancelable) {
+            event.preventDefault();
+        }
         
         const clientX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
         const currentX = clientX;
         const diff = currentX - startX;
         currentTranslate = prevTranslate + diff;
         
-        // Apply transform directly for smooth dragging
-        projectsContainer.style.transition = 'none';
-        projectsContainer.style.transform = `translateX(${currentTranslate}px)`;
+        // Use requestAnimationFrame for smoother animation
+        animationID = requestAnimationFrame(() => {
+            // Apply transform directly for smooth dragging
+            projectsContainer.style.transform = `translateX(${currentTranslate}px)`;
+        });
     }
     
     function touchEnd() {
         isDragging = false;
-        const slideWidth = projectsContainer.querySelector('.project').offsetWidth + 36;
+        cancelAnimationFrame(animationID); // Cancel any ongoing animation
+        
+        // Remove dragging class
+        projectsContainer.classList.remove('dragging');
+        
+        // Check if we're on mobile or desktop for different gap values
+        const isMobileView = window.innerWidth <= 768;
+        const gapWidth = isMobileView ? 20 : 36;
+        const slideWidth = projectsContainer.querySelector('.project').offsetWidth + gapWidth;
         const moveRatio = (prevTranslate - currentTranslate) / slideWidth;
         
         // Determine if we should move to next/prev slide based on drag distance
-        if (Math.abs(moveRatio) > 0.2) {
+        if (Math.abs(moveRatio) > 0.15) { // Lowered threshold for easier slide changes
             if (moveRatio > 0) {
                 // Dragged left - go to next slide
                 currentSlide++;
@@ -174,10 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Re-enable transitions and update slider position
-        projectsContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-        isTransitioning = true;
-        updateSlider();
+        // Re-enable transitions with a short delay to ensure smooth animation
+        setTimeout(() => {
+            projectsContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            isTransitioning = true;
+            updateSlider();
+        }, 10);
         
         // Reset cursor and remove event listeners
         slider.style.cursor = 'grab';
@@ -219,7 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Handle window resize
-    window.addEventListener('resize', () => updateSlider(true));
+    window.addEventListener('resize', () => {
+        // Recalculate and update slider with responsive values
+        updateSlider(true);
+    });
 });
 
 
