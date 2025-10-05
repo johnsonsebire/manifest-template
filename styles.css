@@ -1313,10 +1313,67 @@ body {
     font-size: 20px;
     line-height: 1.5;
     color: #666666;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Pricing Tabs */
+.pricing-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 48px;
+    padding: 0 20px;
+}
+
+.pricing-tab {
+    background: #FFFFFF;
+    border: 2px solid #E5E5E5;
+    color: #666666;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+}
+
+.pricing-tab:hover {
+    border-color: #FF4900;
+    color: #FF4900;
+    transform: translateY(-2px);
+}
+
+.pricing-tab.active {
+    background: linear-gradient(135deg, #FF4900 0%, #FF6B35 100%);
+    border-color: #FF4900;
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(255, 73, 0, 0.3);
+}
+
+/* Pricing Content Containers */
+.pricing-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.pricing-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .pricing-left-stripes {
@@ -3083,8 +3140,20 @@ body.notification-visible .hero {
     
     .pricing-subheading {
         font-size: 16px;
-        margin-bottom: 44px;
+        margin-bottom: 32px;
         padding: 0 12px;
+    }
+    
+    /* Pricing tabs mobile */
+    .pricing-tabs {
+        gap: 8px;
+        margin-bottom: 32px;
+        padding: 0 12px;
+    }
+    
+    .pricing-tab {
+        font-size: 13px;
+        padding: 10px 16px;
     }
     
     .pricing-left-stripes {

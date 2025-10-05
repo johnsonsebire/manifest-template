@@ -227,7 +227,7 @@
         <div class="why-content animate-on-scroll">
             <p class="why-intro">Since 2014, we've been delivering <strong>data-driven, customer-centric digital solutions</strong> that drive real business results for organizations that matter.</p>
             
-            <p class="why-emphasis">With over <strong>10 years of proven excellence</strong>, Manifest Digital brings together a full-stack team of developers, UX designers, brand strategists, and project managers under one roof. What typically requires coordinating multiple agencies, we deliver seamlessly as your <strong>single, trusted digital partner</strong>.</p>
+            <p class="why-emphasis">With over <strong>10 years of proven excellence</strong>, Manifest Digital brings together a full-stack team of developers, Software Engineers, UX designers, brand strategists, and project managers under one roof. What typically requires coordinating multiple agencies, we deliver seamlessly as your <strong>single, trusted digital partner</strong>.</p>
             
             <p class="why-contrast">Skip the lengthy hiring process, eliminate freelancer uncertainty, and forget about managing multiple vendors. Our <strong>people-first approach</strong> means transparent communication, consistent quality, and dedicated support throughout your project journey—all at a fraction of the cost of building an in-house team.</p>
             
@@ -263,7 +263,7 @@
                     <i class="far fa-comment-dots"></i>
                     <i class="far fa-circle-question forget-icon-small"></i>
                 </div>
-                <h3>Lack of communication</h3>
+                <h3>Poor communication</h3>
             </div>
             
             <div class="forget-item">
@@ -271,7 +271,7 @@
                     <i class="far fa-file-lines"></i>
                     <i class="fas fa-minus forget-icon-small"></i>
                 </div>
-                <h3>Losing previous versions</h3>
+                <h3>Losing precious data</h3>
             </div>
             
             <div class="forget-item">
@@ -371,76 +371,482 @@
         <h2 class="animate-on-scroll">Transparent Pricing, Exceptional Value</h2>
         <p class="pricing-subheading animate-on-scroll">Choose the perfect plan for your organization. Scale up or down anytime—no contracts, no surprises.</p>
         
-        <div class="pricing-grid stagger-children">
-            <!-- Essentials Plan -->
-            <div class="pricing-card">
-                <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="pricing-card-accent">
-                <h3>Essentials</h3>
-                <p class="pricing-tagline">Perfect for getting started</p>
-                <div class="price">
-                    <span class="currency">GH₵</span>
-                    <span class="amount">1,199</span>
-                    <span class="period">/month</span>
+        <!-- Pricing Tabs -->
+        <div class="pricing-tabs animate-on-scroll">
+            <button class="pricing-tab active" data-tab="websites">Websites</button>
+            <button class="pricing-tab" data-tab="uiux">UI/UX Design</button>
+            <button class="pricing-tab" data-tab="hosting">Hosting</button>
+            <button class="pricing-tab" data-tab="domains">Domain Names</button>
+            <button class="pricing-tab" data-tab="apps">App Development</button>
+            <button class="pricing-tab" data-tab="consulting">Consulting Services</button>
+            <button class="pricing-tab" data-tab="training">Training Services</button>
+        </div>
+        
+        <!-- Websites Pricing -->
+        <div class="pricing-content active" id="websites">
+            <div class="pricing-grid stagger-children">
+                <!-- Essentials Plan -->
+                <div class="pricing-card">
+                    <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="pricing-card-accent">
+                    <h3>Essentials</h3>
+                    <p class="pricing-tagline">Perfect for getting started</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">250</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">Cancel anytime • 14-day guarantee</p>
+                    <a href="#" class="btn-pricing">Start Building</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Up to 5 pages</li>
+                        <li><i class="fas fa-circle-check"></i> Responsive design</li>
+                        <li><i class="fas fa-circle-check"></i> Basic SEO setup</li>
+                        <li><i class="fas fa-circle-check"></i> Contact form integration</li>
+                        <li><i class="fas fa-circle-check"></i> Social media links</li>
+                        <li><i class="fas fa-circle-check"></i> 2 rounds of revisions</li>
+                        <li><i class="fas fa-circle-check"></i> 30-day support</li>
+                    </ul>
                 </div>
-                <p class="cancel-text">Cancel anytime • 14-day guarantee</p>
-                <a href="#" class="btn-pricing">Start Building</a>
-                <ul class="features-list">
-                    <li><i class="fas fa-circle-check"></i> One active project at a time</li>
-                    <li><i class="fas fa-circle-check"></i> Fast 3-5 day turnaround</li>
-                    <li><i class="fas fa-circle-check"></i> Standard support</li>
-                    <li><i class="fas fa-circle-check"></i> Dedicated project manager</li>
-                    <li><i class="fas fa-circle-check"></i> UI/UX design expertise</li>
-                    <li><i class="fas fa-circle-check"></i> Unlimited revisions per project</li>
-                    <li><i class="fas fa-circle-check"></i> Source files included</li>
-                </ul>
-            </div>
             
-            <!-- Professional Plan -->
-            <div class="pricing-card popular">
-                <h3>Professional</h3>
-                <p class="pricing-tagline">Most popular for growing teams</p>
-                <div class="price">
-                    <span class="currency">GH₵</span>
-                    <span class="amount">1,699</span>
-                    <span class="period">/month</span>
+                <!-- Professional Plan -->
+                <div class="pricing-card popular">
+                    <h3>Professional</h3>
+                    <p class="pricing-tagline">Most popular for growing teams</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">500</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">Cancel anytime • 14-day guarantee</p>
+                    <a href="#" class="btn-pricing">Get Professional</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Up to 15 pages</li>
+                        <li><i class="fas fa-circle-check"></i> Custom UI/UX design</li>
+                        <li><i class="fas fa-circle-check"></i> Advanced SEO optimization</li>
+                        <li><i class="fas fa-circle-check"></i> CMS integration</li>
+                        <li><i class="fas fa-circle-check"></i> Blog functionality</li>
+                        <li><i class="fas fa-circle-check"></i> E-commerce ready (up to 50 products)</li>
+                        <li><i class="fas fa-circle-check"></i> Analytics integration</li>
+                        <li><i class="fas fa-circle-check"></i> Unlimited revisions</li>
+                        <li><i class="fas fa-circle-check"></i> 90-day support</li>
+                    </ul>
                 </div>
-                <p class="cancel-text">Cancel anytime • 14-day guarantee</p>
-                <a href="#" class="btn-pricing">Get Professional</a>
-                <ul class="features-list">
-                    <li><i class="fas fa-circle-check"></i> Two active projects simultaneously</li>
-                    <li><i class="fas fa-circle-check"></i> Faster 2-3 day turnaround</li>
-                    <li><i class="fas fa-circle-check"></i> Priority support & Slack channel</li>
-                    <li><i class="fas fa-circle-check"></i> Dedicated account manager</li>
-                    <li><i class="fas fa-circle-check"></i> Senior UI/UX team</li>
-                    <li><i class="fas fa-circle-check"></i> Multiple brand support</li>
-                    <li><i class="fas fa-circle-check"></i> Advanced analytics & reporting</li>
-                    <li><i class="fas fa-circle-check"></i> Free monthly strategy session</li>
-                    <li><i class="fas fa-circle-check"></i> No hidden costs</li>
-                </ul>
-            </div>
             
-            <!-- Enterprise Plan -->
-            <div class="pricing-card">
-                <h3>Enterprise</h3>
-                <p class="pricing-tagline">For mission-critical projects</p>
-                <div class="price">
-                    <span class="currency">GH₵</span>
-                    <span class="amount">2,499</span>
-                    <span class="period">/month</span>
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <p class="pricing-tagline">For mission-critical projects</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">1,500</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">Custom terms available</p>
+                    <a href="#" class="btn-pricing">Talk to Sales</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Unlimited pages</li>
+                        <li><i class="fas fa-circle-check"></i> Premium custom design</li>
+                        <li><i class="fas fa-circle-check"></i> Advanced functionality</li>
+                        <li><i class="fas fa-circle-check"></i> Multi-language support</li>
+                        <li><i class="fas fa-circle-check"></i> Custom integrations & APIs</li>
+                        <li><i class="fas fa-circle-check"></i> Advanced e-commerce (unlimited products)</li>
+                        <li><i class="fas fa-circle-check"></i> Dedicated project team</li>
+                        <li><i class="fas fa-circle-check"></i> Priority support & maintenance</li>
+                        <li><i class="fas fa-circle-check"></i> 1-year support included</li>
+                    </ul>
                 </div>
-                <p class="cancel-text">Custom terms available</p>
-                <a href="#" class="btn-pricing">Talk to Sales</a>
-                <ul class="features-list">
-                    <li><i class="fas fa-circle-check"></i> Unlimited active projects</li>
-                    <li><i class="fas fa-circle-check"></i> Same-day turnaround available</li>
-                    <li><i class="fas fa-circle-check"></i> Dedicated Slack workspace</li>
-                    <li><i class="fas fa-circle-check"></i> Dedicated senior team (PM, Designer, Dev)</li>
-                    <li><i class="fas fa-circle-check"></i> Unlimited brands & revisions</li>
-                    <li><i class="fas fa-circle-check"></i> White-label options available</li>
-                    <li><i class="fas fa-circle-check"></i> Custom integrations & APIs</li>
-                    <li><i class="fas fa-circle-check"></i> SLA guarantees</li>
-                    <li><i class="fas fa-circle-check"></i> Quarterly business reviews</li>
-                </ul>
+            </div>
+        </div>
+        
+        <!-- UI/UX Design Pricing -->
+        <div class="pricing-content" id="uiux">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="pricing-card-accent">
+                    <h3>Basic Design</h3>
+                    <p class="pricing-tagline">Essential design services</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">800</span>
+                        <span class="period">/project</span>
+                    </div>
+                    <p class="cancel-text">1-2 weeks delivery</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Up to 3 screen designs</li>
+                        <li><i class="fas fa-circle-check"></i> Wireframe sketches</li>
+                        <li><i class="fas fa-circle-check"></i> Basic user flow</li>
+                        <li><i class="fas fa-circle-check"></i> Mobile responsive design</li>
+                        <li><i class="fas fa-circle-check"></i> 2 revision rounds</li>
+                        <li><i class="fas fa-circle-check"></i> Figma source files</li>
+                        <li><i class="fas fa-circle-check"></i> Style guide basics</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>Professional Design</h3>
+                    <p class="pricing-tagline">Complete design system</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">2,500</span>
+                        <span class="period">/project</span>
+                    </div>
+                    <p class="cancel-text">2-4 weeks delivery</p>
+                    <a href="#" class="btn-pricing">Get Professional</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Up to 10 screen designs</li>
+                        <li><i class="fas fa-circle-check"></i> Interactive prototypes</li>
+                        <li><i class="fas fa-circle-check"></i> Complete user journey mapping</li>
+                        <li><i class="fas fa-circle-check"></i> Responsive design (mobile, tablet, desktop)</li>
+                        <li><i class="fas fa-circle-check"></i> User research & personas</li>
+                        <li><i class="fas fa-circle-check"></i> Unlimited revisions</li>
+                        <li><i class="fas fa-circle-check"></i> Complete design system</li>
+                        <li><i class="fas fa-circle-check"></i> Developer handoff package</li>
+                        <li><i class="fas fa-circle-check"></i> 60-day support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise Design</h3>
+                    <p class="pricing-tagline">Full-scale UX solution</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">6,000+</span>
+                    </div>
+                    <p class="cancel-text">Custom timeline</p>
+                    <a href="#" class="btn-pricing">Contact Us</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Unlimited screens & flows</li>
+                        <li><i class="fas fa-circle-check"></i> Advanced interactive prototypes</li>
+                        <li><i class="fas fa-circle-check"></i> User testing & validation</li>
+                        <li><i class="fas fa-circle-check"></i> Multi-platform design system</li>
+                        <li><i class="fas fa-circle-check"></i> Accessibility compliance (WCAG)</li>
+                        <li><i class="fas fa-circle-check"></i> UX strategy & consulting</li>
+                        <li><i class="fas fa-circle-check"></i> Animation & micro-interactions</li>
+                        <li><i class="fas fa-circle-check"></i> Dedicated design team</li>
+                        <li><i class="fas fa-circle-check"></i> 6-month support & updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hosting Pricing -->
+        <div class="pricing-content" id="hosting">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter Hosting</h3>
+                    <p class="pricing-tagline">Basic shared hosting</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">50</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">Annual billing available</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> 5GB SSD storage</li>
+                        <li><i class="fas fa-circle-check"></i> 50GB bandwidth</li>
+                        <li><i class="fas fa-circle-check"></i> Free SSL certificate</li>
+                        <li><i class="fas fa-circle-check"></i> 1 website</li>
+                        <li><i class="fas fa-circle-check"></i> Daily backups</li>
+                        <li><i class="fas fa-circle-check"></i> Email support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>Business Hosting</h3>
+                    <p class="pricing-tagline">For growing businesses</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">150</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">Annual billing available</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> 25GB SSD storage</li>
+                        <li><i class="fas fa-circle-check"></i> 200GB bandwidth</li>
+                        <li><i class="fas fa-circle-check"></i> Free SSL certificate</li>
+                        <li><i class="fas fa-circle-check"></i> Up to 5 websites</li>
+                        <li><i class="fas fa-circle-check"></i> Daily backups</li>
+                        <li><i class="fas fa-circle-check"></i> Priority support</li>
+                        <li><i class="fas fa-circle-check"></i> Free CDN</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Premium Hosting</h3>
+                    <p class="pricing-tagline">Maximum performance</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">400</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">Dedicated resources</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> 100GB SSD storage</li>
+                        <li><i class="fas fa-circle-check"></i> Unlimited bandwidth</li>
+                        <li><i class="fas fa-circle-check"></i> Free SSL certificate</li>
+                        <li><i class="fas fa-circle-check"></i> Unlimited websites</li>
+                        <li><i class="fas fa-circle-check"></i> Hourly backups</li>
+                        <li><i class="fas fa-circle-check"></i> 24/7 priority support</li>
+                        <li><i class="fas fa-circle-check"></i> Free CDN & caching</li>
+                        <li><i class="fas fa-circle-check"></i> Dedicated IP</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Domain Names Pricing -->
+        <div class="pricing-content" id="domains">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>.com Domain</h3>
+                    <p class="pricing-tagline">Most popular extension</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">120</span>
+                        <span class="period">/year</span>
+                    </div>
+                    <p class="cancel-text">Auto-renewal available</p>
+                    <a href="#" class="btn-pricing">Register Now</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Free DNS management</li>
+                        <li><i class="fas fa-circle-check"></i> Free WHOIS privacy</li>
+                        <li><i class="fas fa-circle-check"></i> Email forwarding</li>
+                        <li><i class="fas fa-circle-check"></i> 24/7 support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>.com.gh Domain</h3>
+                    <p class="pricing-tagline">Ghana local domain</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">200</span>
+                        <span class="period">/year</span>
+                    </div>
+                    <p class="cancel-text">Local business identity</p>
+                    <a href="#" class="btn-pricing">Register Now</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Free DNS management</li>
+                        <li><i class="fas fa-circle-check"></i> Local SEO advantage</li>
+                        <li><i class="fas fa-circle-check"></i> Email forwarding</li>
+                        <li><i class="fas fa-circle-check"></i> Ghana business credibility</li>
+                        <li><i class="fas fa-circle-check"></i> 24/7 support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Premium Domains</h3>
+                    <p class="pricing-tagline">Custom pricing</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">Custom</span>
+                    </div>
+                    <p class="cancel-text">Contact for pricing</p>
+                    <a href="#" class="btn-pricing">Contact Us</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Short & memorable names</li>
+                        <li><i class="fas fa-circle-check"></i> Brandable domains</li>
+                        <li><i class="fas fa-circle-check"></i> Market research included</li>
+                        <li><i class="fas fa-circle-check"></i> Negotiation assistance</li>
+                        <li><i class="fas fa-circle-check"></i> Free transfer support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- App Development Pricing -->
+        <div class="pricing-content" id="apps">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic App</h3>
+                    <p class="pricing-tagline">Simple mobile app</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">3,000</span>
+                        <span class="period">one-time</span>
+                    </div>
+                    <p class="cancel-text">2-4 weeks delivery</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> iOS or Android (single platform)</li>
+                        <li><i class="fas fa-circle-check"></i> Up to 5 screens</li>
+                        <li><i class="fas fa-circle-check"></i> Basic UI/UX design</li>
+                        <li><i class="fas fa-circle-check"></i> Push notifications</li>
+                        <li><i class="fas fa-circle-check"></i> User authentication</li>
+                        <li><i class="fas fa-circle-check"></i> 30-day support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>Professional App</h3>
+                    <p class="pricing-tagline">Full-featured app</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">8,000</span>
+                        <span class="period">one-time</span>
+                    </div>
+                    <p class="cancel-text">6-8 weeks delivery</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> iOS & Android (both platforms)</li>
+                        <li><i class="fas fa-circle-check"></i> Up to 15 screens</li>
+                        <li><i class="fas fa-circle-check"></i> Custom UI/UX design</li>
+                        <li><i class="fas fa-circle-check"></i> Backend integration</li>
+                        <li><i class="fas fa-circle-check"></i> Payment gateway</li>
+                        <li><i class="fas fa-circle-check"></i> Analytics integration</li>
+                        <li><i class="fas fa-circle-check"></i> 90-day support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise App</h3>
+                    <p class="pricing-tagline">Complex solutions</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">20,000+</span>
+                    </div>
+                    <p class="cancel-text">Custom timeline</p>
+                    <a href="#" class="btn-pricing">Contact Us</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Multi-platform (iOS, Android, Web)</li>
+                        <li><i class="fas fa-circle-check"></i> Unlimited screens</li>
+                        <li><i class="fas fa-circle-check"></i> Premium design & branding</li>
+                        <li><i class="fas fa-circle-check"></i> Advanced features & integrations</li>
+                        <li><i class="fas fa-circle-check"></i> Real-time functionality</li>
+                        <li><i class="fas fa-circle-check"></i> Dedicated team</li>
+                        <li><i class="fas fa-circle-check"></i> 1-year support & maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Consulting Services Pricing -->
+        <div class="pricing-content" id="consulting">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Hourly Consulting</h3>
+                    <p class="pricing-tagline">Pay as you go</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">200</span>
+                        <span class="period">/hour</span>
+                    </div>
+                    <p class="cancel-text">Minimum 2 hours</p>
+                    <a href="#" class="btn-pricing">Book Session</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Technical advice</li>
+                        <li><i class="fas fa-circle-check"></i> Strategy planning</li>
+                        <li><i class="fas fa-circle-check"></i> Code review</li>
+                        <li><i class="fas fa-circle-check"></i> Architecture design</li>
+                        <li><i class="fas fa-circle-check"></i> Follow-up email summary</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>Monthly Retainer</h3>
+                    <p class="pricing-tagline">Ongoing support</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">2,000</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <p class="cancel-text">10 hours included</p>
+                    <a href="#" class="btn-pricing">Get Started</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> 10 consulting hours/month</li>
+                        <li><i class="fas fa-circle-check"></i> Priority scheduling</li>
+                        <li><i class="fas fa-circle-check"></i> Dedicated consultant</li>
+                        <li><i class="fas fa-circle-check"></i> Strategic roadmap</li>
+                        <li><i class="fas fa-circle-check"></i> Monthly reports</li>
+                        <li><i class="fas fa-circle-check"></i> Email & Slack support</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Project Consulting</h3>
+                    <p class="pricing-tagline">Custom engagement</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">Custom</span>
+                    </div>
+                    <p class="cancel-text">Tailored to your needs</p>
+                    <a href="#" class="btn-pricing">Contact Us</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Full project assessment</li>
+                        <li><i class="fas fa-circle-check"></i> Technology selection</li>
+                        <li><i class="fas fa-circle-check"></i> Team augmentation</li>
+                        <li><i class="fas fa-circle-check"></i> Implementation support</li>
+                        <li><i class="fas fa-circle-check"></i> Post-launch optimization</li>
+                        <li><i class="fas fa-circle-check"></i> Custom SLA</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Training Services Pricing -->
+        <div class="pricing-content" id="training">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Individual Training</h3>
+                    <p class="pricing-tagline">One-on-one sessions</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">150</span>
+                        <span class="period">/hour</span>
+                    </div>
+                    <p class="cancel-text">Flexible scheduling</p>
+                    <a href="#" class="btn-pricing">Book Now</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Personalized curriculum</li>
+                        <li><i class="fas fa-circle-check"></i> Hands-on exercises</li>
+                        <li><i class="fas fa-circle-check"></i> Progress tracking</li>
+                        <li><i class="fas fa-circle-check"></i> Certificate of completion</li>
+                        <li><i class="fas fa-circle-check"></i> Learning resources included</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <h3>Team Training</h3>
+                    <p class="pricing-tagline">Groups of 5-10</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">1,500</span>
+                        <span class="period">/day</span>
+                    </div>
+                    <p class="cancel-text">Full-day workshop</p>
+                    <a href="#" class="btn-pricing">Book Workshop</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Customized content</li>
+                        <li><i class="fas fa-circle-check"></i> Interactive sessions</li>
+                        <li><i class="fas fa-circle-check"></i> Team projects</li>
+                        <li><i class="fas fa-circle-check"></i> Post-training support (30 days)</li>
+                        <li><i class="fas fa-circle-check"></i> Certificates for all participants</li>
+                        <li><i class="fas fa-circle-check"></i> Training materials</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Corporate Training</h3>
+                    <p class="pricing-tagline">Large organizations</p>
+                    <div class="price">
+                        <span class="currency">GH₵</span>
+                        <span class="amount">Custom</span>
+                    </div>
+                    <p class="cancel-text">Multi-day programs</p>
+                    <a href="#" class="btn-pricing">Contact Us</a>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Unlimited participants</li>
+                        <li><i class="fas fa-circle-check"></i> Custom curriculum design</li>
+                        <li><i class="fas fa-circle-check"></i> On-site or remote delivery</li>
+                        <li><i class="fas fa-circle-check"></i> Skills assessment</li>
+                        <li><i class="fas fa-circle-check"></i> 90-day post-training support</li>
+                        <li><i class="fas fa-circle-check"></i> Management reporting</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

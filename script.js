@@ -596,6 +596,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lastScroll = currentScroll;
     });
-});
 
+    // ========================
+    // Pricing Tabs
+    // ========================
+    const pricingTabs = document.querySelectorAll('.pricing-tab');
+    const pricingContents = document.querySelectorAll('.pricing-content');
+
+    pricingTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTab = tab.getAttribute('data-tab');
+
+            // Remove active class from all tabs and contents
+            pricingTabs.forEach(t => t.classList.remove('active'));
+            pricingContents.forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            tab.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+});
 
