@@ -25,7 +25,36 @@
             <a href="#" class="login">Login</a>
             <a href="#" class="btn-primary">Get a Quote</a>
         </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <!-- Mobile navigation overlay -->
+    <div class="mobile-nav-overlay"></div>
+    
+    <!-- Mobile navigation menu -->
+    <div class="mobile-nav">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Projects</a>
+            <a href="#">Book a Call</a>
+        </nav>
+        <div class="mobile-nav-buttons">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+    </div>
 
     <section class="hero">
         <!-- Decorative elements for the hero section -->
@@ -94,8 +123,39 @@
         <img src="images/decorative/mem_dots_f_tri.svg" alt="" class="decorative-element right-triangle">
         
         <div class="content-box">
-            <h2>Top designers, unlimited requests, unlimited revisions, one simple price</h2>
-            <p>We don't charge per hour or per project. You pay a flat monthly rate, submit as many requests as you like, and we get through them one by one. You're not tied down to long-term contracts, complicated exit terms, and other restrictions. You just sign up, get high-quality designs, revise to satisfaction, and cancel anytime. No-fuss.</p>
+            <h2>Our Solutions are Built on Solid Foundations</h2>
+            <div class="foundations-grid">
+                <div class="foundation-item">
+                    <div class="foundation-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>Secure</h3>
+                    <p>Building trust through robust security measures that protect your users and safeguard sensitive information at every touchpoint.</p>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Fast</h3>
+                    <p>Optimized for speed to boost search rankings and deliver exceptional user experiences that keep visitors engaged.</p>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                    <h3>Responsive</h3>
+                    <p>Seamlessly adapting to any device, ensuring consistent, beautiful experiences across desktops, tablets, and smartphones.</p>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon"><i class="fas fa-universal-access"></i></div>
+                    <h3>Inclusive</h3>
+                    <p>Designed for everyone with intuitive, accessible interfaces that welcome all users regardless of ability or background.</p>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Clear</h3>
+                    <p>Elegant simplicity that communicates your message effectively, cutting through noise to deliver crystal-clear value.</p>
+                </div>
+                <div class="foundation-item">
+                    <div class="foundation-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Memorable</h3>
+                    <p>Crafting compelling narratives that resonate deeply, making your brand unforgettable for all the right reasons.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -106,19 +166,19 @@
         <h2>How it Works</h2>
         <div class="columns">
             <div class="column">
-                <div class="icon"></div>
-                <h3>Heading</h3>
-                <p>We don't charge per hour or per project. You pay  lorem lorem loremlorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+                <div class="icon"><i class="fas fa-user-plus"></i></div>
+                <h3>Sign Up</h3>
+                <p>Create your account in minutes and choose the plan that fits your needs. No long-term contracts or hidden fees.</p>
             </div>
             <div class="column">
-                <div class="icon"></div>
-                <h3>Heading</h3>
-                <p>We don't charge per hour or per project. You pay  lorem lorem loremlorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+                <div class="icon"><i class="fas fa-pen-to-square"></i></div>
+                <h3>Submit Requests</h3>
+                <p>Add unlimited design requests to your queue. We'll tackle them one by one, delivering quality work fast.</p>
             </div>
             <div class="column">
-                <div class="icon"></div>
-                <h3>Heading</h3>
-                <p>We don't charge per hour or per project. You pay  lorem lorem loremlorem lorem loremlorem lorem lorem lorem lorem lorem lorem lorem lorem</p>
+                <div class="icon"><i class="fas fa-rocket"></i></div>
+                <h3>Get Results</h3>
+                <p>Receive high-quality designs, request revisions as needed, and download your files when you're satisfied.</p>
             </div>
         </div>
         <p class="cta-text">Just Sign Up Leave the Rest to Us</p>
@@ -142,9 +202,27 @@
             <div class="footer-content">
                 <div class="footer-logo"></div>
                 <nav class="footer-nav">
-                    <div><a href="#">Home</a><a href="#">Home</a><a href="#">Home</a></div>
-                    <div><a href="#">Sucess Stories</a><a href="#">Sucess Stories</a><a href="#">Sucess Stories</a></div>
-                    <div><a href="#">About Us</a><a href="#">About Us</a><a href="#">About Us</a></div>
+                    <div>
+                        <a href="#">About Us</a>
+                        <a href="#">Opportunities</a>
+                        <a href="#">Our Blog</a>
+                        <a href="#">Solutions</a>
+                        <a href="#">Policies</a>
+                    </div>
+                    <div>
+                        <a href="#">Mobile App Design</a>
+                        <a href="#">Website Development</a>
+                        <a href="#">SAP Consulting</a>
+                        <a href="#">Brand Positioning</a>
+                        <a href="#">IT Training</a>
+                    </div>
+                    <div>
+                        <a href="#">SEO Services</a>
+                        <a href="#">QA Testing</a>
+                        <a href="#">Blockchain Solutions</a>
+                        <a href="#">Cyber Security</a>
+                        <a href="#">Cloud Computing</a>
+                    </div>
                 </nav>
             </div>
             <div class="social">
@@ -309,6 +387,49 @@
                 
                 // Update on interval as another fallback
                 setInterval(updateUnderlineWidth, 500);
+            }
+        });
+        
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+        
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+        
+        if (mobileNavOverlay) {
+            mobileNavOverlay.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Close menu when clicking on a nav link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav nav a, .mobile-nav .mobile-nav-buttons a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                toggleMobileMenu();
             }
         });
     </script>
