@@ -37,10 +37,12 @@
     <!-- Notification Topbar -->
     <div class="notification-topbar show">
         <span class="notification-icon">🎉</span>
-        <span class="notification-text">
-            Special Offer: Get 20% off on all plans this month! Limited time only.
-        </span>
-        <a href="#" class="notification-cta">Claim Now</a>
+        <div class="notification-content">
+            <span class="notification-text">
+                Special Offer: Get 20% off on all plans this month! Limited time only.
+            </span>
+            <a href="#" class="notification-cta">Claim Now</a>
+        </div>
         <button class="notification-close" aria-label="Close notification">×</button>
     </div>
     
@@ -57,33 +59,6 @@
         </div>
         
         <!-- Mobile menu toggle -->
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-
-    <!-- Secondary sticky header (appears on scroll up) -->
-    <header class="secondary-header">
-        <div class="logo"></div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">Book a Call</a>
-        </nav>
-        <div class="header-right">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
-        </div>
-        
-        <!-- Mobile menu toggle for secondary header -->
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <span></span>
             <span></span>
@@ -142,7 +117,7 @@
         <p class="tagline">Good design, no fluff.</p>
     </section>
 
-    <section class="slider">
+    <section class="slider animate-on-scroll">
         <div class="projects">
             <div class="project">
                 <img src="images/myhelpyourhelp.png" alt="My Help Your Help Foundation" />
@@ -180,8 +155,8 @@
         <img src="images/decorative/mem_dots_f_tri.svg" alt="" class="decorative-element right-triangle">
         
         <div class="content-box">
-            <h2>Our Solutions are Built on Solid Foundations</h2>
-            <div class="foundations-grid">
+            <h2 class="animate-on-scroll">Our Solutions are Built on Solid Foundations</h2>
+            <div class="foundations-grid stagger-children">
                 <div class="foundation-item">
                     <div class="foundation-icon"><i class="fas fa-shield-halved"></i></div>
                     <h3>Secure</h3>
@@ -220,8 +195,8 @@
         <!-- Decorative element for how-it-works section -->
         <img src="images/decorative/how_it_works_mem_dots_f_circle2.svg" alt="" class="decorative-element dots-circle">
         
-        <h2>How it Works</h2>
-        <div class="columns">
+        <h2 class="animate-on-scroll">How it Works</h2>
+        <div class="columns stagger-children">
             <div class="column">
                 <div class="icon"><i class="fas fa-user-plus"></i></div>
                 <h3>Sign Up</h3>
@@ -246,9 +221,9 @@
         <img src="images/decorative/mem_dots_f_circle2.svg" alt="" class="decorative-element why-left-dots">
         <img src="images/decorative/mem_dots_f_tri.svg" alt="" class="decorative-element why-right-shapes">
         
-        <h2>Why us?</h2>
+        <h2 class="animate-on-scroll">Why us?</h2>
         
-        <div class="why-content">
+        <div class="why-content animate-on-scroll">
             <p class="why-intro">Hiring design talent is <strong>HARD!</strong> And the designs of today don't require one designer alone - you need product managers, UX designers, visual designers, illustrators, UX copywriters, and so many more folks only to get one high-quality piece of design done.</p>
             
             <p class="why-emphasis">And guess what? All of this costs <strong>A LOT!</strong></p>
@@ -261,13 +236,13 @@
 
     <!-- Forget About Section -->
     <section class="forget-about">
-        <div class="forget-header">
+        <div class="forget-header animate-on-scroll">
             <img src="images/decorative/mem_dots_f_circle2.svg" alt="" class="forget-star-left">
             <h2>Forget about</h2>
             <img src="images/decorative/mem_dots_f_tri.svg" alt="" class="forget-star-right">
         </div>
         
-        <div class="forget-grid">
+        <div class="forget-grid stagger-children">
             <div class="forget-item">
                 <div class="forget-icon">
                     <i class="far fa-circle-xmark"></i>
@@ -320,9 +295,9 @@
     <section class="what-we-do">
         <img src="images/decorative/mem_dots_f_circle2.svg" alt="" class="decorative-element what-scribble">
         
-        <h2>Here's what we can do</h2>
+        <h2 class="animate-on-scroll">Here's what we can do</h2>
         
-        <div class="services-grid">
+        <div class="services-grid stagger-children">
             <div class="service-item">
                 <h3>Websites</h3>
                 <div class="service-underline"></div>
@@ -406,9 +381,9 @@
         <img src="images/decorative/mem_dots_f_tri.svg" alt="" class="decorative-element pricing-left-stripes">
         <img src="images/decorative/mem_dots_f_circle2.svg" alt="" class="decorative-element pricing-right-shape">
         
-        <h2>Our Price</h2>
+        <h2 class="animate-on-scroll">Our Price</h2>
         
-        <div class="pricing-grid">
+        <div class="pricing-grid stagger-children">
             <!-- Basics Plan -->
             <div class="pricing-card">
                 <img src="images/decorative/mem_dots_f_circle2.svg" alt="" class="pricing-card-accent">
@@ -474,9 +449,9 @@
 
     <!-- Testimonials Section -->
     <section class="testimonials">
-        <h2>What our clients say</h2>
+        <h2 class="animate-on-scroll">What our clients say</h2>
         
-        <div class="testimonials-carousel">
+        <div class="testimonials-carousel animate-on-scroll">
             <div class="carousel-container">
                 <div class="carousel-track">
                     <!-- Testimonial 1 -->
@@ -733,6 +708,36 @@
                 }
             });
         }
+        
+        // ========================
+        // Scroll Animations
+        // ========================
+        
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of element is visible
+        };
+        
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    // Optional: unobserve after animation to improve performance
+                    // animateOnScroll.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with animation classes
+        const animatedElements = document.querySelectorAll(
+            '.animate-on-scroll, .fade-in-left, .fade-in-right, .scale-in, .stagger-children'
+        );
+        
+        animatedElements.forEach(element => {
+            animateOnScroll.observe(element);
+        });
         
         // ========================
         // Scroll to top functionality
