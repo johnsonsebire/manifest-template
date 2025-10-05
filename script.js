@@ -22,23 +22,78 @@ document.addEventListener('DOMContentLoaded', () => {
             button.parentNode.replaceChild(newButton, button);
             button = newButton;
             
+            // Track the entry point of the mouse
+            let entryPoint = { x: 0, y: 0 };
+            let entryEdge = ''; // Store which edge the mouse entered from
+            
+            // Store original box-shadow if any
+            const originalBoxShadow = window.getComputedStyle(button).boxShadow;
+            
             // Mouse enter event for tracking entry point
             button.addEventListener('mouseenter', (e) => {
                 // Only apply on non-mobile
                 if (window.innerWidth <= 768) return;
                 
-                // Get the position of mouse entry relative to the button center
                 const rect = button.getBoundingClientRect();
+                
+                // Determine which edge the mouse entered from
+                // Calculate distances from each edge
+                const distFromTop = Math.abs(e.clientY - rect.top);
+                const distFromBottom = Math.abs(e.clientY - rect.bottom);
+                const distFromLeft = Math.abs(e.clientX - rect.left);
+                const distFromRight = Math.abs(e.clientX - rect.right);
+                
+                // Find the minimum distance to determine entry edge
+                const minDist = Math.min(distFromTop, distFromBottom, distFromLeft, distFromRight);
+                
+                if (minDist === distFromTop) entryEdge = 'top';
+                else if (minDist === distFromBottom) entryEdge = 'bottom';
+                else if (minDist === distFromLeft) entryEdge = 'left';
+                else entryEdge = 'right';
+                
+                // Store exact entry coordinates
+                entryPoint.x = e.clientX;
+                entryPoint.y = e.clientY;
+                
+                // Get the position of mouse entry relative to the button center
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
                 
-                // Calculate the tilt angle based on entry point (max 10 degrees)
-                const tiltX = y / rect.height * 10;
-                const tiltY = -x / rect.width * 10;
+                // Calculate the tilt angle based on entry point (max 15 degrees)
+                const maxTilt = 15;
+                
+                // Calculate tilt angles based on entry edge for more natural feel
+                let tiltX, tiltY;
+                
+                switch(entryEdge) {
+                    case 'top':
+                        tiltX = -maxTilt;
+                        tiltY = x / (rect.width / 2) * (maxTilt / 2);
+                        break;
+                    case 'bottom':
+                        tiltX = maxTilt;
+                        tiltY = x / (rect.width / 2) * (maxTilt / 2);
+                        break;
+                    case 'left':
+                        tiltY = maxTilt;
+                        tiltX = y / (rect.height / 2) * (maxTilt / 2);
+                        break;
+                    case 'right':
+                        tiltY = -maxTilt;
+                        tiltX = y / (rect.height / 2) * (maxTilt / 2);
+                        break;
+                }
+                
+                // Create a shadow effect based on tilt direction
+                const shadowX = -tiltY * 0.5;
+                const shadowY = tiltX * 0.5;
+                const shadowBlur = 15;
+                const shadowColor = 'rgba(0, 0, 0, 0.3)';
                 
                 // Apply the tilt effect with transition
-                button.style.transition = 'transform 0.1s ease-out';
-                button.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(0)`;
+                button.style.transition = 'transform 0.2s ease-out, box-shadow 0.2s ease-out';
+                button.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(5px)`;
+                button.style.boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px ${shadowColor}`;
             });
             
             // Mouse move for real-time updates
@@ -47,22 +102,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.innerWidth <= 768) return;
                 
                 const rect = button.getBoundingClientRect();
+                
+                // Get the position of mouse relative to the button center
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
                 
-                // Calculate the tilt angle based on mouse position (max 10 degrees)
-                const tiltX = y / rect.height * 10;
-                const tiltY = -x / rect.width * 10;
+                // Calculate the distance from center as a percentage (0-1)
+                const distFromCenterX = Math.abs(x) / (rect.width / 2);
+                const distFromCenterY = Math.abs(y) / (rect.height / 2);
                 
-                // Apply the tilt effect
+                // Calculate tilt based on mouse position with maximum 15 degrees
+                const maxTilt = 15;
+                
+                // Normalize coordinates to -1 to 1 range for smooth tilt
+                const normalizedX = x / (rect.width / 2);
+                const normalizedY = y / (rect.height / 2);
+                
+                // Calculate tilt based on direction and distance from center
+                const tiltY = -normalizedX * maxTilt; // Negative to tilt towards mouse
+                const tiltX = normalizedY * maxTilt;
+                
+                // Create a shadow effect based on tilt direction
+                const shadowIntensity = Math.max(distFromCenterX, distFromCenterY) * 0.7;
+                const shadowX = -tiltY * shadowIntensity;
+                const shadowY = tiltX * shadowIntensity;
+                const shadowBlur = 15;
+                const shadowColor = 'rgba(0, 0, 0, 0.3)';
+                
+                // Apply the tilt effect with immediate response
                 button.style.transition = '';
-                button.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(0)`;
+                button.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(5px)`;
+                button.style.boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px ${shadowColor}`;
             });
             
             // Mouse leave for reset
-            button.addEventListener('mouseleave', () => {
-                button.style.transition = 'transform 0.3s ease';
+            button.addEventListener('mouseleave', (e) => {
+                button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
                 button.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0)';
+                button.style.boxShadow = originalBoxShadow;
             });
         });
     };

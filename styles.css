@@ -41,18 +41,35 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 }
 
 /* Tilt effect will be applied via JavaScript */
-.btn-primary.tilt {
-    transition: transform 0.2s ease-out;
-}
-
-/* Apply tilt effect to CTA button as well */
-.btn-cta.tilt {
-    transition: transform 0.2s ease-out;
+.btn-primary.tilt, .btn-cta.tilt {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
     transform-style: preserve-3d;
     perspective: 800px;
     transform: translateZ(0);
-    will-change: transform;
+    will-change: transform, box-shadow;
     backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Add subtle gradient effect when hovered */
+.btn-primary.tilt::before, .btn-cta.tilt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+}
+
+.btn-primary.tilt:hover::before, .btn-cta.tilt:hover::before {
+    opacity: 1;
 }
 
 /* Secondary Button: White with FF4900 hover */
