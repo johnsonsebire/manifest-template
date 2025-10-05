@@ -2614,6 +2614,7 @@ body.notification-visible .hero {
         padding: 0 20px; 
         height: 80px;
         z-index: 1050; /* Higher than mobile nav to keep toggle visible */
+        background:#FFFCFA;
     }
     .primary-header nav { display: none; }
     .header-right { display: none; }
