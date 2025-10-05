@@ -248,6 +248,91 @@ body {
     width: 100%;
 }
 
+/* ========================
+   Secondary Sticky Header
+   ======================== */
+
+.secondary-header {
+    position: fixed;
+    top: -120px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #FFFCFA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 180px;
+    z-index: 1002;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: top 0.3s ease-in-out;
+}
+
+.secondary-header.visible {
+    top: 0;
+}
+
+.secondary-header .logo {
+    width: 176px;
+    height: 60px;
+    background-image: url('images/logos/logo.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.secondary-header nav {
+    display: flex;
+    gap: 35px;
+}
+
+.secondary-header nav a {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18.63px;
+    color: #000000;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.secondary-header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #FF4900;
+    transition: width 0.3s ease;
+}
+
+.secondary-header nav a:hover::after {
+    width: 100%;
+}
+
+.secondary-header .header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.secondary-header .login {
+    font-weight: 700;
+    font-size: 18px;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.secondary-header .login:hover {
+    color: #FF4900;
+}
+
+.secondary-header .mobile-menu-toggle {
+    display: none;
+}
+
 /* Primary Button: Black with FF4900 hover and tilt effect */
 .btn-primary { 
     background: #000000; 
@@ -1630,10 +1715,292 @@ footer {
     color: #FFFFFF;
 }
 
+/* ========================
+   Tablet Styles (769px - 1024px)
+   ======================== */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    /* Header adjustments */
+    .primary-header {
+        padding: 0 40px;
+    }
+    
+    .primary-header nav {
+        gap: 25px;
+    }
+    
+    .primary-header nav a {
+        font-size: 16px;
+    }
+    
+    /* Hero section */
+    .hero h1 {
+        font-size: 60px;
+        line-height: 72px;
+    }
+    
+    .hero .subtitle {
+        font-size: 26px;
+        line-height: 36px;
+    }
+    
+    /* Section padding adjustments */
+    .section-two,
+    .section-three,
+    .section-four,
+    .why-us,
+    .forget-about,
+    .what-we-do,
+    .pricing,
+    .testimonials {
+        padding: 100px 80px;
+    }
+    
+    /* How it works section */
+    .how-it-works {
+        padding: 100px 80px;
+    }
+    
+    .how-it-works h2,
+    .section-four h2,
+    .why-us h2,
+    .forget-about h2,
+    .what-we-do h2,
+    .pricing h2,
+    .testimonials h2 {
+        font-size: 60px;
+        line-height: 72px;
+        margin-bottom: 60px;
+    }
+    
+    /* Grid adjustments */
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    .foundations-grid {
+        gap: 30px;
+    }
+    
+    .services-grid {
+        gap: 50px 60px;
+    }
+    
+    .pricing-grid {
+        gap: 30px;
+    }
+    
+    .pricing-card {
+        padding: 45px 35px;
+    }
+    
+    /* CTA section */
+    .cta {
+        padding: 90px 80px;
+        margin: 0 40px;
+        width: calc(100% - 80px);
+    }
+    
+    .cta h2 {
+        font-size: 50px;
+        line-height: 62px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 80px;
+    }
+    
+    /* Secondary header */
+    .secondary-header {
+        padding: 0 40px;
+        height: 70px;
+    }
+    
+    .secondary-header nav {
+        gap: 25px;
+    }
+    
+    .secondary-header nav a {
+        font-size: 16px;
+    }
+    
+    /* Rotating text adjustments */
+    .text-rotate-container {
+        height: 72px;
+        min-width: 320px;
+    }
+    
+    .text-rotate-inner {
+        height: 72px;
+    }
+    
+    .text-rotate-item {
+        height: 72px;
+        line-height: 72px;
+        font-size: 60px;
+    }
+}
+
+/* ========================
+   Laptop Styles (1025px - 1440px)
+   ======================== */
+
+@media (max-width: 1440px) and (min-width: 1025px) {
+    /* Header adjustments */
+    .primary-header {
+        padding: 0 80px;
+    }
+    
+    .primary-header nav {
+        gap: 30px;
+    }
+    
+    /* Hero section */
+    .hero h1 {
+        font-size: 70px;
+        line-height: 84px;
+    }
+    
+    .hero .subtitle {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    
+    /* Section padding adjustments */
+    .section-two,
+    .section-three,
+    .section-four,
+    .why-us,
+    .forget-about,
+    .what-we-do,
+    .pricing,
+    .testimonials {
+        padding: 110px 120px;
+    }
+    
+    /* How it works section */
+    .how-it-works {
+        padding: 110px 120px;
+    }
+    
+    .how-it-works h2,
+    .section-four h2,
+    .why-us h2,
+    .forget-about h2,
+    .what-we-do h2,
+    .pricing h2,
+    .testimonials h2 {
+        font-size: 64px;
+        line-height: 76px;
+        margin-bottom: 70px;
+    }
+    
+    /* Grid adjustments */
+    .grid {
+        gap: 35px;
+    }
+    
+    .foundations-grid {
+        gap: 35px;
+    }
+    
+    .services-grid {
+        gap: 55px 70px;
+    }
+    
+    .pricing-grid {
+        gap: 35px;
+    }
+    
+    /* CTA section */
+    .cta {
+        padding: 95px 120px;
+        margin: 0 60px;
+        width: calc(100% - 120px);
+    }
+    
+    .cta h2 {
+        font-size: 56px;
+        line-height: 68px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 100px 120px;
+    }
+    
+    /* Update keyframes for laptop */
+    @keyframes rotateText {
+        0%, 12% { transform: translateY(0); }
+        16%, 28% { transform: translateY(-76px); }
+        32%, 44% { transform: translateY(-152px); }
+        48%, 60% { transform: translateY(-228px); }
+        64%, 76% { transform: translateY(-304px); }
+        80%, 92% { transform: translateY(-380px); }
+        96%, 100% { transform: translateY(0); }
+    }
+    
+    /* Rotating text adjustments */
+    .text-rotate-container {
+        height: 76px;
+        min-width: 350px;
+    }
+    
+    .text-rotate-inner {
+        height: 76px;
+    }
+    
+    .text-rotate-item {
+        height: 76px;
+        line-height: 76px;
+        font-size: 64px;
+    }
+    
+    /* Update keyframes for laptop */
+    @keyframes rotateText {
+        0%, 12% { transform: translateY(0); }
+        16%, 28% { transform: translateY(-76px); }
+        32%, 44% { transform: translateY(-152px); }
+        48%, 60% { transform: translateY(-228px); }
+        64%, 76% { transform: translateY(-304px); }
+        80%, 92% { transform: translateY(-380px); }
+        96%, 100% { transform: translateY(0); }
+    }
+    
+    /* Secondary header adjustments */
+    .secondary-header {
+        padding: 0 80px;
+    }
+    
+    .secondary-header nav {
+        gap: 30px;
+    }
+}
+
 @media (max-width: 768px) {
     .primary-header { padding: 0 20px; height: 80px; }
     .primary-header nav { display: none; }
     .header-right { display: none; }
+    
+    /* Secondary header mobile */
+    .secondary-header {
+        padding: 0 20px;
+        height: 70px;
+    }
+    
+    .secondary-header nav {
+        display: none;
+    }
+    
+    .secondary-header .header-right {
+        display: none;
+    }
+    
+    .secondary-header .mobile-menu-toggle {
+        display: block;
+    }
     
     /* Show mobile menu toggle */
     .mobile-menu-toggle {
