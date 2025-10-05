@@ -1,5 +1,17 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; width: 100%; overflow-x: hidden; }
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+body { 
+    font-family: 'Anybody', sans-serif; 
+    background: #FFFCFA; 
+    color: #000000; 
+    width: 100%; 
+    min-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
 
 /* Header: y:0-118 */
 .primary-header { display: flex; align-items: center; justify-content: space-between; height: 118px; padding: 0 112px; position: relative; }
@@ -535,13 +547,17 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
     background: #000000; 
     color: #FFFFFF; 
     position: relative;
-    overflow: hidden; /* Clip decorative elements to prevent white showing */
+    overflow-x: hidden; /* Clip horizontal overflow only */
+    overflow-y: visible; /* Allow vertical overflow for decoratives */
+    width: 100%;
+    min-width: 100%;
 }
 .cta { 
     padding: 104px 180px; 
     text-align: center; 
     position: relative;
     overflow: visible; /* Allow decoratives to position freely within clipped parent */
+    width: 100%;
 }
 
 /* Decorative elements for CTA section */
@@ -612,6 +628,7 @@ footer {
     padding: 368px 132px 0; 
     position: relative;
     overflow: visible;
+    width: 100%;
 }
 
 /* Decorative element for footer */
