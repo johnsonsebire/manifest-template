@@ -12,6 +12,7 @@ body {
     min-width: 100vw;
     overflow-x: hidden;
     position: relative;
+    padding-top: 118px; /* Compensate for fixed header */
 }
 
 /* Header: y:0-118 */
@@ -21,10 +22,20 @@ body {
     justify-content: space-between; 
     height: 118px; 
     padding: 0 112px; 
-    position: relative; 
-    background: #FFFCFA;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: transparent;
     z-index: 100;
-    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: none;
+}
+
+/* Header with background on scroll */
+.primary-header.scrolled {
+    background: #FFFCFA;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
@@ -543,7 +554,7 @@ body {
     top: 50%; /* Vertically center */
     transform: translateY(-50%); /* Adjust for vertical centering */
     animation: float-centered 12s infinite ease-in-out;
-    z-index: -1;
+    z-index: 150; /* Above header */
 }
 
 .hero .decorative-element.hero-right-circles {
@@ -553,7 +564,7 @@ body {
     top: 50%; /* Vertically center */
     transform: translateY(-50%); /* Adjust for vertical centering */
     animation: rotate-centered 15s infinite ease-in-out;
-    z-index: -1;
+    z-index: 150; /* Above header */
 }
 
 .hero .decorative-element.hero-top-circle {
@@ -562,7 +573,7 @@ body {
     right: 150px;
     top: -10px;
     animation: pulse 8s infinite ease-in-out;
-    z-index: 100; /* Significantly increase z-index to ensure it's above all elements */
+    z-index: 150; /* Above header to ensure visibility */
     position: absolute; /* Reinforce absolute positioning */
 }
 .hero .subtitle { 

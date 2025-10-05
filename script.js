@@ -577,6 +577,25 @@ document.addEventListener('DOMContentLoaded', () => {
             testimonialCarousel.addEventListener('mouseleave', startTestimonialAutoScroll);
         }
     }
+
+    // ========================
+    // Header Scroll Effect
+    // ========================
+    const header = document.querySelector('.primary-header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        // Add 'scrolled' class when scrolled down more than 50px
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    });
 });
 
 
