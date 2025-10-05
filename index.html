@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manifest Digital Template</title>
+    <meta name="description" content="Manifest Digital - Custom AI-powered, data-driven web solutions. Expert UI/UX design, super-fast development, and top-quality digital products. Get a quote today!">
+    <meta name="keywords" content="web development, UI/UX design, custom AI, digital agency, web design, manifest digital">
+    <meta name="author" content="Manifest Digital">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Manifest Digital - Data-driven Web Solutions">
+    <meta property="og:description" content="Custom AI-powered, secure, and super-fast web development. Expert UI/UX team delivering top-quality digital products.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manifestghana.com">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manifest Digital - Data-driven Web Solutions">
+    <meta name="twitter:description" content="Custom AI-powered, secure, and super-fast web development.">
+    
+    <title>Manifest Digital - Custom AI-Powered Web Solutions | Expert UI/UX Design</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -12,8 +28,22 @@
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="enhancements.css">
 </head>
 <body>
+    <!-- Reading Tracker Progress Bar -->
+    <div class="reading-tracker"></div>
+    
+    <!-- Notification Topbar -->
+    <div class="notification-topbar show">
+        <span class="notification-icon">🎉</span>
+        <span class="notification-text">
+            Special Offer: Get 20% off on all plans this month! Limited time only.
+        </span>
+        <a href="#" class="notification-cta">Claim Now</a>
+        <button class="notification-close" aria-label="Close notification">×</button>
+    </div>
+    
     <header class="primary-header">
         <div class="logo"></div>
         <nav>
@@ -649,7 +679,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script>
+        // ========================
+        // Reading Tracker
+        // ========================
+        const readingTracker = document.querySelector('.reading-tracker');
+        
+        function updateReadingTracker() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const trackLength = documentHeight - windowHeight;
+            const percentScrolled = (scrollTop / trackLength) * 100;
+            
+            if (readingTracker) {
+                readingTracker.style.width = percentScrolled + '%';
+            }
+        }
+        
+        window.addEventListener('scroll', updateReadingTracker, { passive: true });
+        window.addEventListener('resize', updateReadingTracker, { passive: true });
+        
+        // Initial update
+        updateReadingTracker();
+        
+        // ========================
+        // Notification Topbar
+        // ========================
+        const notificationTopbar = document.querySelector('.notification-topbar');
+        const notificationClose = document.querySelector('.notification-close');
+        
+        // Check if notification was previously closed
+        const notificationClosed = localStorage.getItem('notificationClosed');
+        
+        if (notificationClosed === 'true') {
+            if (notificationTopbar) {
+                notificationTopbar.classList.remove('show');
+            }
+        } else {
+            // Show notification and adjust body
+            if (notificationTopbar) {
+                notificationTopbar.classList.add('show');
+                document.body.classList.add('notification-visible');
+            }
+        }
+        
+        // Close notification handler
+        if (notificationClose) {
+            notificationClose.addEventListener('click', function() {
+                if (notificationTopbar) {
+                    notificationTopbar.classList.remove('show');
+                    document.body.classList.remove('notification-visible');
+                    localStorage.setItem('notificationClosed', 'true');
+                }
+            });
+        }
+        
+        // ========================
         // Scroll to top functionality
+        // ========================
         const scrollToTopBtn = document.querySelector('.scroll-to-top');
         const ctaFooterSection = document.querySelector('.cta-footer');
         
@@ -838,5 +925,8 @@
             }
         });
     </script>
+    
+    <!-- UI/UX Enhancement Script -->
+    <script src="enhancements.js"></script>
 </body>
 </html>
