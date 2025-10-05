@@ -1583,11 +1583,26 @@ footer {
 
 .social { 
     display: flex; 
-    gap: 20px; 
-    justify-content: center;
-    margin-bottom: 60px;
-    padding: 40px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px; 
+    margin-bottom: 24px;
+    padding: 40px 0 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 
 .social-icon { 
@@ -2133,19 +2148,62 @@ body.notification-visible .hero {
     
     /* CTA section */
     .cta {
-        padding: 95px 120px;
+        padding: 100px 120px 120px;
         margin: 0 60px;
         width: calc(100% - 120px);
     }
     
     .cta h2 {
-        font-size: 56px;
-        line-height: 68px;
+        font-size: 52px;
+        line-height: 1.2;
+        margin-bottom: 24px;
+    }
+    
+    .cta p {
+        font-size: 18px;
+        margin-bottom: 36px;
     }
     
     /* Footer */
     footer {
-        padding: 100px 120px;
+        padding: 80px 100px 0;
+    }
+    
+    .footer-content {
+        gap: 48px;
+    }
+    
+    .footer-nav ul {
+        gap: 18px;
+    }
+    
+    .footer-nav a {
+        font-size: 15px;
+    }
+    
+    .social {
+        padding: 36px 0 20px;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .social-heading {
+        font-size: 16px;
+    }
+    
+    .social-icons {
+        gap: 16px;
+    }
+    
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    .copyright {
+        padding: 28px 0;
+        font-size: 13px;
     }
     
     /* Update keyframes for laptop */
@@ -2770,10 +2828,17 @@ body.notification-visible .hero {
     }
     
     .social { 
-        justify-content: center;
+        gap: 20px;
+        padding: 32px 0 20px;
+        margin-bottom: 20px;
+    }
+    
+    .social-heading {
+        font-size: 16px;
+    }
+    
+    .social-icons {
         gap: 16px;
-        padding: 32px 0;
-        margin-bottom: 40px;
     }
     
     .social-icon {
