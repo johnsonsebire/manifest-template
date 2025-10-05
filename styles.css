@@ -663,6 +663,7 @@ body {
 }
 
 .project-label { 
+    text-decoration: none;
     position: absolute; 
     bottom: 20px; 
     left: 20px; 
@@ -1457,7 +1458,7 @@ body {
    ======================== */
 
 .testimonials {
-    padding: 90px 180px;
+    padding: 100px 180px;
     background: #FFFFFF;
     text-align: center;
 }
@@ -1479,7 +1480,7 @@ body {
 .carousel-container {
     overflow: hidden;
     position: relative;
-    padding: 12px 4px; /* Add padding to prevent border clipping on hover */
+    padding: 50px 50px; /* Add padding to prevent border clipping on hover */
     margin: -12px -4px; /* Negative margin to maintain layout */
 }
 
@@ -1491,6 +1492,7 @@ body {
 .testimonial-card {
     min-width: 100%;
     background: #F5F5F5;
+    
     padding: 44px 40px;
     border-radius: 20px;
     text-align: left;
@@ -2427,6 +2429,7 @@ body.notification-visible .hero {
     }
     
     .project-label {
+        text-decoration: none;
         bottom: 18px;
         left: 18px;
         right: 18px;
@@ -2765,6 +2768,7 @@ body.notification-visible .hero {
     }
     
     .project-label {
+        text-decoration: none;
         bottom: 16px;
         left: 16px;
         right: 16px;
