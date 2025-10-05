@@ -583,32 +583,38 @@ body {
     margin-left: 180px; 
     padding-right: 147px;
     padding-left: 20px; /* Small padding to prevent first item from being cut */
-    margin-bottom: 60px; 
+    margin-bottom: 80px; 
     overflow: hidden; 
     position: relative; 
     user-select: none; 
 }
 .projects { 
     display: flex; 
-    gap: 36px; 
-    margin-bottom: 67px; 
+    gap: 40px; 
+    margin-bottom: 56px; 
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project { 
-    min-width: calc((100% - 72px) / 3.5); 
+    min-width: calc((100% - 80px) / 3.5); 
     flex-shrink: 0; 
     aspect-ratio: 354/320; /* Preserve original aspect ratio */
     background: #FFFFFF; 
-    border-radius: 15px; 
-    border: 1px solid #000000; 
+    border-radius: 20px; 
+    border: none;
     position: relative; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12); 
     overflow: hidden;
     width: 354px; /* Set explicit width to match original design */
     height: 320px; /* Set explicit height to match original design */
     cursor: grab;
     will-change: transform; /* Optimize for animations */
     touch-action: pan-y; /* Improve touch behavior */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
 }
 
 .project img {
@@ -616,14 +622,12 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: top;
-    transition: transform 0.3s ease;
-    opacity: 0.9; /* Slightly dim the image for better text visibility */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: none; /* Prevent image from interfering with drag */
 }
 
 .project:hover img {
     transform: scale(1.05);
-    opacity: 1;
 }
 
 /* Style for when project is being dragged */
@@ -632,35 +636,104 @@ body {
     will-change: transform;
 }
 
+.projects.dragging .project {
+    cursor: grabbing;
+}
+
 .project-label { 
     position: absolute; 
-    top: 10px; 
-    left: 13px; 
-    background: #FF4900; /* Tertiary button color */
-    color: #FFFFFF; 
-    font-weight: 600; 
-    font-size: 18px; 
-    padding: 10px 20px; 
-    border-radius: 10px; 
-    min-width: 150px;
-    height: 57px; 
+    bottom: 20px; 
+    left: 20px; 
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #000000; 
+    font-weight: 700; 
+    font-size: 16px; 
+    padding: 16px 20px; 
+    border-radius: 12px; 
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.project:hover .project-label {
+    background: rgba(255, 73, 0, 0.95);
+    color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(255, 73, 0, 0.3);
+}
+.slider-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.progress-track { 
+    width: 663px; 
+    position: relative; 
+    height: 8px; 
+    display: flex; 
+    align-items: center; 
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar { 
+    width: 100%; 
+    height: 100%; 
+    background: transparent;
+}
+
+.progress-indicator { 
+    width: 183px; 
+    height: 100%; 
+    background: linear-gradient(135deg, #FF4900 0%, #FF6B35 100%);
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(255, 73, 0, 0.3);
+}
+
+.slider-buttons { 
+    display: flex; 
+    gap: 12px; 
+}
+
+.slider-buttons button { 
+    width: 56px; 
+    height: 56px; 
+    border-radius: 50%; 
+    border: none; 
+    background: #FFFFFF;
+    cursor: pointer; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    transition: background-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.project-label:hover {
-    background-color: #000000;
+.slider-buttons button:hover { 
+    background: #FF4900;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 73, 0, 0.3);
 }
-.slider-nav { display: flex; justify-content: space-between; align-items: center; }
-.progress-track { width: 663px; position: relative; height: 6px; display: flex; align-items: center; cursor: pointer; }
-.progress-bar { width: 100%; height: 2px; background: #D1D1D1; }
-.progress-indicator { width: 183px; height: 6px; background: #000000; position: absolute; top: 0; left: 0; transition: left 0.5s ease; }
-.slider-buttons { display: flex; gap: 10px; }
-.slider-buttons button { width: 60px; height: 60px; border-radius: 50%; border: none; background: #E8E8E8; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease; }
-.slider-buttons button:hover { background: #D9D9D9; }
-.slider-buttons button i { color: #666666; font-size: 20px; }
+
+.slider-buttons button:hover i {
+    color: #FFFFFF;
+}
+
+.slider-buttons button i { 
+    color: #000000; 
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
 
 /* Section Four: y:1224-1756 */
 .section-four { 
@@ -2244,6 +2317,41 @@ body.notification-visible .hero {
         gap: 35px;
     }
     
+    /* Slider adjustments for tablet */
+    .slider {
+        margin-left: 120px;
+        padding-right: 100px;
+        margin-bottom: 70px;
+    }
+    
+    .projects {
+        gap: 32px;
+        margin-bottom: 48px;
+    }
+    
+    .project {
+        width: 320px;
+        height: 290px;
+        border-radius: 18px;
+    }
+    
+    .project-label {
+        bottom: 18px;
+        left: 18px;
+        right: 18px;
+        font-size: 15px;
+        padding: 14px 18px;
+    }
+    
+    .progress-track {
+        width: 500px;
+    }
+    
+    .slider-buttons button {
+        width: 52px;
+        height: 52px;
+    }
+    
     .content-box {
         padding: 60px 40px;
     }
@@ -2538,12 +2646,34 @@ body.notification-visible .hero {
         padding-right: 20px;
         width: 100%;
         box-sizing: border-box;
+        margin-bottom: 60px;
     }
+    
+    .projects {
+        gap: 24px;
+        margin-bottom: 44px;
+    }
+    
     .project {
         min-width: 280px; /* Smaller but proportional size for mobile */
         width: 280px;
         height: 250px; /* Maintain aspect ratio */
         margin: 0 auto;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+    
+    .project:hover {
+        transform: translateY(-4px);
+    }
+    
+    .project-label {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        font-size: 14px;
+        padding: 12px 16px;
+        border-radius: 10px;
     }
     
     /* Hide progress indicator on mobile */
@@ -2554,11 +2684,20 @@ body.notification-visible .hero {
     /* Center slider buttons on mobile */
     .slider-nav {
         justify-content: center;
-        margin-top: 30px;
+        margin-top: 0;
     }
     
     .slider-buttons {
-        gap: 30px;
+        gap: 20px;
+    }
+    
+    .slider-buttons button {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .slider-buttons button i {
+        font-size: 16px;
     }
     
     .projects { grid-template-columns: 1fr; }
