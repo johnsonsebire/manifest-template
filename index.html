@@ -29,9 +29,9 @@
 
     <section class="hero">
         <!-- Decorative elements for the hero section -->
-        <img src="images/decorative/hero_left_mem_dots_f_circle3.svg" alt="" class="decorative-element left-dots">
-        <img src="images/decorative/hero_right_circle-con3.svg" alt="" class="decorative-element right-circles">
-        <img src="images/decorative/hero_top_mem_stripe_circle2.png" alt="" class="decorative-element top-circle">
+        <img src="images/decorative/hero_left_mem_dots_f_circle3.svg" alt="" class="decorative-element hero-left-dots">
+        <img src="images/decorative/hero_right_circle-con3.svg" alt="" class="decorative-element hero-right-circles">
+        <img src="images/decorative/hero_top_mem_stripe_circle2.png" alt="" class="decorative-element hero-top-circle">
         
         <h1>
             <div class="text-rotate-wrapper">
@@ -88,6 +88,11 @@
     </section>
 
     <section class="section-four">
+        <!-- Decorative elements for section-four -->
+        <img src="images/decorative/purple_mem_3d_semi_pipe.svg" alt="" class="decorative-element top-pipe">
+        <img src="images/decorative/mem_donut.svg" alt="" class="decorative-element left-donut">
+        <img src="images/decorative/mem_dots_f_tri.svg" alt="" class="decorative-element right-triangle">
+        
         <div class="content-box">
             <h2>Top designers, unlimited requests, unlimited revisions, one simple price</h2>
             <p>We don't charge per hour or per project. You pay a flat monthly rate, submit as many requests as you like, and we get through them one by one. You're not tied down to long-term contracts, complicated exit terms, and other restrictions. You just sign up, get high-quality designs, revise to satisfaction, and cancel anytime. No-fuss.</p>
@@ -95,6 +100,9 @@
     </section>
 
     <section class="how-it-works">
+        <!-- Decorative element for how-it-works section -->
+        <img src="images/decorative/how_it_works_mem_dots_f_circle2.svg" alt="" class="decorative-element dots-circle">
+        
         <h2>How it Works</h2>
         <div class="columns">
             <div class="column">
@@ -118,10 +126,19 @@
 
     <section class="cta-footer">
         <div class="cta">
+            <!-- Decorative elements for CTA section -->
+            <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-left">
+            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-top-right">
+            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-right-under">
+            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-left-under">
+            
             <h2>Ready to take your project to the next level?</h2>
             <a href="#" class="btn-cta">Get Started</a>
         </div>
         <footer>
+            <!-- Decorative element for footer -->
+            <img src="images/decorative/left_under_footer_mem_donut (1).svg" alt="" class="footer-decoration">
+            
             <div class="footer-content">
                 <div class="footer-logo"></div>
                 <nav class="footer-nav">
@@ -140,10 +157,53 @@
         </footer>
     </section>
 
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
     <script>
+        // Scroll to top functionality
+        const scrollToTopBtn = document.querySelector('.scroll-to-top');
+        const ctaFooterSection = document.querySelector('.cta-footer');
+        
+        function updateScrollButton() {
+            // Show/hide button based on scroll position
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+            
+            // Check if button is over dark background
+            if (ctaFooterSection) {
+                const ctaRect = ctaFooterSection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                // If the CTA/footer section is visible in viewport
+                if (ctaRect.top < viewportHeight && ctaRect.bottom > 0) {
+                    scrollToTopBtn.classList.add('on-dark');
+                } else {
+                    scrollToTopBtn.classList.remove('on-dark');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', updateScrollButton);
+        
+        // Initial check
+        updateScrollButton();
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
         // Ensure proper text rotation animation
         document.addEventListener('DOMContentLoaded', function() {
             // Clone first item and append it to the end to create a seamless loop
