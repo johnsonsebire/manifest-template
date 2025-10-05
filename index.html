@@ -34,7 +34,21 @@
         <img src="images/decorative/hero_top_mem_stripe_circle2.png" alt="" class="decorative-element top-circle">
         
         <h1>
-            <span class="underlined">Data-driven</span> 
+            <div class="text-rotate-wrapper">
+                <div class="text-rotate-container">
+                    <div class="text-rotate-inner">
+                        <div class="text-rotate">
+                            <span class="text-rotate-item" data-width="true">Data-driven</span>
+                            <span class="text-rotate-item" data-width="true">Secure</span>
+                            <span class="text-rotate-item" data-width="true">AI powered</span>
+                            <span class="text-rotate-item" data-width="true">Super fast</span>
+                        </div>
+                    </div>
+                    <div class="underline-container">
+                        <img src="images/decorative/hero_underline.svg" alt="" class="underline-svg">
+                    </div>
+                </div>
+            </div>
             <span class="highlight">solutions</span> for<br>purpose-driven organizations.
         </h1>
         <p class="subtitle">Websites, apps, logos - whatever your project<br>needs, anytime!</p>
@@ -129,5 +143,114 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Ensure proper text rotation animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clone first item and append it to the end to create a seamless loop
+            const textRotate = document.querySelector('.text-rotate');
+            if (textRotate) {
+                const firstItem = textRotate.querySelector('.text-rotate-item');
+                if (firstItem) {
+                    const clone = firstItem.cloneNode(true);
+                    textRotate.appendChild(clone);
+                }
+                
+                // Calculate the widest text item and set container width
+                // We need to make all items temporarily visible for proper width calculation
+                const textItems = document.querySelectorAll('.text-rotate-item');
+                let maxWidth = 0;
+                const itemWidths = []; // Store individual item widths
+                
+                // First make all items visible but off-screen to measure their true width
+                textItems.forEach(item => {
+                    // Make visible but off-screen for measurement
+                    const testDiv = document.createElement('div');
+                    testDiv.style.position = 'absolute';
+                    testDiv.style.visibility = 'hidden';
+                    testDiv.style.whiteSpace = 'nowrap';
+                    testDiv.style.fontWeight = '800';
+                    testDiv.style.fontSize = window.innerWidth <= 768 ? '36px' : '64px'; // Match h1 font size
+                    testDiv.innerText = item.innerText;
+                    document.body.appendChild(testDiv);
+                    
+                    // Get the true width
+                    const itemWidth = testDiv.getBoundingClientRect().width;
+                    maxWidth = Math.max(maxWidth, itemWidth);
+                    itemWidths.push(itemWidth);
+                    
+                    // Store width on the element for later use
+                    item.setAttribute('data-width', itemWidth);
+                    
+                    // Clean up
+                    document.body.removeChild(testDiv);
+                });
+                
+                if (maxWidth > 0) {
+                    const container = document.querySelector('.text-rotate-container');
+                    if (container) {
+                        // Start with the width of the first item
+                        container.style.width = (itemWidths[0]) + 'px';
+                    }
+                }
+                
+                // Set up animation observer to update underline width AND container width
+                const underlineSvg = document.querySelector('.underline-svg');
+                const underlineContainer = document.querySelector('.underline-container');
+                
+                // Update underline width AND container width based on current visible item
+                function updateUnderlineWidth() {
+                    // Get the current translateY value and determine which item is visible
+                    const translateY = getRotateY();
+                    
+                    // Calculate visible index based on pixel position and item height
+                    // Using 88px as the height of each item on desktop
+                    const itemHeight = window.innerWidth <= 768 ? 48 : 88;
+                    const visibleIndex = Math.round(Math.abs(translateY) / itemHeight) % 4;
+                    
+                    if (visibleIndex >= 0 && visibleIndex < itemWidths.length) {
+                        const currentWidth = itemWidths[visibleIndex];
+                        const container = document.querySelector('.text-rotate-container');
+                        
+                        // Update both container and underline width
+                        if (container) {
+                            container.style.width = currentWidth + 'px';
+                        }
+                        if (underlineSvg && underlineContainer) {
+                            underlineSvg.style.width = currentWidth + 'px';
+                        }
+                    }
+                }
+                
+                // Helper function to get current translateY value
+                function getRotateY() {
+                    const transform = window.getComputedStyle(textRotate).getPropertyValue('transform');
+                    if (transform === 'none') return 0;
+                    
+                    const matrix = new DOMMatrix(transform);
+                    return matrix.m42; // Get translateY value
+                }
+                
+                // Update initial underline width
+                updateUnderlineWidth();
+                
+                // Watch for animation to update underline width
+                const observer = new MutationObserver(mutations => {
+                    mutations.forEach(mutation => {
+                        if (mutation.attributeName === 'style') {
+                            updateUnderlineWidth();
+                        }
+                    });
+                });
+                
+                observer.observe(textRotate, { attributes: true, attributeFilter: ['style'] });
+                
+                // Also use animation events as backup
+                textRotate.addEventListener('animationiteration', updateUnderlineWidth);
+                
+                // Update on interval as another fallback
+                setInterval(updateUnderlineWidth, 500);
+            }
+        });
+    </script>
 </body>
 </html>

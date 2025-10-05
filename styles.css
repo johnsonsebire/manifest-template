@@ -43,7 +43,34 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 }
 .header-right { display: flex; align-items: center; gap: 20px; }
 /* Button Styles */
-.login { font-weight: 600; font-size: 18px; color: #000000; text-decoration: none; }
+.login { 
+    font-weight: 600; 
+    font-size: 18px; 
+    color: #000000; 
+    text-decoration: none; 
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Add the same animated underline effect as nav items */
+.login::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #FF4900;
+    transition: width 0.3s ease;
+}
+
+.login:hover {
+    color: #FF4900;
+}
+
+.login:hover::after {
+    width: 100%;
+}
 
 /* Primary Button: Black with FF4900 hover and tilt effect */
 .btn-primary { 
@@ -179,22 +206,102 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 .hero h1 .underlined {
     position: relative;
     display: inline-block;
-    padding-bottom: 0; /* Remove padding to close gap between text and underline */
     box-sizing: border-box;
+    margin-bottom: 5px; /* Add a bit of spacing below */
 }
 
-.hero h1 .underlined::after {
-    content: '';
+.hero h1 .underline-svg {
     position: absolute;
     left: 0;
-    bottom: -2px; /* Position slightly below the text for better visual alignment */
-    width: 100%; /* Ensures the underline covers the full text width */
-    height: 10px; /* Slightly increase height to ensure full coverage */
-    background-image: url('images/decorative/hero_underline.svg');
-    background-repeat: repeat-x; /* Repeat horizontally to ensure coverage */
-    background-position: center bottom;
-    background-size: auto 8px; /* Set height only, let width auto-repeat */
+    bottom: -8px; /* Position the SVG under the text */
+    width: 100%; /* Make it span the full width */
+    height: auto; /* Maintain aspect ratio */
     z-index: -1;
+    display: block; /* Ensure it's treated as a block element */
+}
+
+/* Rotating text styles */
+.text-rotate-wrapper {
+    display: inline-block;
+    vertical-align: baseline; /* Align with the rest of the text */
+    margin-right: 0; /* Remove extra margin for consistent spacing */
+}
+
+.text-rotate-container {
+    position: relative;
+    display: inline-block;
+    height: 88px; /* Match the line-height of h1 */
+    overflow: visible; /* Changed back to visible to show underline */
+    vertical-align: bottom; /* Important for text alignment */
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-align: left; /* Ensure text aligns left */
+    transition: width 0.3s ease; /* Smooth width transition */
+}
+
+.text-rotate-inner {
+    position: relative;
+    width: 100%;
+    height: 88px; /* Match the line-height of h1 */
+    overflow: hidden; /* Hide overflow text */
+}
+
+.text-rotate {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: rotateText 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.text-rotate-item {
+    display: block;
+    height: 88px; /* Match the line-height of h1 */
+    line-height: 88px; /* Match the line-height of h1 */
+    white-space: nowrap;
+    font-weight: 800; /* Match the h1 font weight */
+    width: fit-content; /* Set width to fit content */
+    opacity: 1; /* Ensure full visibility */
+}
+
+.underline-container {
+    position: absolute;
+    bottom: -10px; /* Position below text */
+    left: 0;
+    height: 20px; /* Sufficient height for underline */
+    z-index: -1;
+    pointer-events: none;
+    width: 100%;
+    overflow: visible; /* Show full underline */
+}
+
+.underline-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: auto; /* Changed to auto to preserve SVG aspect ratio */
+    z-index: -1;
+    pointer-events: none;
+    width: 100%;
+    transition: width 0.3s ease;
+    display: block; /* Ensure proper rendering */
+}
+
+@keyframes rotateText {
+    0%, 15% {
+        transform: translateY(0);
+    }
+    20%, 40% {
+        transform: translateY(-88px); /* Use exact pixel values */
+    }
+    45%, 65% {
+        transform: translateY(-176px); /* 2 × 88px */
+    }
+    70%, 90% {
+        transform: translateY(-264px); /* 3 × 88px */
+    }
+    95%, 100% {
+        transform: translateY(-352px); /* 4 × 88px */
+    }
 }
 
 /* Decorative elements for hero section */
@@ -433,11 +540,53 @@ footer { padding: 368px 132px 0; }
     }
     
     /* Adjust the underline for mobile */
-    .hero h1 .underlined::after {
-        height: 10px;
-        bottom: -2px;
-        background-size: auto 8px;
-        background-repeat: repeat-x;
+    .hero h1 .underline-svg {
+        bottom: -5px; /* Adjust position for mobile */
+        width: 100%; /* Ensure it spans the full width on mobile too */
+    }
+    
+    /* Adjust rotating text for mobile */
+    .text-rotate-container {
+        height: 48px; /* Match the mobile line-height of h1 */
+        overflow: visible; /* Show underline */
+    }
+    
+    .text-rotate-inner {
+        height: 48px; /* Match the mobile line-height of h1 */
+        overflow: hidden; /* Hide overflow text */
+    }
+    
+    .text-rotate-item {
+        height: 48px;
+        line-height: 48px; /* Match the mobile line-height */
+    }
+    
+    .underline-container {
+        height: 15px; /* Increased for mobile */
+        bottom: -5px; /* Adjust position for mobile */
+    }
+    
+    .underline-svg {
+        height: auto; /* Auto height to preserve aspect ratio */
+        bottom: 0;
+    }
+    
+    @keyframes rotateText {
+        0%, 15% {
+            transform: translateY(0);
+        }
+        20%, 40% {
+            transform: translateY(-48px); /* Use exact pixel values for mobile */
+        }
+        45%, 65% {
+            transform: translateY(-96px); /* 2 × 48px */
+        }
+        70%, 90% {
+            transform: translateY(-144px); /* 3 × 48px */
+        }
+        95%, 100% {
+            transform: translateY(-192px); /* 4 × 48px */
+        }
     }
     
     /* Adjust logo for mobile */
