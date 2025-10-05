@@ -265,7 +265,7 @@ body { font-family: 'Anybody', sans-serif; background: #FFFCFA; color: #000000; 
 
 .underline-container {
     position: absolute;
-    bottom: -10px; /* Position below text */
+    bottom: 4px; /* Position closer to text, adjusted for shorter words */
     left: 0;
     height: 20px; /* Sufficient height for underline */
     z-index: -1;
@@ -563,7 +563,7 @@ footer { padding: 368px 132px 0; }
     
     .underline-container {
         height: 15px; /* Increased for mobile */
-        bottom: -5px; /* Adjust position for mobile */
+        bottom: 3px; /* Adjust position for mobile */
     }
     
     .underline-svg {
