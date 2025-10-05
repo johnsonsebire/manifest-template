@@ -602,7 +602,9 @@ body {
     margin-left: 180px; 
     padding-right: 147px;
     padding-left: 20px; /* Small padding to prevent first item from being cut */
-    margin-bottom: 80px; 
+    padding-top: 12px; /* Add padding to prevent top border/shadow clipping on hover */
+    padding-bottom: 12px; /* Add padding to prevent bottom border/shadow clipping on hover */
+    margin-bottom: 68px; /* Reduced to compensate for padding */
     overflow: hidden; 
     position: relative; 
     user-select: none; 
@@ -1476,6 +1478,8 @@ body {
 .carousel-container {
     overflow: hidden;
     position: relative;
+    padding: 12px 4px; /* Add padding to prevent border clipping on hover */
+    margin: -12px -4px; /* Negative margin to maintain layout */
 }
 
 .carousel-track {
