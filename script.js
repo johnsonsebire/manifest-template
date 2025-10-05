@@ -403,6 +403,180 @@ document.addEventListener('DOMContentLoaded', () => {
         // Recalculate and update slider with responsive values
         updateSlider(true);
     });
+    
+    // ========================
+    // Testimonials Carousel
+    // ========================
+    
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    const carouselTrack = document.querySelector('.carousel-track');
+    let currentTestimonial = 0;
+    let testimonialInterval;
+    let isDraggingTestimonial = false;
+    let testimonialStartPos = 0;
+    let testimonialCurrentTranslate = 0;
+    let testimonialPrevTranslate = 0;
+    let testimonialAnimationID = 0;
+    
+    function showTestimonial(index) {
+        // Remove active class from all cards and dots
+        testimonialCards.forEach(card => card.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Add active class to current card and dot
+        if (testimonialCards[index]) {
+            testimonialCards[index].classList.add('active');
+        }
+        if (dots[index]) {
+            dots[index].classList.add('active');
+        }
+        
+        // Update carousel track position
+        if (carouselTrack) {
+            carouselTrack.style.transform = `translateX(-${index * 100}%)`;
+        }
+    }
+    
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    function prevTestimonial() {
+        currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    function startTestimonialAutoScroll() {
+        // Auto-scroll every 5 seconds
+        testimonialInterval = setInterval(nextTestimonial, 5000);
+    }
+    
+    function stopTestimonialAutoScroll() {
+        clearInterval(testimonialInterval);
+    }
+    
+    // Drag/swipe functions for testimonials
+    function testimonialTouchStart(event) {
+        if (!carouselTrack) return;
+        
+        // Stop auto-scroll during drag
+        stopTestimonialAutoScroll();
+        
+        testimonialStartPos = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+        isDraggingTestimonial = true;
+        
+        carouselTrack.style.transition = 'none';
+        carouselTrack.style.cursor = 'grabbing';
+        
+        // Get current transform value
+        const transform = window.getComputedStyle(carouselTrack).getPropertyValue('transform');
+        const matrix = new DOMMatrix(transform);
+        testimonialPrevTranslate = matrix.m41;
+        
+        // Add event listeners
+        document.addEventListener('mousemove', testimonialTouchMove);
+        document.addEventListener('touchmove', testimonialTouchMove, { passive: false });
+        document.addEventListener('mouseup', testimonialTouchEnd);
+        document.addEventListener('touchend', testimonialTouchEnd);
+    }
+    
+    function testimonialTouchMove(event) {
+        if (!isDraggingTestimonial) return;
+        
+        if (event.cancelable) {
+            event.preventDefault();
+        }
+        
+        const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+        const diff = currentPosition - testimonialStartPos;
+        testimonialCurrentTranslate = testimonialPrevTranslate + diff;
+        
+        testimonialAnimationID = requestAnimationFrame(() => {
+            if (carouselTrack) {
+                carouselTrack.style.transform = `translateX(${testimonialCurrentTranslate}px)`;
+            }
+        });
+    }
+    
+    function testimonialTouchEnd() {
+        if (!isDraggingTestimonial) return;
+        
+        isDraggingTestimonial = false;
+        cancelAnimationFrame(testimonialAnimationID);
+        
+        // Calculate swipe threshold
+        const movedBy = testimonialCurrentTranslate - testimonialPrevTranslate;
+        const containerWidth = carouselTrack ? carouselTrack.offsetWidth : 0;
+        
+        // If moved more than 20% of container width, change slide
+        if (Math.abs(movedBy) > containerWidth * 0.2) {
+            if (movedBy > 0) {
+                // Swiped right - go to previous
+                prevTestimonial();
+            } else {
+                // Swiped left - go to next
+                nextTestimonial();
+            }
+        } else {
+            // Snap back to current slide
+            showTestimonial(currentTestimonial);
+        }
+        
+        // Re-enable transitions and reset cursor
+        if (carouselTrack) {
+            carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+            carouselTrack.style.cursor = 'grab';
+        }
+        
+        // Remove event listeners
+        document.removeEventListener('mousemove', testimonialTouchMove);
+        document.removeEventListener('touchmove', testimonialTouchMove);
+        document.removeEventListener('mouseup', testimonialTouchEnd);
+        document.removeEventListener('touchend', testimonialTouchEnd);
+        
+        // Restart auto-scroll after a delay
+        setTimeout(() => {
+            startTestimonialAutoScroll();
+        }, 1000);
+    }
+    
+    // Initialize testimonials carousel if elements exist
+    if (testimonialCards.length > 0 && dots.length > 0) {
+        // Show first testimonial
+        showTestimonial(0);
+        
+        // Start auto-scrolling
+        startTestimonialAutoScroll();
+        
+        // Add click handlers to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = index;
+                showTestimonial(currentTestimonial);
+                
+                // Restart auto-scroll timer when user clicks a dot
+                stopTestimonialAutoScroll();
+                startTestimonialAutoScroll();
+            });
+        });
+        
+        // Add drag/swipe functionality
+        if (carouselTrack) {
+            carouselTrack.addEventListener('mousedown', testimonialTouchStart);
+            carouselTrack.addEventListener('touchstart', testimonialTouchStart, { passive: true });
+            carouselTrack.style.cursor = 'grab';
+            carouselTrack.style.userSelect = 'none';
+        }
+        
+        // Pause auto-scroll on hover
+        const testimonialCarousel = document.querySelector('.testimonials-carousel');
+        if (testimonialCarousel) {
+            testimonialCarousel.addEventListener('mouseenter', stopTestimonialAutoScroll);
+            testimonialCarousel.addEventListener('mouseleave', startTestimonialAutoScroll);
+        }
+    }
 });
 
 
