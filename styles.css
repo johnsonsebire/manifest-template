@@ -2158,6 +2158,11 @@ body.notification-visible .primary-header {
     width: 100%;
 }
 
+/* Add top spacing for page content when notification is visible */
+body.notification-visible section:first-of-type {
+    padding-top: calc(5rem + 174px); /* Original section padding + notification (56px) + header (118px) */
+}
+
 body.notification-visible .hero {
     padding-top: calc(87px + 56px + 118px);
 }
@@ -3440,6 +3445,11 @@ body.notification-visible .hero {
     
     body.notification-visible .hero {
         padding-top: calc(87px + 110px + 118px);
+    }
+    
+    /* Add top spacing for page content when notification is visible on mobile */
+    body.notification-visible section:first-of-type:not(.hero) {
+        padding-top: calc(5rem + 228px); /* Original section padding + notification (110px) + header (118px) */
     }
     
     .cta { 
