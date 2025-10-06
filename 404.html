@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - Manifest Digital">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>404 - Page Not Found | Manifest Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* 404 Page Specific Styles */
+        
+        .error-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/decorative/hero_left_mem_dots_f_circle3.svg') no-repeat left center,
+                        url('images/decorative/hero_right_circle-con3.svg') no-repeat right center;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .error-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .error-number {
+            font-size: 200px;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .error-number::before {
+            content: '404';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            z-index: -1;
+            -webkit-text-fill-color: rgba(255, 34, 0, 0.1);
+        }
+        
+        .error-icon {
+            font-size: 120px;
+            color: #ff2200;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .error-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        
+        .error-message {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        
+        .search-form {
+            display: flex;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        
+        .search-form input {
+            flex: 1;
+            padding: 18px 30px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px 0 0 50px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-form input:focus {
+            outline: none;
+            border-color: #ff2200;
+        }
+        
+        .search-form button {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-form button:hover {
+            transform: translateX(2px);
+            box-shadow: -5px 0 15px rgba(255, 34, 0, 0.3);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-404 {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-404.primary {
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            color: white;
+            border: 2px solid transparent;
+        }
+        
+        .btn-404.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 34, 0, 0.3);
+            color: white;
+        }
+        
+        .btn-404.secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .btn-404.secondary:hover {
+            border-color: #ff2200;
+            color: #ff2200;
+            transform: translateY(-3px);
+        }
+        
+        .popular-links {
+            background: #f8f9fa;
+            padding: 50px 20px;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .popular-links h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .link-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border: 2px solid transparent;
+        }
+        
+        .link-card:hover {
+            border-color: #ff2200;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .link-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(255, 34, 0, 0.1), rgba(255, 107, 0, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #ff2200;
+        }
+        
+        .link-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0;
+        }
+        
+        .link-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .suggestions-section {
+            margin-top: 40px;
+        }
+        
+        .suggestions-section h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+        
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .suggestion-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .suggestion-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .suggestion-image i {
+            font-size: 60px;
+            color: white;
+        }
+        
+        .suggestion-content {
+            padding: 20px;
+        }
+        
+        .suggestion-category {
+            display: inline-block;
+            background: rgba(255, 34, 0, 0.1);
+            color: #ff2200;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .suggestion-card h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .suggestion-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 120px;
+            }
+            
+            .error-icon {
+                font-size: 80px;
+            }
+            
+            .error-title {
+                font-size: 32px;
+            }
+            
+            .error-message {
+                font-size: 16px;
+            }
+            
+            .search-form {
+                flex-direction: column;
+                border-radius: 15px;
+            }
+            
+            .search-form input {
+                border-radius: 15px;
+            }
+            
+            .search-form button {
+                border-radius: 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn-404 {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="primary-header">
+        <div class="logo"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <div class="mobile-nav-overlay"></div>
+    
+    <!-- Mobile navigation menu -->
+    <div class="mobile-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="mobile-nav-buttons">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- Error Content -->
+    <section class="error-container">
+        <div class="error-content">
+            <!-- 404 Icon -->
+            <div class="error-icon">
+                <i class="fas fa-compass"></i>
+            </div>
+            
+            <!-- 404 Number -->
+            <div class="error-number">404</div>
+            
+            <!-- Error Message -->
+            <h1 class="error-title">Oops! Page Not Found</h1>
+            <p class="error-message">
+                We couldn't find the page you're looking for. It might have been moved, deleted, or perhaps the URL was typed incorrectly. Don't worry though, we're here to help you find what you need!
+            </p>
+            
+            <!-- Search Box -->
+            <div class="search-box">
+                <form class="search-form" action="index.html" method="get">
+                    <input type="text" name="search" placeholder="Search for pages, services, or projects..." aria-label="Search">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="javascript:history.back()" class="btn-404 secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Go Back
+                </a>
+                <a href="index.html" class="btn-404 primary">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </a>
+            </div>
+            
+            <!-- Popular Links -->
+            <div class="popular-links">
+                <h3>Popular Pages</h3>
+                <div class="links-grid">
+                    <a href="index.html" class="link-card">
+                        <div class="link-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4>Home</h4>
+                        <p>Return to homepage</p>
+                    </a>
+                    
+                    <a href="projects.html" class="link-card">
+                        <div class="link-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Projects</h4>
+                        <p>View our portfolio</p>
+                    </a>
+                    
+                    <a href="solutions.html" class="link-card">
+                        <div class="link-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Solutions</h4>
+                        <p>Explore our services</p>
+                    </a>
+                    
+                    <a href="blog.html" class="link-card">
+                        <div class="link-icon">
+                            <i class="fas fa-blog"></i>
+                        </div>
+                        <h4>Blog</h4>
+                        <p>Read our insights</p>
+                    </a>
+                    
+                    <a href="about.html" class="link-card">
+                        <div class="link-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>About Us</h4>
+                        <p>Learn about us</p>
+                    </a>
+                    
+                    <a href="book-a-call.html" class="link-card">
+                        <div class="link-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Contact</h4>
+                        <p>Get in touch</p>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Suggestions Section -->
+            <div class="suggestions-section">
+                <h3>You Might Be Interested In</h3>
+                <div class="suggestions-grid">
+                    <a href="service-detail.html" class="suggestion-card">
+                        <div class="suggestion-image">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="suggestion-content">
+                            <span class="suggestion-category">Service</span>
+                            <h4>Web Development</h4>
+                            <p>Professional websites that drive results</p>
+                        </div>
+                    </a>
+                    
+                    <a href="blog-detail.html" class="suggestion-card">
+                        <div class="suggestion-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="suggestion-content">
+                            <span class="suggestion-category">Blog</span>
+                            <h4>AI Transformation</h4>
+                            <p>How AI is changing digital businesses</p>
+                        </div>
+                    </a>
+                    
+                    <a href="project-detail.html" class="suggestion-card">
+                        <div class="suggestion-image">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="suggestion-content">
+                            <span class="suggestion-category">Case Study</span>
+                            <h4>KokoPlus E-commerce</h4>
+                            <p>250% increase in online sales</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="cta-footer" style="margin-top: 0;">
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo"></div>
+                <nav class="footer-nav">
+                    <div>
+                        <a href="about.html">About Us</a>
+                        <a href="#">Opportunities</a>
+                        <a href="blog.html">Our Blog</a>
+                        <a href="solutions.html">Solutions</a>
+                        <a href="policies.html">Policies</a>
+                    </div>
+                    <div>
+                        <a href="#">Mobile App Design</a>
+                        <a href="#">Website Development</a>
+                        <a href="#">SAP Consulting</a>
+                        <a href="#">Brand Positioning</a>
+                        <a href="#">IT Training</a>
+                    </div>
+                    <div>
+                        <a href="#">SEO Services</a>
+                        <a href="#">QA Testing</a>
+                        <a href="#">Blockchain Solutions</a>
+                        <a href="#">Cyber Security</a>
+                        <a href="#">Cloud Computing</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="social">
+                <h3 class="social-heading">Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright"><p>Copyright 2025 - Manifest Digital</p></div>
+        </footer>
+    </section>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
