@@ -165,6 +165,7 @@
 
         body.light-theme .ai-avatar {
             box-shadow: none;
+            animation: none;
         }
 
         /* Light theme welcome message improvements */
@@ -1212,6 +1213,9 @@
             
             if (!message) return;
             
+            // Hide typing indicator first (in case there's already one showing)
+            hideTypingIndicator();
+            
             // Add user message
             addMessage(message, 'user');
             
@@ -1222,7 +1226,7 @@
             // Hide welcome container
             document.getElementById('welcomeContainer').style.display = 'none';
             
-            // Show typing indicator
+            // Show typing indicator AFTER user message
             showTypingIndicator();
             
             // Simulate AI response (replace with actual API call)
@@ -1268,13 +1272,23 @@
         }
 
         function showTypingIndicator() {
-            document.getElementById('typingIndicator').style.display = 'flex';
+            const typingIndicator = document.getElementById('typingIndicator');
             const messagesContainer = document.getElementById('messagesContainer');
+            
+            // Hide any existing typing indicator
+            typingIndicator.style.display = 'none';
+            
+            // Move typing indicator to the end of messages container
+            messagesContainer.appendChild(typingIndicator);
+            
+            // Show typing indicator
+            typingIndicator.style.display = 'flex';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
         function hideTypingIndicator() {
-            document.getElementById('typingIndicator').style.display = 'none';
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'none';
         }
 
         function generateAIResponse(userMessage) {
