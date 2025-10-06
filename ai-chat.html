@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sensei - Interactive Chat Assistant | Manifest Digital Agency</title>
+    <meta name="description" content="Chat with AI Sensei, our intelligent digital assistant. Get instant help with web development, digital marketing, and business solutions.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Sensei Chat - Manifest Digital Agency">
+    <meta property="og:description" content="Chat with AI Sensei for instant help with digital solutions and business advice.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/ai-sensei-chat.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Anybody', sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 24px;
+            color: #ff2200 !important;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ff2200 !important;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #ff2200 !important;
+            font-weight: 700;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #ff2200, #ff5533);
+            border: none;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #ff3311, #ff6644);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 34, 0, 0.3);
+            color: #fff;
+        }
+
+        /* Chat Container */
+        .chat-container {
+            height: calc(100vh - 140px);
+            display: flex;
+            background: #fff;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        /* Chat Sidebar */
+        .chat-sidebar {
+            width: 300px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            padding: 30px 20px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .chat-sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 34, 0, 0.3) 50%, transparent 100%);
+        }
+
+        .ai-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff2200, #ff5533);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(255, 34, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .ai-avatar i {
+            font-size: 36px;
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(255, 34, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(255, 34, 0, 0.6);
+            }
+        }
+
+        .ai-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff2200, #ff5533);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-subtitle {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff2200;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .starter-button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .starter-button:hover {
+            background: rgba(255, 34, 0, 0.1);
+            border-color: rgba(255, 34, 0, 0.3);
+            color: #fff;
+        }
+
+        .capability-item {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .capability-item i {
+            color: #ff2200;
+            width: 16px;
+        }
+
+        .clear-chat-btn {
+            width: 100%;
+            background: rgba(255, 34, 0, 0.1);
+            border: 1px solid rgba(255, 34, 0, 0.3);
+            color: #ff2200;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear-chat-btn:hover {
+            background: rgba(255, 34, 0, 0.2);
+            border-color: #ff2200;
+        }
+
+        /* Main Chat Area */
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+        }
+
+        .chat-header {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .chat-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .chat-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Message Area */
+        .messages-container {
+            flex: 1;
+            padding: 20px 30px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .message-avatar.ai {
+            background: linear-gradient(135deg, #ff2200, #ff5533);
+            color: #fff;
+        }
+
+        .message-avatar.user {
+            background: #e9ecef;
+            color: #666;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 15px 20px;
+            border-radius: 18px;
+            font-size: 15px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .message-content.ai {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-content.user {
+            background: linear-gradient(135deg, #ff2200, #ff5533);
+            color: #fff;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message-time {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .typing-indicator {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .typing-indicator .message {
+            margin-bottom: 0;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s ease-in-out infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Input Area */
+        .chat-input-container {
+            padding: 20px 30px;
+            background: #fff;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quick-action-btn {
+            padding: 8px 15px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            color: #666;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action-btn:hover {
+            background: #ff2200;
+            border-color: #ff2200;
+            color: #fff;
+        }
+
+        .chat-input-form {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: 'Anybody', sans-serif;
+            resize: none;
+            transition: all 0.3s ease;
+            min-height: 50px;
+            max-height: 120px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #ff2200;
+            box-shadow: 0 0 0 3px rgba(255, 34, 0, 0.1);
+        }
+
+        .chat-input::placeholder {
+            color: #999;
+        }
+
+        .input-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .voice-btn, .send-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .voice-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            color: #666;
+        }
+
+        .voice-btn:hover {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .voice-btn.recording {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: #fff;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #ff2200, #ff5533);
+            border: 2px solid #ff2200;
+            color: #fff;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #ff3311, #ff6644);
+            transform: scale(1.05);
+        }
+
+        .send-btn:disabled {
+            background: #e9ecef;
+            border-color: #e9ecef;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        /* Welcome Message */
+        .welcome-container {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .welcome-icon {
+            font-size: 64px;
+            color: #ff2200;
+            margin-bottom: 20px;
+        }
+
+        .welcome-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .welcome-suggestions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .suggestion-card {
+            padding: 20px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .suggestion-card:hover {
+            background: #ff2200;
+            border-color: #ff2200;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .suggestion-card i {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #ff2200;
+        }
+
+        .suggestion-card:hover i {
+            color: #fff;
+        }
+
+        .suggestion-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .suggestion-text {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .chat-sidebar {
+                position: fixed;
+                left: -300px;
+                top: 0;
+                height: 100vh;
+                z-index: 1040;
+                transition: left 0.3s ease;
+            }
+
+            .chat-sidebar.show {
+                left: 0;
+            }
+
+            .chat-main {
+                width: 100%;
+            }
+
+            .chat-container {
+                border-radius: 0;
+                margin-top: 0;
+                height: calc(100vh - 76px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chat-header {
+                padding: 15px 20px;
+            }
+
+            .messages-container {
+                padding: 15px 20px;
+            }
+
+            .chat-input-container {
+                padding: 15px 20px;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+
+            .welcome-suggestions {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-actions {
+                gap: 8px;
+            }
+
+            .quick-action-btn {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- Header Navigation -->
+    <header class="primary-header">
+        <div class="logo"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <div class="mobile-nav-overlay"></div>
+    
+    <!-- Mobile navigation menu -->
+    <div class="mobile-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="mobile-nav-buttons">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+    </div>
+
+
+    <!-- Chat Container -->
+    <div class="container-fluid mb-5">
+        <div class="chat-container">
+            <!-- Sidebar -->
+            <div class="chat-sidebar" id="chatSidebar">
+                <!-- AI Avatar -->
+                <div class="ai-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h2 class="ai-title">AI Sensei</h2>
+                <p class="ai-subtitle">Your Digital Business Assistant</p>
+
+                <!-- Conversation Starters -->
+                <div class="sidebar-section">
+                    <h4><i class="fas fa-comments"></i> Quick Start</h4>
+                    <button class="starter-button" onclick="sendQuickMessage('Tell me about your web development services')">
+                        💻 Web Development Services
+                    </button>
+                    <button class="starter-button" onclick="sendQuickMessage('What digital marketing strategies do you recommend?')">
+                        📱 Digital Marketing Tips
+                    </button>
+                    <button class="starter-button" onclick="sendQuickMessage('How can I improve my business online presence?')">
+                        🚀 Business Growth Ideas
+                    </button>
+                    <button class="starter-button" onclick="sendQuickMessage('What are the latest web design trends?')">
+                        🎨 Design Trends 2024
+                    </button>
+                </div>
+
+                <!-- AI Capabilities -->
+                <div class="sidebar-section">
+                    <h4><i class="fas fa-brain"></i> I Can Help With</h4>
+                    <div class="capability-item">
+                        <i class="fas fa-code"></i>
+                        <span>Web Development</span>
+                    </div>
+                    <div class="capability-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Digital Marketing</span>
+                    </div>
+                    <div class="capability-item">
+                        <i class="fas fa-palette"></i>
+                        <span>UI/UX Design</span>
+                    </div>
+                    <div class="capability-item">
+                        <i class="fas fa-search"></i>
+                        <span>SEO Optimization</span>
+                    </div>
+                    <div class="capability-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Apps</span>
+                    </div>
+                    <div class="capability-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Business Strategy</span>
+                    </div>
+                </div>
+
+                <!-- Clear Chat -->
+                <div class="sidebar-section">
+                    <button class="clear-chat-btn" onclick="clearChat()">
+                        <i class="fas fa-trash"></i> Clear Chat History
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Chat -->
+            <div class="chat-main mb-5">
+                <!-- Chat Header -->
+                <div class="chat-header">
+                    <div class="chat-status">
+                        <div class="status-dot"></div>
+                        <div>
+                            <div class="chat-title">AI Sensei Chat</div>
+                            <div class="chat-subtitle">Online • Ready to help</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-secondary d-lg-none" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+
+                <!-- Messages Container -->
+                <div class="messages-container" id="messagesContainer">
+                    <!-- Welcome Message -->
+                    <div class="welcome-container" id="welcomeContainer">
+                        <div class="welcome-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="welcome-title">Welcome to AI Sensei!</h3>
+                        <p class="welcome-subtitle">I'm here to help with all your digital business questions. What would you like to know?</p>
+                        
+                        <div class="welcome-suggestions">
+                            <div class="suggestion-card" onclick="sendQuickMessage('How can I start an online business?')">
+                                <i class="fas fa-rocket"></i>
+                                <div class="suggestion-title">Start Online Business</div>
+                                <div class="suggestion-text">Get tips for launching your digital presence</div>
+                            </div>
+                            <div class="suggestion-card" onclick="sendQuickMessage('What is the cost of website development?')">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div class="suggestion-title">Website Pricing</div>
+                                <div class="suggestion-text">Learn about development costs</div>
+                            </div>
+                            <div class="suggestion-card" onclick="sendQuickMessage('How do I improve my website SEO?')">
+                                <i class="fas fa-search"></i>
+                                <div class="suggestion-title">SEO Tips</div>
+                                <div class="suggestion-text">Boost your search rankings</div>
+                            </div>
+                            <div class="suggestion-card" onclick="sendQuickMessage('What social media strategy works best?')">
+                                <i class="fas fa-share-alt"></i>
+                                <div class="suggestion-title">Social Media</div>
+                                <div class="suggestion-text">Effective marketing strategies</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typing Indicator -->
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="message">
+                            <div class="message-avatar ai">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="typing-dots">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Container -->
+                <div class="chat-input-container">
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" onclick="sendQuickMessage('Hello!')">👋 Say Hello</button>
+                        <button class="quick-action-btn" onclick="sendQuickMessage('Tell me about your services')">🔍 Your Services</button>
+                        <button class="quick-action-btn" onclick="sendQuickMessage('Book a consultation call')">📞 Book Call</button>
+                        <button class="quick-action-btn" onclick="sendQuickMessage('Show me your portfolio')">💼 Portfolio</button>
+                        <button class="quick-action-btn" onclick="sendQuickMessage('What are your pricing plans?')">💰 Pricing</button>
+                    </div>
+
+                    <!-- Input Form -->
+                    <form class="chat-input-form" id="chatForm">
+                        <textarea 
+                            class="chat-input" 
+                            id="messageInput" 
+                            placeholder="Ask me anything about web development, marketing, or business growth..."
+                            rows="1"
+                        ></textarea>
+                        <div class="input-actions">
+                            <button type="button" class="voice-btn" id="voiceBtn" onclick="toggleVoiceInput()">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button type="submit" class="send-btn" id="sendBtn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA & Footer Section -->
+    <section class="cta-footer">
+        <div class="cta">
+            <!-- Decorative elements for CTA section -->
+            <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-left">
+            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-top-right">
+            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-right-under">
+            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-left-under">
+            
+            <h2>Ready to start your project?</h2>
+            <a href="book-a-call.html" class="btn-cta">Book Your Call Now</a>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo"></div>
+                <nav class="footer-nav">
+                    <div>
+                        <a href="about.html">About Us</a>
+                        <a href="#">Opportunities</a>
+                        <a href="blog.html">Our Blog</a>
+                        <a href="solutions.html">Solutions</a>
+                        <a href="policies.html">Policies</a>
+                    </div>
+                    <div>
+                        <a href="#">Mobile App Design</a>
+                        <a href="#">Website Development</a>
+                        <a href="#">SAP Consulting</a>
+                        <a href="#">Brand Positioning</a>
+                        <a href="#">IT Training</a>
+                    </div>
+                    <div>
+                        <a href="#">SEO Services</a>
+                        <a href="#">QA Testing</a>
+                        <a href="#">Blockchain Solutions</a>
+                        <a href="#">Cyber Security</a>
+                        <a href="#">Cloud Computing</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="social">
+                <h3 class="social-heading">Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright"><p>Copyright 2025 - Manifest Digital</p></div>
+        </footer>
+    </section>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Chat functionality
+        let chatHistory = [];
+        let isVoiceRecording = false;
+
+        // Initialize chat
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChatHistory();
+            adjustTextareaHeight();
+            
+            // Auto-resize textarea
+            const messageInput = document.getElementById('messageInput');
+            messageInput.addEventListener('input', adjustTextareaHeight);
+            
+            // Handle Enter key (Shift+Enter for new line, Enter to send)
+            messageInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+        });
+
+        // Chat form submission
+        document.getElementById('chatForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            sendMessage();
+        });
+
+        function adjustTextareaHeight() {
+            const textarea = document.getElementById('messageInput');
+            textarea.style.height = 'auto';
+            textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            
+            // Clear input
+            messageInput.value = '';
+            adjustTextareaHeight();
+            
+            // Hide welcome container
+            document.getElementById('welcomeContainer').style.display = 'none';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Simulate AI response (replace with actual API call)
+            setTimeout(() => {
+                const response = generateAIResponse(message);
+                hideTypingIndicator();
+                addMessage(response, 'ai');
+                saveChatHistory();
+            }, 1000 + Math.random() * 2000); // Random delay 1-3 seconds
+        }
+
+        function sendQuickMessage(message) {
+            document.getElementById('messageInput').value = message;
+            sendMessage();
+        }
+
+        function addMessage(content, sender) {
+            const messagesContainer = document.getElementById('messagesContainer');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${sender}`;
+            
+            const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            messageElement.innerHTML = `
+                <div class="message-avatar ${sender}">
+                    <i class="fas fa-${sender === 'ai' ? 'robot' : 'user'}"></i>
+                </div>
+                <div class="message-content ${sender}">
+                    ${content}
+                    <div class="message-time">${currentTime}</div>
+                </div>
+            `;
+            
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Add to chat history
+            chatHistory.push({
+                content: content,
+                sender: sender,
+                timestamp: new Date().toISOString()
+            });
+        }
+
+        function showTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'flex';
+            const messagesContainer = document.getElementById('messagesContainer');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            document.getElementById('typingIndicator').style.display = 'none';
+        }
+
+        function generateAIResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            // Simple response generation based on keywords
+            if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+                return "Hello! 👋 I'm AI Sensei, your digital business assistant. I'm here to help you with web development, digital marketing, business growth strategies, and more. What can I help you with today?";
+            }
+            
+            if (message.includes('web development') || message.includes('website')) {
+                return "Great question about web development! 💻 At Manifest, we offer comprehensive web development services including:\\n\\n• Custom WordPress Development\\n• E-commerce Solutions\\n• Progressive Web Apps\\n• API Development\\n• Website Maintenance\\n\\nOur development process focuses on performance, security, and user experience. Would you like to know more about any specific service or discuss your project requirements?";
+            }
+            
+            if (message.includes('digital marketing') || message.includes('marketing')) {
+                return "Digital marketing is crucial for business growth! 📱 Here are some key strategies I recommend:\\n\\n• Content Marketing & SEO\\n• Social Media Management\\n• Email Marketing Campaigns\\n• Pay-Per-Click Advertising\\n• Analytics & Performance Tracking\\n\\nThe best strategy depends on your target audience and business goals. What type of business are you looking to promote?";
+            }
+            
+            if (message.includes('pricing') || message.includes('cost') || message.includes('price')) {
+                return "Our pricing is tailored to each project's unique requirements! 💰 Here's a general overview:\\n\\n• Basic Website: $500 - $2,000\\n• E-commerce Site: $2,000 - $10,000\\n• Custom Web App: $5,000 - $50,000\\n• Digital Marketing: $500 - $5,000/month\\n\\nFactors affecting cost include complexity, features, timeline, and ongoing support. Would you like a detailed quote for your specific project? I can connect you with our team for a free consultation!";
+            }
+            
+            if (message.includes('seo') || message.includes('search')) {
+                return "SEO is essential for online visibility! 🔍 Here are key strategies to improve your search rankings:\\n\\n• Keyword Research & Optimization\\n• Quality Content Creation\\n• Technical SEO (site speed, mobile-friendly)\\n• Local SEO for businesses\\n• Link Building & Authority\\n\\nSEO is a long-term investment that typically shows results in 3-6 months. Would you like me to analyze your current website or discuss a custom SEO strategy?";
+            }
+            
+            if (message.includes('portfolio') || message.includes('projects') || message.includes('work')) {
+                return "I'd love to show you our work! 💼 We've completed 50+ successful projects including:\\n\\n• KokoPlus - Fintech Mobile App\\n• Alpha Health Group - Healthcare Platform\\n• Bosch School - Educational Website\\n• CCEM Ghana - NGO Digital Presence\\n\\nEach project showcases our expertise in different industries. You can view our full portfolio at manifestghana.com/projects or I can discuss specific case studies relevant to your industry. What type of business are you in?";
+            }
+            
+            if (message.includes('book') || message.includes('call') || message.includes('consultation') || message.includes('meeting')) {
+                return "Perfect! I'd be happy to help you schedule a consultation! 📞 Here are your options:\\n\\n• Free Strategy Call (30 minutes)\\n• Technical Consultation (60 minutes)\\n• Project Planning Session (90 minutes)\\n\\nDuring the call, we'll discuss your goals, challenges, and how we can help. You can book directly at manifestghana.com/book-a-call or I can have our team contact you. Which option works best for you?";
+            }
+            
+            if (message.includes('mobile app') || message.includes('app development')) {
+                return "Mobile app development is one of our specialties! 📱 We create:\\n\\n• Native iOS & Android Apps\\n• Cross-Platform Solutions (React Native, Flutter)\\n• Progressive Web Apps (PWAs)\\n• App Store Optimization\\n• Ongoing Maintenance & Updates\\n\\nOur process includes UI/UX design, development, testing, and deployment. Apps typically take 3-8 months depending on complexity. What type of app are you considering?";
+            }
+            
+            if (message.includes('business') || message.includes('grow') || message.includes('online presence')) {
+                return "Growing your online presence is key to business success! 🚀 Here's a strategic approach:\\n\\n• Professional Website (your digital headquarters)\\n• Search Engine Optimization (get found online)\\n• Social Media Strategy (engage your audience)\\n• Content Marketing (build authority)\\n• Email Marketing (nurture relationships)\\n• Analytics (measure and improve)\\n\\nThe best strategy depends on your industry and target market. What's your current biggest challenge with online growth?";
+            }
+            
+            // Default response
+            return `Thank you for your question! 🤔 I'd be happy to help you with that. As your AI assistant specializing in digital solutions, I can provide guidance on web development, digital marketing, SEO, mobile apps, and business growth strategies.\\n\\nCould you provide a bit more detail about what you're looking for? Or would you prefer to speak with one of our human experts? I can arrange a free consultation call where we can discuss your specific needs in detail.`;
+        }
+
+        function clearChat() {
+            if (confirm('Are you sure you want to clear the chat history?')) {
+                chatHistory = [];
+                document.getElementById('messagesContainer').innerHTML = `
+                    <div class="welcome-container" id="welcomeContainer">
+                        <div class="welcome-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="welcome-title">Welcome to AI Sensei!</h3>
+                        <p class="welcome-subtitle">I'm here to help with all your digital business questions. What would you like to know?</p>
+                        
+                        <div class="welcome-suggestions">
+                            <div class="suggestion-card" onclick="sendQuickMessage('How can I start an online business?')">
+                                <i class="fas fa-rocket"></i>
+                                <div class="suggestion-title">Start Online Business</div>
+                                <div class="suggestion-text">Get tips for launching your digital presence</div>
+                            </div>
+                            <div class="suggestion-card" onclick="sendQuickMessage('What is the cost of website development?')">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div class="suggestion-title">Website Pricing</div>
+                                <div class="suggestion-text">Learn about development costs</div>
+                            </div>
+                            <div class="suggestion-card" onclick="sendQuickMessage('How do I improve my website SEO?')">
+                                <i class="fas fa-search"></i>
+                                <div class="suggestion-title">SEO Tips</div>
+                                <div class="suggestion-text">Boost your search rankings</div>
+                            </div>
+                            <div class="suggestion-card" onclick="sendQuickMessage('What social media strategy works best?')">
+                                <i class="fas fa-share-alt"></i>
+                                <div class="suggestion-title">Social Media</div>
+                                <div class="suggestion-text">Effective marketing strategies</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="message">
+                            <div class="message-avatar ai">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="typing-dots">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                localStorage.removeItem('aiSenseiChatHistory');
+            }
+        }
+
+        function toggleVoiceInput() {
+            const voiceBtn = document.getElementById('voiceBtn');
+            
+            if (!isVoiceRecording) {
+                // Start recording
+                if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                    const recognition = new SpeechRecognition();
+                    
+                    recognition.continuous = false;
+                    recognition.interimResults = false;
+                    recognition.lang = 'en-US';
+                    
+                    recognition.onstart = function() {
+                        isVoiceRecording = true;
+                        voiceBtn.classList.add('recording');
+                        voiceBtn.innerHTML = '<i class="fas fa-stop"></i>';
+                    };
+                    
+                    recognition.onresult = function(event) {
+                        const transcript = event.results[0][0].transcript;
+                        document.getElementById('messageInput').value = transcript;
+                        adjustTextareaHeight();
+                    };
+                    
+                    recognition.onend = function() {
+                        isVoiceRecording = false;
+                        voiceBtn.classList.remove('recording');
+                        voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                    };
+                    
+                    recognition.onerror = function(event) {
+                        console.error('Speech recognition error:', event.error);
+                        isVoiceRecording = false;
+                        voiceBtn.classList.remove('recording');
+                        voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                    };
+                    
+                    recognition.start();
+                } else {
+                    alert('Speech recognition is not supported in your browser.');
+                }
+            } else {
+                // Stop recording (handled by recognition.onend)
+                isVoiceRecording = false;
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('chatSidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        function saveChatHistory() {
+            localStorage.setItem('aiSenseiChatHistory', JSON.stringify(chatHistory));
+        }
+
+        function loadChatHistory() {
+            const saved = localStorage.getItem('aiSenseiChatHistory');
+            if (saved) {
+                chatHistory = JSON.parse(saved);
+                const messagesContainer = document.getElementById('messagesContainer');
+                
+                if (chatHistory.length > 0) {
+                    document.getElementById('welcomeContainer').style.display = 'none';
+                    
+                    chatHistory.forEach(msg => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = `message ${msg.sender}`;
+                        
+                        const messageTime = new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                        
+                        messageElement.innerHTML = `
+                            <div class="message-avatar ${msg.sender}">
+                                <i class="fas fa-${msg.sender === 'ai' ? 'robot' : 'user'}"></i>
+                            </div>
+                            <div class="message-content ${msg.sender}">
+                                ${msg.content}
+                                <div class="message-time">${messageTime}</div>
+                            </div>
+                        `;
+                        
+                        messagesContainer.appendChild(messageElement);
+                    });
+                    
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            }
+        }
+
+        // Close sidebar when clicking outside (mobile)
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('chatSidebar');
+            const toggleBtn = e.target.closest('[onclick="toggleSidebar()"]');
+            
+            if (!sidebar.contains(e.target) && !toggleBtn && window.innerWidth <= 992) {
+                sidebar.classList.remove('show');
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
