@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Manifest Digital | Purpose-Driven Digital Solutions Since 2014</title>
+    <meta name="description" content="Learn about Manifest Digital - A trusted IT services partner since 2014, empowering organizations globally with innovative technology solutions.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Anybody', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            background: linear-gradient(135deg, rgba(255, 34, 0, 0.9), rgba(255, 107, 0, 0.9));
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-top: 118px;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Story Section */
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 34, 0, 0.05), rgba(255, 107, 0, 0.05));
+            border-left: 4px solid #ff2200;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h3 {
+            color: #ff2200;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Mission & Vision */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mv-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff2200;
+        }
+
+        .mv-card p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-top: 3px solid #ff2200;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 34, 0, 0.2);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(255, 34, 0, 0.1), rgba(255, 107, 0, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: #ff2200;
+            font-size: 1.8rem;
+        }
+
+        .value-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+
+        .value-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff2200, #ff6b00);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-start;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 0 0 10px rgba(255, 34, 0, 0.1);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff2200;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: #ff2200;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: rgba(255, 34, 0, 0.2);
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-info h5 {
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: #333;
+        }
+
+        .author-location {
+            font-size: 0.9rem;
+            color: #ff2200;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid white;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #ff2200;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #ff2200;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff2200;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: #ff2200;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #ff2200;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                justify-content: flex-end !important;
+                padding-left: 80px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-year {
+                left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Topbar -->
+    <div class="notification-topbar show">
+        <span class="notification-icon">🎉</span>
+        <div class="notification-content">
+            <span class="notification-text">
+                Launch Special: First month 20% off + free brand consultation (GH₵500 value) • Limited spots available
+            </span>
+            <a href="#" class="notification-cta">Claim Offer</a>
+        </div>
+        <button class="notification-close" aria-label="Close notification">×</button>
+    </div>
+    
+    <header class="primary-header">
+        <div class="logo"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="about.html" class="active">About</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <div class="mobile-nav-overlay"></div>
+    
+    <!-- Mobile navigation menu -->
+    <div class="mobile-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="about.html" class="active">About</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="mobile-nav-buttons">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <h1>We Craft Digital Solutions for<br>Purpose-Driven Organizations</h1>
+                <p>A trusted IT services partner since 2014, empowering organizations globally with innovative technology solutions</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Years of Excellence</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Countries Served</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Client Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-subtitle">From humble beginnings to a globally trusted digital partner</p>
+            
+            <div class="story-content">
+                <p class="story-text">
+                    Since 2014, Manifest Digital (formerly Manifest Multimedia) has been a trusted IT services partner, 
+                    empowering organizations globally with innovative technology solutions. With over 10 years of deep 
+                    industry experience, we deliver comprehensive, end-to-end solutions that drive tangible, measurable results.
+                </p>
+                
+                <p class="story-text">
+                    We're a people-first technology company established to produce work that benefits people. Our journey 
+                    began with a simple vision: to bridge the gap between local expertise and global best practices, ensuring 
+                    that our clients not only thrive locally but also compete internationally.
+                </p>
+
+                <div class="highlight-box">
+                    <h3>Why Choose Us?</h3>
+                    <p class="story-text">
+                        Our unique expertise and client-focused approach ensure your business outcomes are at the heart of 
+                        everything we do. We don't just deliver projects; we deliver success. Partner with a globally trusted 
+                        brand to bring confidence, skill, and innovation to your digital journey.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Mission & Vision</h2>
+            <p class="section-subtitle">Driving digital transformation with purpose and passion</p>
+            
+            <div class="mission-vision-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>
+                        To empower businesses—especially in Ghana and across Africa—with the digital tools and strategies 
+                        they need to succeed in a fast-moving, tech-driven world. We aim to bridge the gap between local 
+                        expertise and global best practices, ensuring that our clients not only thrive locally but also 
+                        compete internationally.
+                    </p>
+                </div>
+
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>
+                        To be Africa's leading digital transformation partner, recognized globally for delivering 
+                        innovative, purpose-driven technology solutions that create lasting impact. We envision a future 
+                        where every organization, regardless of size or location, has access to world-class digital 
+                        solutions that drive growth and success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">The principles that guide everything we do</p>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Secure</h4>
+                    <p>Good for building trust and protecting users and information. We prioritize security in every solution we build.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Fast</h4>
+                    <p>Good for search engines and general user experience. Speed is not just a feature; it's a fundamental requirement.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Responsive</h4>
+                    <p>Good for maintaining the same experience across multiple devices. We ensure consistency everywhere.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Inclusive</h4>
+                    <p>We build simple and easy to use solutions for everyone, ensuring accessibility for all users.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Clear</h4>
+                    <p>We keep it elegant and easy to understand. Good for conveying your message across effectively.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Memorable</h4>
+                    <p>We tell the stories that matter and make you memorable for the right reasons.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">A decade of growth, innovation, and impact</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-content">
+                        <h4>The Beginning</h4>
+                        <p>
+                            Manifest Multimedia was founded with a vision to provide purpose-driven digital solutions 
+                            to organizations in Ghana and beyond. Started with a small team of passionate developers 
+                            and designers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-content">
+                        <h4>Expansion & Growth</h4>
+                        <p>
+                            Expanded our services to include mobile app development and AI solutions. Grew our team 
+                            and client base across multiple African countries and international markets.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h4>Digital Transformation</h4>
+                        <p>
+                            Pivoted to focus on AI and machine learning solutions. Helped numerous businesses 
+                            navigate the digital transformation accelerated by the global pandemic.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>Rebranding to Manifest Digital</h4>
+                        <p>
+                            Officially rebranded to Manifest Digital, reflecting our evolution into a comprehensive 
+                            digital transformation partner. Launched AI Sensei and expanded our global reach.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h4>The Future</h4>
+                        <p>
+                            Continuing to innovate and lead in AI solutions, automation, and digital transformation. 
+                            Committed to empowering African businesses to compete globally.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">The brilliant minds behind our success</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Founding Team</h3>
+                        <p class="team-role">Leadership</p>
+                        <p class="team-bio">
+                            Our founding team brings together decades of experience in technology, business strategy, 
+                            and digital transformation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Development Team</h3>
+                        <p class="team-role">Engineering</p>
+                        <p class="team-bio">
+                            Expert developers specializing in web, mobile, AI/ML, and enterprise application development.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Design Team</h3>
+                        <p class="team-role">UI/UX Design</p>
+                        <p class="team-bio">
+                            Creative designers focused on crafting beautiful, intuitive, and user-centered digital experiences.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">AI/ML Team</h3>
+                        <p class="team-role">Data Science & AI</p>
+                        <p class="team-bio">
+                            Data scientists and AI engineers building intelligent solutions that drive business value.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Trusted by organizations across the globe</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "I love my website and i totally recommend Manifest Multimedia. They're So Professional"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>Prophetess Ruth Martey</h5>
+                            <p class="author-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                United States
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Excellent website design. They did not only deliver in time but with excellence and professionalism. 
+                        I am happy with their customer service, progress update, and pricing."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>Kwame Baah</h5>
+                            <p class="author-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Ghana
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Having Worked with Manifest Ghana, i will Recommend Them to any Client"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>Pamela Ofori</h5>
+                            <p class="author-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                United Kingdom
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "They were always up to speed to resolve any problem we encountered on our website"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>Martha's Beauty Supply & Braiding</h5>
+                            <p class="author-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                England
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Their professionalism and consistency were impressive."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>Dunamis Bible Institute</h5>
+                            <p class="author-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Ghana
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Always providing us with top quality services."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h5>Mawuli Nyador</h5>
+                            <p class="author-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Ghana
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Digital Presence?</h2>
+            <p>Let's bring your vision to life with innovative technology solutions</p>
+            <div class="cta-buttons">
+                <a href="book-a-call.html" class="btn-primary">Book a Call</a>
+                <a href="projects.html" class="btn-secondary">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MANIFEST DIGITAL</h3>
+                    <p>We're a people-first technology company established to produce work that benefits people. Delivering consistent results since 2014.</p>
+                    <div class="social-links">
+                        <a href="https://fb.me/teammanifestgh" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/teammanifestgh" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/teammanifestgh" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com/teammanifestgh" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="ai-sensei.html">AI Sensei</a></li>
+                        <li><a href="book-a-call.html">Book a Call</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="solutions.html">AI Solutions</a></li>
+                        <li><a href="solutions.html">Web Development</a></li>
+                        <li><a href="solutions.html">Mobile Apps</a></li>
+                        <li><a href="solutions.html">UI/UX Design</a></li>
+                        <li><a href="solutions.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> North Kaneshie, Accra, Ghana</p>
+                    <p><i class="fas fa-envelope"></i> business@manifestghana.com</p>
+                    <p><i class="fas fa-phone"></i> +233 549 539 417</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Manifest Digital. All rights reserved. | <a href="policies.html" style="color: inherit;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // ========================
+        // Notification Topbar
+        // ========================
+        const notificationTopbar = document.querySelector('.notification-topbar');
+        const notificationClose = document.querySelector('.notification-close');
+        
+        // Check if notification was previously closed
+        const notificationClosed = localStorage.getItem('notificationClosed');
+        
+        if (notificationClosed === 'true') {
+            if (notificationTopbar) {
+                notificationTopbar.classList.remove('show');
+            }
+        } else {
+            // Show notification and adjust body
+            if (notificationTopbar) {
+                notificationTopbar.classList.add('show');
+                document.body.classList.add('notification-visible');
+            }
+        }
+        
+        // Close notification handler
+        if (notificationClose) {
+            notificationClose.addEventListener('click', function() {
+                if (notificationTopbar) {
+                    notificationTopbar.classList.remove('show');
+                    document.body.classList.remove('notification-visible');
+                    localStorage.setItem('notificationClosed', 'true');
+                }
+            });
+        }
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+        
+        function toggleMobileMenu() {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            mobileNavOverlay.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
+        
+        if (mobileNavOverlay) {
+            mobileNavOverlay.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Close menu when clicking on a nav link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav nav a, .mobile-nav .mobile-nav-buttons a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('active')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('.primary-header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Animate timeline items on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .value-card, .team-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
