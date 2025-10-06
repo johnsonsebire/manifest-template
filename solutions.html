@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Manifest Digital's comprehensive solutions - Web Development, Mobile Apps, AI & ML, Cloud Computing, Cyber Security, and more. Transform your business with our expert services.">
+    <meta name="keywords" content="digital solutions Ghana, web development services, mobile app development, AI solutions, cloud computing, cyber security, blockchain Ghana">
+    <meta name="author" content="Manifest Digital">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Our Solutions | Digital Services - Manifest Digital">
+    <meta property="og:description" content="Comprehensive digital solutions including web development, mobile apps, AI/ML, cloud computing, and more. Expert services for businesses in Ghana and beyond.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manifestghana.com/solutions">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Our Solutions | Manifest Digital">
+    <meta name="twitter:description" content="Transform your business with our comprehensive digital solutions and expert services.">
+    
+    <title>Our Solutions | Digital Services - Manifest Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Solutions Page Specific Styles */
+        
+        .solutions-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solutions-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/decorative/hero_left_mem_dots_f_circle3.svg') no-repeat left center,
+                        url('images/decorative/hero_right_circle-con3.svg') no-repeat right center;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .solutions-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .solutions-hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .solutions-hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        .solutions-hero .highlight {
+            color: #ff2200;
+        }
+        
+        /* Solutions Grid Section */
+        .solutions-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .section-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-intro h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        .section-intro p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff2200, #ff6b00);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .service-icon i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .service-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-features li i {
+            color: #ff2200;
+            font-size: 12px;
+        }
+        
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff2200;
+            font-weight: 700;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+        
+        .service-link:hover {
+            gap: 15px;
+            color: #cc1b00;
+        }
+        
+        /* Why Choose Us Section */
+        .why-choose-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+        
+        .why-choose-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .why-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .why-icon i {
+            font-size: 36px;
+            color: white;
+        }
+        
+        .why-card h4 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+        
+        .why-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Process Section */
+        .process-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .process-step h4 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+        
+        .process-step p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Technologies Section */
+        .tech-section {
+            background: #1a1a1a;
+            padding: 80px 20px;
+            color: white;
+        }
+        
+        .tech-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .tech-container h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .tech-container p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tech-item {
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+        
+        .tech-item i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #ff2200;
+        }
+        
+        .tech-item h5 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .solutions-hero h1 {
+                font-size: 42px;
+            }
+            
+            .solutions-hero p {
+                font-size: 16px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .section-intro h2 {
+                font-size: 32px;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="primary-header">
+        <div class="logo"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="header-right">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Mobile navigation overlay -->
+    <div class="mobile-nav-overlay"></div>
+    
+    <!-- Mobile navigation menu -->
+    <div class="mobile-nav">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="book-a-call.html">Book a Call</a>
+        </nav>
+        <div class="mobile-nav-buttons">
+            <a href="#" class="login">Login</a>
+            <a href="#" class="btn-primary">Get a Quote</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="solutions-hero">
+        <div class="solutions-hero-content">
+            <h1>Our <span class="highlight">Solutions</span></h1>
+            <p>Comprehensive digital services designed to transform your business and drive measurable results in the modern digital landscape.</p>
+        </div>
+    </section>
+
+    <!-- Solutions Grid Section -->
+    <section class="solutions-section">
+        <div class="section-intro">
+            <h2>What We Offer</h2>
+            <p>From web development to AI solutions, we provide end-to-end digital services tailored to your business needs.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1: Web Development -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Custom websites and web applications built with modern technologies for optimal performance and user experience.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Responsive Design</li>
+                    <li><i class="fas fa-check-circle"></i> E-commerce Solutions</li>
+                    <li><i class="fas fa-check-circle"></i> Content Management Systems</li>
+                    <li><i class="fas fa-check-circle"></i> Progressive Web Apps</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 2: Mobile App Development -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile App Development</h3>
+                <p>Native and cross-platform mobile applications that deliver seamless experiences across iOS and Android devices.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> iOS & Android Apps</li>
+                    <li><i class="fas fa-check-circle"></i> Cross-Platform Solutions</li>
+                    <li><i class="fas fa-check-circle"></i> App Store Optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Maintenance & Updates</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 3: AI & Machine Learning -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI & Machine Learning</h3>
+                <p>Intelligent automation and predictive analytics to help your business make data-driven decisions and improve efficiency.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> AI Chatbots</li>
+                    <li><i class="fas fa-check-circle"></i> Predictive Analytics</li>
+                    <li><i class="fas fa-check-circle"></i> Process Automation</li>
+                    <li><i class="fas fa-check-circle"></i> Natural Language Processing</li>
+                </ul>
+                <a href="ai-sensei.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 4: Cloud Computing -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Cloud Computing</h3>
+                <p>Scalable cloud infrastructure and migration services to ensure your applications run reliably and cost-effectively.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Cloud Migration</li>
+                    <li><i class="fas fa-check-circle"></i> Infrastructure Setup</li>
+                    <li><i class="fas fa-check-circle"></i> DevOps & CI/CD</li>
+                    <li><i class="fas fa-check-circle"></i> 24/7 Monitoring</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 5: Cyber Security -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Cyber Security</h3>
+                <p>Comprehensive security solutions to protect your digital assets and ensure compliance with industry standards.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Security Audits</li>
+                    <li><i class="fas fa-check-circle"></i> Penetration Testing</li>
+                    <li><i class="fas fa-check-circle"></i> Data Encryption</li>
+                    <li><i class="fas fa-check-circle"></i> Compliance Management</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 6: Blockchain Solutions -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h3>Blockchain Solutions</h3>
+                <p>Decentralized applications and smart contracts to enhance transparency and security in your business operations.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Smart Contracts</li>
+                    <li><i class="fas fa-check-circle"></i> DApp Development</li>
+                    <li><i class="fas fa-check-circle"></i> Tokenization</li>
+                    <li><i class="fas fa-check-circle"></i> Blockchain Consulting</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 7: SEO Services -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>SEO Services</h3>
+                <p>Strategic search engine optimization to improve your online visibility and drive organic traffic to your website.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Keyword Research</li>
+                    <li><i class="fas fa-check-circle"></i> On-Page Optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Link Building</li>
+                    <li><i class="fas fa-check-circle"></i> Performance Analytics</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 8: QA Testing -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h3>QA Testing</h3>
+                <p>Rigorous quality assurance testing to ensure your applications are bug-free, secure, and deliver exceptional user experiences.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Manual Testing</li>
+                    <li><i class="fas fa-check-circle"></i> Automated Testing</li>
+                    <li><i class="fas fa-check-circle"></i> Performance Testing</li>
+                    <li><i class="fas fa-check-circle"></i> Security Testing</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 9: SAP Consulting -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>SAP Consulting</h3>
+                <p>Expert SAP implementation and consulting services to streamline your enterprise resource planning and business processes.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> SAP Implementation</li>
+                    <li><i class="fas fa-check-circle"></i> System Integration</li>
+                    <li><i class="fas fa-check-circle"></i> Custom Development</li>
+                    <li><i class="fas fa-check-circle"></i> Training & Support</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 10: Brand Positioning -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Brand Positioning</h3>
+                <p>Strategic brand development and positioning to help your business stand out in competitive markets.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Brand Strategy</li>
+                    <li><i class="fas fa-check-circle"></i> Visual Identity</li>
+                    <li><i class="fas fa-check-circle"></i> Market Research</li>
+                    <li><i class="fas fa-check-circle"></i> Digital Marketing</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 11: IT Training -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>IT Training</h3>
+                <p>Comprehensive IT training programs to upskill your team and keep them updated with the latest technologies.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Custom Training Programs</li>
+                    <li><i class="fas fa-check-circle"></i> Certification Courses</li>
+                    <li><i class="fas fa-check-circle"></i> Workshops & Bootcamps</li>
+                    <li><i class="fas fa-check-circle"></i> Online Learning</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Service 12: Digital Transformation -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Digital Transformation</h3>
+                <p>End-to-end digital transformation strategies to modernize your business operations and stay competitive.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Strategy Consulting</li>
+                    <li><i class="fas fa-check-circle"></i> Process Optimization</li>
+                    <li><i class="fas fa-check-circle"></i> Technology Integration</li>
+                    <li><i class="fas fa-check-circle"></i> Change Management</li>
+                </ul>
+                <a href="book-a-call.html" class="service-link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="why-choose-container">
+            <div class="section-intro">
+                <h2>Why Choose Manifest Digital</h2>
+                <p>We combine technical expertise with business acumen to deliver solutions that drive real results</p>
+            </div>
+            
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>10+ Years Experience</h4>
+                    <p>Over a decade of delivering successful digital solutions across Africa and beyond</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Expert Team</h4>
+                    <p>Skilled professionals with certifications and expertise in cutting-edge technologies</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Proven Results</h4>
+                    <p>40+ successful projects with measurable impact and client satisfaction</p>
+                </div>
+                
+                <div class="why-card">
+                    <div class="why-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4>24/7 Support</h4>
+                    <p>Round-the-clock technical support to ensure your business never stops</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section class="process-section">
+        <div class="section-intro">
+            <h2>Our Process</h2>
+            <p>A proven methodology that ensures successful project delivery every time</p>
+        </div>
+        
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Discovery</h4>
+                <p>We understand your business goals, challenges, and requirements</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Strategy</h4>
+                <p>Create a detailed roadmap and technical architecture for your project</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Development</h4>
+                <p>Build your solution using agile methodology with regular updates</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Testing</h4>
+                <p>Rigorous quality assurance to ensure a flawless final product</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <h4>Launch</h4>
+                <p>Deploy your solution with ongoing support and optimization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="tech-section">
+        <div class="tech-container">
+            <h2>Technologies We Master</h2>
+            <p>We work with the latest and most reliable technologies to build robust, scalable solutions</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fab fa-react"></i>
+                    <h5>React</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-node-js"></i>
+                    <h5>Node.js</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-python"></i>
+                    <h5>Python</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-laravel"></i>
+                    <h5>Laravel</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-aws"></i>
+                    <h5>AWS</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-docker"></i>
+                    <h5>Docker</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-google"></i>
+                    <h5>Google Cloud</h5>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-angular"></i>
+                    <h5>Angular</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Footer Section -->
+    <section class="cta-footer">
+        <div class="cta">
+            <!-- Decorative elements for CTA section -->
+            <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-left">
+            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-top-right">
+            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-right-under">
+            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-left-under">
+            
+            <h2>Ready to start your project?</h2>
+            <a href="book-a-call.html" class="btn-cta">Book Your Call Now</a>
+        </div>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo"></div>
+                <nav class="footer-nav">
+                    <div>
+                        <a href="about.html">About Us</a>
+                        <a href="#">Opportunities</a>
+                        <a href="blog.html">Our Blog</a>
+                        <a href="solutions.html">Solutions</a>
+                        <a href="policies.html">Policies</a>
+                    </div>
+                    <div>
+                        <a href="#">Mobile App Design</a>
+                        <a href="#">Website Development</a>
+                        <a href="#">SAP Consulting</a>
+                        <a href="#">Brand Positioning</a>
+                        <a href="#">IT Training</a>
+                    </div>
+                    <div>
+                        <a href="#">SEO Services</a>
+                        <a href="#">QA Testing</a>
+                        <a href="#">Blockchain Solutions</a>
+                        <a href="#">Cyber Security</a>
+                        <a href="#">Cloud Computing</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="social">
+                <h3 class="social-heading">Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright"><p>Copyright 2025 - Manifest Digital</p></div>
+        </footer>
+    </section>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -3,43 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Manifest Digital | Purpose-Driven Digital Solutions Since 2014</title>
-    <meta name="description" content="Learn about Manifest Digital - A trusted IT services partner since 2014, empowering organizations globally with innovative technology solutions.">
+    <meta name="description" content="Learn about Manifest Digital - Ghana's leading digital solutions agency. Our story, mission, and the expert team behind innovative web and mobile solutions.">
+    <meta name="keywords" content="about Manifest Digital, digital agency Ghana, web development team, our story, company mission">
+    <meta name="author" content="Manifest Digital">
     
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us | Manifest Digital">
+    <meta property="og:description" content="Discover the story behind Manifest Digital and meet the team transforming businesses across Ghana with innovative digital solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://manifestghana.com/about-us">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us | Manifest Digital">
+    <meta name="twitter:description" content="Learn about our mission, values, and the expert team behind Ghana's leading digital solutions agency.">
+    
+    <title>About Us | Our Story & Mission - Manifest Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Main Styles -->
     <link rel="stylesheet" href="styles.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Anybody', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
+        /* About Us Page Specific Styles */
+        
         /* About Hero Section */
         .about-hero {
             background: linear-gradient(135deg, rgba(255, 34, 0, 0.9), rgba(255, 107, 0, 0.9));
             min-height: 60vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             color: white;
-            margin-top: 118px;
             padding: 4rem 0;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         .about-hero::before {
@@ -55,6 +59,8 @@
         .about-hero-content {
             position: relative;
             z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .about-hero h1 {
@@ -410,137 +416,6 @@
             gap: 0.3rem;
         }
 
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #ff2200, #ff6b00);
-            color: white;
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid white;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #ff2200;
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #ff2200;
-        }
-
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: #ff2200;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .footer-section p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: #ff2200;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background: #ff2200;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
-        }
-
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-hero h1 {
@@ -585,6 +460,9 @@
     </style>
 </head>
 <body>
+    <!-- Reading Tracker Progress Bar -->
+    <div class="reading-tracker"></div>
+    
     <!-- Notification Topbar -->
     <div class="notification-topbar show">
         <span class="notification-icon">🎉</span>
@@ -603,7 +481,6 @@
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="ai-sensei.html">AI Sensei</a>
-            <a href="about.html" class="active">About</a>
             <a href="book-a-call.html">Book a Call</a>
         </nav>
         <div class="header-right">
@@ -634,7 +511,6 @@
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="ai-sensei.html">AI Sensei</a>
-            <a href="about.html" class="active">About</a>
             <a href="book-a-call.html">Book a Call</a>
         </nav>
         <div class="mobile-nav-buttons">
@@ -1033,73 +909,90 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Transform Your Digital Presence?</h2>
-            <p>Let's bring your vision to life with innovative technology solutions</p>
-            <div class="cta-buttons">
-                <a href="book-a-call.html" class="btn-primary">Book a Call</a>
-                <a href="projects.html" class="btn-secondary">View Our Work</a>
-            </div>
+    <section class="cta-footer">
+        <div class="cta">
+            <!-- Decorative elements for CTA section -->
+            <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-left">
+            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-top-right">
+            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-right-under">
+            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-left-under">
+            
+            <h2>Ready to start your project?</h2>
+            <a href="book-a-call.html" class="btn-cta">Book Your Call Now</a>
         </div>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo"></div>
+                <nav class="footer-nav">
+                    <div>
+                        <a href="about-us.html">About Us</a>
+                        <a href="#">Opportunities</a>
+                        <a href="blog.html">Our Blog</a>
+                        <a href="solutions.html">Solutions</a>
+                        <a href="policies.html">Policies</a>
+                    </div>
+                    <div>
+                        <a href="#">Mobile App Design</a>
+                        <a href="#">Website Development</a>
+                        <a href="#">SAP Consulting</a>
+                        <a href="#">Brand Positioning</a>
+                        <a href="#">IT Training</a>
+                    </div>
+                    <div>
+                        <a href="#">SEO Services</a>
+                        <a href="#">QA Testing</a>
+                        <a href="#">Blockchain Solutions</a>
+                        <a href="#">Cyber Security</a>
+                        <a href="#">Cloud Computing</a>
+                    </div>
+                </nav>
+            </div>
+            <div class="social">
+                <h3 class="social-heading">Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="copyright"><p>Copyright 2025 - Manifest Digital</p></div>
+        </footer>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>MANIFEST DIGITAL</h3>
-                    <p>We're a people-first technology company established to produce work that benefits people. Delivering consistent results since 2014.</p>
-                    <div class="social-links">
-                        <a href="https://fb.me/teammanifestgh" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://instagram.com/teammanifestgh" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com/company/teammanifestgh" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://twitter.com/teammanifestgh" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="ai-sensei.html">AI Sensei</a></li>
-                        <li><a href="book-a-call.html">Book a Call</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="solutions.html">AI Solutions</a></li>
-                        <li><a href="solutions.html">Web Development</a></li>
-                        <li><a href="solutions.html">Mobile Apps</a></li>
-                        <li><a href="solutions.html">UI/UX Design</a></li>
-                        <li><a href="solutions.html">Digital Marketing</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> North Kaneshie, Accra, Ghana</p>
-                    <p><i class="fas fa-envelope"></i> business@manifestghana.com</p>
-                    <p><i class="fas fa-phone"></i> +233 549 539 417</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Manifest Digital. All rights reserved. | <a href="policies.html" style="color: inherit;">Privacy Policy</a></p>
-            </div>
-        </div>
-    </footer>
+    <!-- Scroll to top button -->
+    <button class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
     
     <script>
+        // ========================
+        // Reading Tracker
+        // ========================
+        const readingTracker = document.querySelector('.reading-tracker');
+        
+        function updateReadingTracker() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const trackLength = documentHeight - windowHeight;
+            const percentScrolled = (scrollTop / trackLength) * 100;
+            
+            if (readingTracker) {
+                readingTracker.style.width = percentScrolled + '%';
+            }
+        }
+        
+        window.addEventListener('scroll', updateReadingTracker, { passive: true });
+        window.addEventListener('resize', updateReadingTracker, { passive: true });
+        
+        // Initial update
+        updateReadingTracker();
+        
         // ========================
         // Notification Topbar
         // ========================
@@ -1131,7 +1024,45 @@
                 }
             });
         }
-
+        
+        // ========================
+        // Scroll to top functionality
+        // ========================
+        const scrollToTopBtn = document.querySelector('.scroll-to-top');
+        const ctaFooterSection = document.querySelector('.cta-footer');
+        
+        function updateScrollButton() {
+            // Show/hide button based on scroll position
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+            
+            // Check if button is over dark background
+            if (ctaFooterSection) {
+                const ctaRect = ctaFooterSection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                // If the CTA/footer section is visible in viewport
+                if (ctaRect.top < viewportHeight && ctaRect.bottom > 0) {
+                    scrollToTopBtn.classList.add('on-dark');
+                } else {
+                    scrollToTopBtn.classList.remove('on-dark');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', updateScrollButton);
+        updateScrollButton();
+        
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
         // Mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const mobileNav = document.querySelector('.mobile-nav');
@@ -1187,22 +1118,6 @@
                     });
                 }
             });
-        });
-
-        // Header scroll effect
-        const header = document.querySelector('.primary-header');
-        let lastScroll = 0;
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            lastScroll = currentScroll;
         });
 
         // Animate timeline items on scroll
