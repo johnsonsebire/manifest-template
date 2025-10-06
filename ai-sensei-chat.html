@@ -22,12 +22,59 @@
             box-sizing: border-box;
         }
 
+        :root {
+            /* Dark Theme (default) */
+            --bg-primary: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            --bg-sidebar: rgba(0, 0, 0, 0.3);
+            --bg-chat: rgba(255, 255, 255, 0.03);
+            --bg-header: rgba(0, 0, 0, 0.2);
+            --bg-input: rgba(0, 0, 0, 0.2);
+            --bg-message-ai: rgba(255, 255, 255, 0.08);
+            --bg-message-user: linear-gradient(135deg, #ff2200, #ff5533);
+            --bg-button: rgba(255, 255, 255, 0.05);
+            --bg-button-hover: rgba(255, 255, 255, 0.1);
+            --border-primary: rgba(255, 255, 255, 0.1);
+            --border-input: rgba(255, 255, 255, 0.1);
+            --text-primary: #fff;
+            --text-secondary: #ccc;
+            --text-muted: #999;
+            --accent-primary: #ff2200;
+        }
+
+        body.light-theme {
+            /* Light Theme */
+            --bg-primary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+            --bg-sidebar: rgba(255, 255, 255, 0.9);
+            --bg-chat: rgba(255, 255, 255, 0.5);
+            --bg-header: rgba(255, 255, 255, 0.8);
+            --bg-input: rgba(255, 255, 255, 0.8);
+            --bg-message-ai: rgba(0, 0, 0, 0.05);
+            --bg-message-user: linear-gradient(135deg, #ff2200, #ff5533);
+            --bg-button: rgba(0, 0, 0, 0.05);
+            --bg-button-hover: rgba(0, 0, 0, 0.1);
+            --border-primary: rgba(0, 0, 0, 0.1);
+            --border-input: rgba(0, 0, 0, 0.2);
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-muted: #888;
+            --accent-primary: #ff2200;
+        }
+
         body {
             font-family: 'Anybody', sans-serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            background: var(--bg-primary);
             min-height: 100vh;
-            color: #fff;
+            color: var(--text-primary);
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.light-theme .minimal-logo img {
+            filter: invert(0);
+        }
+
+        body.light-theme .minimal-header {
+            border-bottom-color: var(--border-primary);
         }
 
         /* Logo Header */
@@ -56,12 +103,35 @@
             filter: invert(1);
         }
 
-        /* Back to Main Site Button */
-        .back-to-site {
+        /* Header Controls */
+        .header-controls {
             position: absolute;
             top: 20px;
             right: 20px;
             z-index: 1050;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--bg-button);
+            border: 1px solid var(--border-primary);
+            border-radius: 50%;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-button-hover);
+            border-color: var(--accent-primary);
         }
 
         .back-btn {
@@ -95,12 +165,11 @@
 
         /* Chat Sidebar */
         .chat-sidebar {
-
             width: 320px;
-            background: rgba(0, 0, 0, 0.3);
+            background: var(--bg-sidebar);
             backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
+            border-right: 1px solid var(--border-primary);
+            color: var(--text-primary);
             padding: 0 20px 30px;
             overflow-y: auto;
             position: relative;
@@ -110,7 +179,6 @@
         }
 
         .sidebar-content {
-            border-top:#666;
             padding-top: 80px; /* Space for fixed logo */
             min-height: calc(100vh - 110px); /* Ensure full height minus top/bottom padding */
         }
@@ -157,7 +225,7 @@
 
         .ai-subtitle {
             font-size: 16px;
-            color: #ccc;
+            color: var(--text-secondary);
             text-align: center;
             margin-bottom: 40px;
         }
@@ -169,7 +237,7 @@
         .sidebar-section h4 {
             font-size: 18px;
             font-weight: 700;
-            color: #ff2200;
+            color: var(--accent-primary);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -180,9 +248,9 @@
             display: block;
             width: 100%;
             text-align: left;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ccc;
+            background: var(--bg-button);
+            border: 1px solid var(--border-primary);
+            color: var(--text-secondary);
             padding: 15px 18px;
             border-radius: 12px;
             margin-bottom: 10px;
@@ -237,15 +305,15 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--bg-chat);
             backdrop-filter: blur(10px);
         }
 
         .chat-header {
             padding: 30px;
             padding-top: 90px;
-            background: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-header);
+            border-bottom: 1px solid var(--border-primary);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -347,14 +415,14 @@
         }
 
         .message-content.ai {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-message-ai);
+            border: 1px solid var(--border-primary);
             border-bottom-left-radius: 8px;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .message-content.user {
-            background: linear-gradient(135deg, #ff2200, #ff5533);
+            background: var(--bg-message-user);
             color: #fff;
             border-bottom-right-radius: 8px;
         }
@@ -415,8 +483,8 @@
         /* Input Area */
         .chat-input-container {
             padding: 30px;
-            background: rgba(0, 0, 0, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-input);
+            border-top: 1px solid var(--border-primary);
         }
 
         .quick-actions {
@@ -428,9 +496,9 @@
 
         .quick-action-btn {
             padding: 10px 18px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ccc;
+            background: var(--bg-button);
+            border: 1px solid var(--border-primary);
+            color: var(--text-secondary);
             border-radius: 25px;
             font-size: 14px;
             cursor: pointer;
@@ -452,10 +520,10 @@
         .chat-input {
             flex: 1;
             padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-button);
+            border: 1px solid var(--border-input);
             border-radius: 30px;
-            color: #fff;
+            color: var(--text-primary);
             font-size: 16px;
             font-family: 'Anybody', sans-serif;
             resize: none;
@@ -466,13 +534,13 @@
 
         .chat-input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: #ff2200;
+            background: var(--bg-button-hover);
+            border-color: var(--accent-primary);
             box-shadow: 0 0 0 3px rgba(255, 34, 0, 0.2);
         }
 
         .chat-input::placeholder {
-            color: #999;
+            color: var(--text-muted);
         }
 
         .input-actions {
@@ -716,8 +784,11 @@
         </a>
     </div>
 
-    <!-- Back to Site Button -->
-    <div class="back-to-site">
+    <!-- Header Controls -->
+    <div class="header-controls">
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+            <i class="fas fa-sun" id="themeIcon"></i>
+        </button>
         <a href="ai-chat.html" class="back-btn">
             <i class="fas fa-external-link-alt"></i>
             <span>Full Site</span>
@@ -896,8 +967,38 @@
         let chatHistory = [];
         let isVoiceRecording = false;
 
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const isLightTheme = body.classList.contains('light-theme');
+            
+            if (isLightTheme) {
+                body.classList.remove('light-theme');
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('aiSenseiTheme', 'dark');
+            } else {
+                body.classList.add('light-theme');
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('aiSenseiTheme', 'light');
+            }
+        }
+
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('aiSenseiTheme');
+            const themeIcon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.className = 'fas fa-moon';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+            }
+        }
+
         // Initialize chat
         document.addEventListener('DOMContentLoaded', function() {
+            loadTheme();
             loadChatHistory();
             adjustTextareaHeight();
             
