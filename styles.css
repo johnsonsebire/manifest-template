@@ -179,6 +179,25 @@ body {
     padding-left: 10px;
 }
 
+/* Mobile nav active state */
+.mobile-nav nav a.active {
+    color: #FF4900;
+    padding-left: 10px;
+    position: relative;
+}
+
+.mobile-nav nav a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(135deg, #FF4900 0%, #FF6B35 100%);
+    border-radius: 2px;
+}
+
 .mobile-nav .mobile-nav-buttons {
     display: flex;
     flex-direction: column;
@@ -241,6 +260,15 @@ body {
 }
 
 .primary-header nav a:hover::after {
+    width: 100%;
+}
+
+/* Active navigation state */
+.primary-header nav a.active {
+    color: #FF4900;
+}
+
+.primary-header nav a.active::after {
     width: 100%;
 }
 .header-right { display: flex; align-items: center; gap: 24px; }
@@ -2429,7 +2457,7 @@ body.notification-visible .hero {
    Laptop Styles (1025px - 1440px)
    ======================== */
 
-@media (max-width: 1440px) and (min-width: 1025px) {
+@media (max-width: 1600px) and (min-width: 1025px) {
     /* Header adjustments */
     .primary-header {
         padding: 0 80px;
@@ -2498,6 +2526,12 @@ body.notification-visible .hero {
         font-size: 64px;
         line-height: 76px;
         margin-bottom: 70px;
+    }
+
+    /* Specific adjustment for why-us heading to maintain 2-line layout */
+    .why-us h2 {
+        font-size: 56px;
+        line-height: 1.2;
     }
     
     /* Grid adjustments */
@@ -2704,6 +2738,16 @@ body.notification-visible .hero {
         64%, 76% { transform: translateY(-304px); }
         80%, 92% { transform: translateY(-380px); }
         96%, 100% { transform: translateY(0); }
+    }
+}
+
+/* Specific fix for 1440px laptops - why-us heading typography */
+@media (max-width: 1450px) and (min-width: 1200px) {
+    .why-us h2 {
+        font-size: 52px !important;
+        line-height: 1.15 !important;
+        max-width: 900px;
+        margin: 0 auto 48px auto;
     }
 }
 
