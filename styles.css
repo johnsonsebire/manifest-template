@@ -638,6 +638,11 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Hide decorative elements in hero section on mobile */
+    .hero .decorative-element {
+        display: none !important;
+    }
+    
     .mega-menu {
         width: 95vw;
         left: 2.5vw;
@@ -1033,7 +1038,7 @@ body {
     top: 50%; /* Vertically center */
     transform: translateY(-50%); /* Adjust for vertical centering */
     animation: float-centered 12s infinite ease-in-out;
-    z-index: 150; /* Above header */
+    z-index: -1; /* Behind content to avoid interference */
 }
 
 .hero .decorative-element.hero-right-circles {
@@ -1043,7 +1048,7 @@ body {
     top: 50%; /* Vertically center */
     transform: translateY(-50%); /* Adjust for vertical centering */
     animation: rotate-centered 15s infinite ease-in-out;
-    z-index: 150; /* Above header */
+    z-index: -1; /* Behind content to avoid interference */
 }
 
 .hero .decorative-element.hero-top-circle {
@@ -1052,7 +1057,7 @@ body {
     right: 150px;
     top: -10px;
     animation: pulse 8s infinite ease-in-out;
-    z-index: 150; /* Above header to ensure visibility */
+    z-index: -1; /* Behind content to avoid interference */
     position: absolute; /* Reinforce absolute positioning */
 }
 .hero .subtitle { 

@@ -375,27 +375,101 @@ document.addEventListener('DOMContentLoaded', () => {
         projectsContainer.style.cursor = 'grab';
     }
     
-    // Make progress indicator draggable too
+    // Make progress indicator draggable with intensity detection
     const progressTrack = document.querySelector('.progress-track');
+    let isProgressDragging = false;
+    let progressStartX = 0;
+    let progressStartTime = 0;
+    let progressDragDistance = 0;
+    
+    function handleProgressDrag(e) {
+        if (isTransitioning || !progressTrack || !indicator) return;
+        
+        // Get click/touch position
+        const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        const trackRect = progressTrack.getBoundingClientRect();
+        const clickPosition = clientX - trackRect.left;
+        const trackWidth = trackRect.width;
+        const percentage = Math.max(0, Math.min(1, clickPosition / trackWidth));
+        
+        if (!isProgressDragging) {
+            // Start drag
+            isProgressDragging = true;
+            progressStartX = clientX;
+            progressStartTime = Date.now();
+            progressDragDistance = 0;
+            
+            // Add move and end listeners
+            document.addEventListener('mousemove', handleProgressDragMove);
+            document.addEventListener('touchmove', handleProgressDragMove, { passive: false });
+            document.addEventListener('mouseup', handleProgressDragEnd);
+            document.addEventListener('touchend', handleProgressDragEnd);
+            
+            progressTrack.style.cursor = 'grabbing';
+        }
+    }
+    
+    function handleProgressDragMove(e) {
+        if (!isProgressDragging) return;
+        
+        const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        progressDragDistance = Math.abs(clientX - progressStartX);
+        
+        // Prevent default to avoid selection/scrolling during drag
+        if (e.cancelable) {
+            e.preventDefault();
+        }
+    }
+    
+    function handleProgressDragEnd(e) {
+        if (!isProgressDragging) return;
+        
+        isProgressDragging = false;
+        const dragEndTime = Date.now();
+        const dragDuration = dragEndTime - progressStartTime;
+        const dragVelocity = progressDragDistance / dragDuration; // pixels per millisecond
+        
+        // Get final position
+        const clientX = e.type.includes('mouse') ? e.clientX : e.changedTouches[0].clientX;
+        const trackRect = progressTrack.getBoundingClientRect();
+        const clickPosition = clientX - trackRect.left;
+        const trackWidth = trackRect.width;
+        const percentage = Math.max(0, Math.min(1, clickPosition / trackWidth));
+        
+        // Determine if it's a gentle or intense drag
+        const isIntenseDrag = dragVelocity > 0.5 || progressDragDistance > 50; // threshold values
+        
+        let targetSlide;
+        
+        if (isIntenseDrag) {
+            // Intense drag: jump directly to position
+            targetSlide = Math.round(percentage * (totalOriginalSlides - 1)) + 3;
+        } else {
+            // Gentle drag: move one step in direction
+            const direction = clientX > progressStartX ? 1 : -1;
+            targetSlide = Math.max(3, Math.min(totalOriginalSlides + 2, currentSlide + direction));
+        }
+        
+        // Execute slide change
+        if (targetSlide !== currentSlide) {
+            isTransitioning = true;
+            currentSlide = targetSlide;
+            updateSlider();
+        }
+        
+        // Clean up
+        document.removeEventListener('mousemove', handleProgressDragMove);
+        document.removeEventListener('touchmove', handleProgressDragMove);
+        document.removeEventListener('mouseup', handleProgressDragEnd);
+        document.removeEventListener('touchend', handleProgressDragEnd);
+        
+        progressTrack.style.cursor = 'grab';
+    }
+    
     if (progressTrack && indicator) {
-        progressTrack.addEventListener('mousedown', (e) => {
-            if (isTransitioning) return;
-            
-            // Calculate position in track as percentage
-            const trackRect = progressTrack.getBoundingClientRect();
-            const clickPosition = e.clientX - trackRect.left;
-            const trackWidth = trackRect.width;
-            const percentage = Math.max(0, Math.min(1, clickPosition / trackWidth));
-            
-            // Calculate slide to go to
-            const targetSlide = Math.round(percentage * (totalOriginalSlides - 1)) + 3;
-            
-            if (targetSlide !== currentSlide) {
-                isTransitioning = true;
-                currentSlide = targetSlide;
-                updateSlider();
-            }
-        });
+        progressTrack.addEventListener('mousedown', handleProgressDrag);
+        progressTrack.addEventListener('touchstart', handleProgressDrag, { passive: true });
+        progressTrack.style.cursor = 'grab';
     }
     
     // Handle window resize
@@ -415,9 +489,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let testimonialInterval;
     let isDraggingTestimonial = false;
     let testimonialStartPos = 0;
+    let testimonialStartPosY = 0;
     let testimonialCurrentTranslate = 0;
     let testimonialPrevTranslate = 0;
     let testimonialAnimationID = 0;
+    let testimonialDragDirection = null; // 'horizontal' or 'vertical'
     
     function showTestimonial(index) {
         // Remove active class from all cards and dots
@@ -465,6 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stopTestimonialAutoScroll();
         
         testimonialStartPos = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+        testimonialStartPosY = event.type.includes('mouse') ? event.clientY : event.touches[0].clientY;
         isDraggingTestimonial = true;
         
         carouselTrack.style.transition = 'none';
@@ -485,19 +562,35 @@ document.addEventListener('DOMContentLoaded', () => {
     function testimonialTouchMove(event) {
         if (!isDraggingTestimonial) return;
         
-        if (event.cancelable) {
-            event.preventDefault();
+        const currentX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+        const currentY = event.type.includes('mouse') ? event.clientY : event.touches[0].clientY;
+        
+        const diffX = Math.abs(currentX - testimonialStartPos);
+        const diffY = Math.abs(currentY - testimonialStartPosY);
+        
+        // Determine drag direction on first significant movement
+        if (testimonialDragDirection === null && (diffX > 10 || diffY > 10)) {
+            testimonialDragDirection = diffX > diffY ? 'horizontal' : 'vertical';
         }
         
-        const currentPosition = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
-        const diff = currentPosition - testimonialStartPos;
-        testimonialCurrentTranslate = testimonialPrevTranslate + diff;
-        
-        testimonialAnimationID = requestAnimationFrame(() => {
-            if (carouselTrack) {
-                carouselTrack.style.transform = `translateX(${testimonialCurrentTranslate}px)`;
+        // Only prevent default and handle testimonial drag if moving horizontally
+        if (testimonialDragDirection === 'horizontal') {
+            if (event.cancelable) {
+                event.preventDefault();
             }
-        });
+            
+            const diff = currentX - testimonialStartPos;
+            testimonialCurrentTranslate = testimonialPrevTranslate + diff;
+            
+            testimonialAnimationID = requestAnimationFrame(() => {
+                if (carouselTrack) {
+                    carouselTrack.style.transform = `translateX(${testimonialCurrentTranslate}px)`;
+                }
+            });
+        } else if (testimonialDragDirection === 'vertical') {
+            // Allow vertical scrolling by not preventing default and ending drag
+            testimonialTouchEnd();
+        }
     }
     
     function testimonialTouchEnd() {
@@ -506,23 +599,29 @@ document.addEventListener('DOMContentLoaded', () => {
         isDraggingTestimonial = false;
         cancelAnimationFrame(testimonialAnimationID);
         
-        // Calculate swipe threshold
-        const movedBy = testimonialCurrentTranslate - testimonialPrevTranslate;
-        const containerWidth = carouselTrack ? carouselTrack.offsetWidth : 0;
-        
-        // If moved more than 20% of container width, change slide
-        if (Math.abs(movedBy) > containerWidth * 0.2) {
-            if (movedBy > 0) {
-                // Swiped right - go to previous
-                prevTestimonial();
+        // Only handle slide change if we were dragging horizontally
+        if (testimonialDragDirection === 'horizontal') {
+            // Calculate swipe threshold
+            const movedBy = testimonialCurrentTranslate - testimonialPrevTranslate;
+            const containerWidth = carouselTrack ? carouselTrack.offsetWidth : 0;
+            
+            // If moved more than 20% of container width, change slide
+            if (Math.abs(movedBy) > containerWidth * 0.2) {
+                if (movedBy > 0) {
+                    // Swiped right - go to previous
+                    prevTestimonial();
+                } else {
+                    // Swiped left - go to next
+                    nextTestimonial();
+                }
             } else {
-                // Swiped left - go to next
-                nextTestimonial();
+                // Snap back to current slide
+                showTestimonial(currentTestimonial);
             }
-        } else {
-            // Snap back to current slide
-            showTestimonial(currentTestimonial);
         }
+        
+        // Reset drag direction for next interaction
+        testimonialDragDirection = null;
         
         // Re-enable transitions and reset cursor
         if (carouselTrack) {
