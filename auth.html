@@ -141,6 +141,8 @@
             color: #1a1a1a;
             background: #fff;
             transition: all 0.3s ease;
+            height: 56px; /* Fixed height to ensure consistent positioning */
+            box-sizing: border-box;
         }
         
         .form-input:focus {
@@ -151,10 +153,14 @@
         
         .form-input.error {
             border-color: #dc3545;
+            height: 56px !important; /* Maintain consistent height */
+            padding: 16px 20px !important; /* Maintain consistent padding */
         }
         
         .form-input.success {
             border-color: #28a745;
+            height: 56px !important; /* Maintain consistent height */
+            padding: 16px 20px !important; /* Maintain consistent padding */
         }
         
         .form-error {
@@ -168,16 +174,56 @@
             display: block;
         }
         
-        .password-toggle {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #666;
-            cursor: pointer;
-            font-size: 16px;
+        /* Override any potential Bootstrap or external CSS conflicts */
+        .form-group {
+            position: relative !important;
+        }
+        
+        /* Most specific selector to override everything */
+        .auth-form .form-group .password-toggle {
+            position: absolute !important;
+            right: 20px !important;
+            top: 45px !important; /* Adjusted for perfect centering */
+            background: transparent !important;
+            border: 0 !important;
+            outline: none !important;
+            color: #666 !important;
+            cursor: pointer !important;
+            font-size: 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 20px !important;
+            height: 20px !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            line-height: 1 !important;
+            z-index: 999 !important;
+            box-shadow: none !important;
+        }
+        
+        /* Override for all possible states with maximum specificity */
+        .auth-form .form-group input.form-input + .password-toggle,
+        .auth-form .form-group input.form-input.error + .password-toggle,
+        .auth-form .form-group input.form-input.success + .password-toggle,
+        .auth-form .form-group input.form-input:focus + .password-toggle {
+            top: 48px !important; /* Force consistent positioning with higher specificity */
+        }
+        
+        .password-toggle:focus,
+        .password-toggle:hover {
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            border: 0 !important;
+        }
+        
+        .password-toggle i {
+            display: block !important;
+            line-height: 1 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: 16px !important;
         }
         
         .checkbox-group {
