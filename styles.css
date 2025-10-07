@@ -1092,6 +1092,7 @@ body {
     overflow: hidden; 
     position: relative; 
     user-select: none; 
+    z-index: 10; /* Ensure slider is above decorative elements */
 }
 .projects { 
     display: flex; 
@@ -1174,6 +1175,8 @@ body {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
+    position: relative;
+    z-index: 10; /* Ensure navigation is above decorative elements */
 }
 
 .progress-track { 
@@ -1209,6 +1212,8 @@ body {
 .slider-buttons { 
     display: flex; 
     gap: 12px; 
+    position: relative;
+    z-index: 10; /* Ensure buttons are above decorative elements */
 }
 
 .slider-buttons button { 

@@ -415,6 +415,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
         progressDragDistance = Math.abs(clientX - progressStartX);
         
+        // Calculate real-time position and update slider
+        const trackRect = progressTrack.getBoundingClientRect();
+        const clickPosition = clientX - trackRect.left;
+        const trackWidth = trackRect.width;
+        const percentage = Math.max(0, Math.min(1, clickPosition / trackWidth));
+        
+        // Convert percentage to slide index (real-time)
+        const targetSlide = Math.round(percentage * (totalOriginalSlides - 1)) + 3;
+        
+        // Only update if different slide to avoid unnecessary transitions
+        if (targetSlide !== currentSlide && targetSlide >= 3 && targetSlide <= totalOriginalSlides + 2) {
+            currentSlide = targetSlide;
+            updateSlider();
+        }
+        
         // Prevent default to avoid selection/scrolling during drag
         if (e.cancelable) {
             e.preventDefault();
@@ -425,39 +440,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isProgressDragging) return;
         
         isProgressDragging = false;
-        const dragEndTime = Date.now();
-        const dragDuration = dragEndTime - progressStartTime;
-        const dragVelocity = progressDragDistance / dragDuration; // pixels per millisecond
         
-        // Get final position
-        const clientX = e.type.includes('mouse') ? e.clientX : e.changedTouches[0].clientX;
-        const trackRect = progressTrack.getBoundingClientRect();
-        const clickPosition = clientX - trackRect.left;
-        const trackWidth = trackRect.width;
-        const percentage = Math.max(0, Math.min(1, clickPosition / trackWidth));
-        
-        // Determine if it's a gentle or intense drag
-        const isIntenseDrag = dragVelocity > 0.5 || progressDragDistance > 50; // threshold values
-        
-        let targetSlide;
-        
-        if (isIntenseDrag) {
-            // Intense drag: jump directly to position
-            targetSlide = Math.round(percentage * (totalOriginalSlides - 1)) + 3;
-        } else {
-            // Gentle drag: move one step in direction
-            const direction = clientX > progressStartX ? 1 : -1;
-            targetSlide = Math.max(3, Math.min(totalOriginalSlides + 2, currentSlide + direction));
-        }
-        
-        // Execute slide change
-        if (targetSlide !== currentSlide) {
-            isTransitioning = true;
-            currentSlide = targetSlide;
+        // Final position has already been set in handleProgressDragMove
+        // Just ensure we're at a valid slide position
+        if (currentSlide < 3) {
+            currentSlide = 3;
+            updateSlider();
+        } else if (currentSlide > totalOriginalSlides + 2) {
+            currentSlide = totalOriginalSlides + 2;
             updateSlider();
         }
         
-        // Clean up
+        // Clean up event listeners
         document.removeEventListener('mousemove', handleProgressDragMove);
         document.removeEventListener('touchmove', handleProgressDragMove);
         document.removeEventListener('mouseup', handleProgressDragEnd);
