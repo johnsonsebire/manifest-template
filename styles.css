@@ -2795,6 +2795,11 @@ body.notification-visible .hero {
    ======================== */
 
 @media (max-width: 1024px) and (min-width: 769px) {
+    /* Hide decorative elements in hero section on tablets */
+    .hero .decorative-element {
+        display: none !important;
+    }
+    
     /* Header adjustments */
     .primary-header {
         padding: 0 40px;
@@ -3916,10 +3921,11 @@ body.notification-visible .hero {
     
     body.notification-visible .primary-header {
         position: fixed;
-        top: 110px;
+        top: 154px; /* Position below the actual mobile notification height */
         left: 0;
         right: 0;
         width: 100%;
+        z-index: 1050; /* Ensure header stays above content but below notification */
     }
     
     body.notification-visible .reading-tracker {
@@ -3927,12 +3933,12 @@ body.notification-visible .hero {
     }
     
     body.notification-visible .hero {
-        padding-top: calc(87px + 110px + 118px);
+        padding-top: calc(87px + 154px + 80px); /* Mobile: original padding + actual notification height + mobile header height */
     }
     
     /* Add top spacing for page content when notification is visible on mobile */
     body.notification-visible section:first-of-type:not(.hero) {
-        padding-top: calc(5rem + 228px); /* Original section padding + notification (110px) + header (118px) */
+        padding-top: calc(5rem + 234px); /* Original section padding + notification (154px) + mobile header (80px) */
     }
     
     .cta { 
