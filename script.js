@@ -709,5 +709,25 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(targetTab).classList.add('active');
         });
     });
+
+    // Smooth scroll to pricing section with header offset
+    const viewPricingBtn = document.getElementById('view-pricing-btn');
+    if (viewPricingBtn) {
+        viewPricingBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const pricingSection = document.getElementById('pricing');
+            if (pricingSection) {
+                const headerHeight = 80; // Adjust this value based on your header height
+                const sectionTop = pricingSection.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = sectionTop - headerHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
 });
 
