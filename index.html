@@ -1533,112 +1533,183 @@
             });
         });
         
-        // Ensure proper text rotation animation
+        // Robust text rotation animation using Anime.js
         document.addEventListener('DOMContentLoaded', function() {
-            // Clone first item and append it to the end to create a seamless loop
             const textRotate = document.querySelector('.text-rotate');
-            if (textRotate) {
-                const firstItem = textRotate.querySelector('.text-rotate-item');
-                if (firstItem) {
-                    const clone = firstItem.cloneNode(true);
-                    textRotate.appendChild(clone);
-                }
+            const textContainer = document.querySelector('.text-rotate-container');
+            const underlineSvg = document.querySelector('.underline-svg');
+            
+            if (!textRotate || !textContainer) return;
+            
+            const textItems = Array.from(document.querySelectorAll('.text-rotate-item'));
+            if (textItems.length === 0) return;
+            
+            let currentIndex = 0;
+            let itemWidths = [];
+            let itemHeight = 74; // Base height from CSS
+            let animationTimeline;
+            
+            // Function to measure text widths accurately
+            function measureTextWidths() {
+                itemWidths = [];
+                const isMobile = window.innerWidth <= 768;
                 
-                // Calculate the widest text item and set container width
-                // We need to make all items temporarily visible for proper width calculation
-                const textItems = document.querySelectorAll('.text-rotate-item');
-                let maxWidth = 0;
-                const itemWidths = []; // Store individual item widths
-                
-                // First make all items visible but off-screen to measure their true width
-                textItems.forEach(item => {
-                    // Make visible but off-screen for measurement
+                textItems.forEach((item, index) => {
+                    // Create temporary measurement element
                     const testDiv = document.createElement('div');
-                    testDiv.style.position = 'absolute';
-                    testDiv.style.visibility = 'hidden';
-                    testDiv.style.whiteSpace = 'nowrap';
-                    testDiv.style.fontWeight = '800';
-                    testDiv.style.fontSize = window.innerWidth <= 768 ? '36px' : '64px'; // Match h1 font size
-                    testDiv.innerText = item.innerText;
+                    testDiv.style.cssText = `
+                        position: absolute;
+                        top: -9999px;
+                        left: -9999px;
+                        visibility: hidden;
+                        white-space: nowrap;
+                        font-family: 'Anybody', sans-serif;
+                        font-weight: 800;
+                        font-size: ${isMobile ? '36px' : '64px'};
+                        line-height: 1;
+                        padding: 0;
+                        margin: 0;
+                        border: none;
+                    `;
+                    testDiv.textContent = item.textContent;
                     document.body.appendChild(testDiv);
                     
-                    // Get the true width
-                    const itemWidth = testDiv.getBoundingClientRect().width;
-                    maxWidth = Math.max(maxWidth, itemWidth);
-                    itemWidths.push(itemWidth);
+                    // Get the computed width
+                    const width = testDiv.getBoundingClientRect().width;
+                    itemWidths.push(Math.ceil(width) + 2); // Add small buffer for precision
                     
-                    // Store width on the element for later use
-                    item.setAttribute('data-width', itemWidth);
+                    // Store width on element for reference
+                    item.setAttribute('data-width', width);
                     
                     // Clean up
                     document.body.removeChild(testDiv);
                 });
                 
-                if (maxWidth > 0) {
-                    const container = document.querySelector('.text-rotate-container');
-                    if (container) {
-                        // Start with the width of the first item
-                        container.style.width = (itemWidths[0]) + 'px';
-                    }
-                }
+                console.log('Measured widths:', itemWidths.map((w, i) => `${textItems[i].textContent}: ${w}px`));
+            }
+            
+            // Function to update container and underline width smoothly
+            function updateWidth(targetWidth, duration = 400) {
+                if (!textContainer) return;
                 
-                // Set up animation observer to update underline width AND container width
-                const underlineSvg = document.querySelector('.underline-svg');
-                const underlineContainer = document.querySelector('.underline-container');
-                
-                // Update underline width AND container width based on current visible item
-                function updateUnderlineWidth() {
-                    // Get the current translateY value and determine which item is visible
-                    const translateY = getRotateY();
-                    
-                    // Calculate visible index based on pixel position and item height
-                    // Using 88px as the height of each item on desktop
-                    const itemHeight = window.innerWidth <= 768 ? 48 : 88;
-                    const visibleIndex = Math.round(Math.abs(translateY) / itemHeight) % 4;
-                    
-                    if (visibleIndex >= 0 && visibleIndex < itemWidths.length) {
-                        const currentWidth = itemWidths[visibleIndex];
-                        const container = document.querySelector('.text-rotate-container');
-                        
-                        // Update both container and underline width
-                        if (container) {
-                            container.style.width = currentWidth + 'px';
-                        }
-                        if (underlineSvg && underlineContainer) {
-                            underlineSvg.style.width = currentWidth + 'px';
-                        }
-                    }
-                }
-                
-                // Helper function to get current translateY value
-                function getRotateY() {
-                    const transform = window.getComputedStyle(textRotate).getPropertyValue('transform');
-                    if (transform === 'none') return 0;
-                    
-                    const matrix = new DOMMatrix(transform);
-                    return matrix.m42; // Get translateY value
-                }
-                
-                // Update initial underline width
-                updateUnderlineWidth();
-                
-                // Watch for animation to update underline width
-                const observer = new MutationObserver(mutations => {
-                    mutations.forEach(mutation => {
-                        if (mutation.attributeName === 'style') {
-                            updateUnderlineWidth();
-                        }
-                    });
+                // Animate container width
+                anime({
+                    targets: textContainer,
+                    width: targetWidth + 'px',
+                    duration: duration,
+                    easing: 'easeOutCubic'
                 });
                 
-                observer.observe(textRotate, { attributes: true, attributeFilter: ['style'] });
-                
-                // Also use animation events as backup
-                textRotate.addEventListener('animationiteration', updateUnderlineWidth);
-                
-                // Update on interval as another fallback
-                setInterval(updateUnderlineWidth, 500);
+                // Animate underline width if present
+                if (underlineSvg) {
+                    anime({
+                        targets: underlineSvg,
+                        width: targetWidth + 'px',
+                        duration: duration,
+                        easing: 'easeOutCubic'
+                    });
+                }
             }
+            
+            // Function to animate to next text item
+            function animateToNext() {
+                const nextIndex = (currentIndex + 1) % textItems.length;
+                const nextWidth = itemWidths[nextIndex];
+                
+                // First, animate the width change slightly before text movement for better visual flow
+                updateWidth(nextWidth, 300);
+                
+                // Then animate the text movement
+                setTimeout(() => {
+                    anime({
+                        targets: textRotate,
+                        translateY: `-${(nextIndex) * itemHeight}px`,
+                        duration: 600,
+                        easing: 'easeOutCubic',
+                        complete: () => {
+                            currentIndex = nextIndex;
+                            
+                            // If we've completed a full cycle, reset to beginning seamlessly
+                            if (currentIndex === 0) {
+                                // Wait a moment then reset position without animation
+                                setTimeout(() => {
+                                    anime.set(textRotate, {
+                                        translateY: '0px'
+                                    });
+                                }, 100);
+                            }
+                        }
+                    });
+                }, 150); // Slight delay to let width animation start first
+            }
+            
+            // Function to start the animation loop
+            function startRotationAnimation() {
+                // Set initial state
+                currentIndex = 0;
+                anime.set(textRotate, { translateY: '0px' });
+                updateWidth(itemWidths[0], 0);
+                
+                // Create repeating timeline
+                const runLoop = () => {
+                    // Stay on current item for 2.5 seconds, then animate
+                    setTimeout(() => {
+                        animateToNext();
+                        // Schedule next iteration
+                        setTimeout(runLoop, 1000); // Wait for animation to complete
+                    }, 2500);
+                };
+                
+                // Start the loop
+                runLoop();
+            }
+            
+            // Function to handle responsive changes
+            function handleResize() {
+                // Re-measure widths on resize
+                measureTextWidths();
+                // Update current width immediately
+                if (itemWidths[currentIndex]) {
+                    updateWidth(itemWidths[currentIndex], 200);
+                }
+            }
+            
+            // Initialize the animation
+            function initTextRotation() {
+                try {
+                    measureTextWidths();
+                    startRotationAnimation();
+                } catch (error) {
+                    console.error('Error initializing text rotation:', error);
+                    // Fallback: just show first item
+                    if (itemWidths[0]) {
+                        updateWidth(itemWidths[0], 0);
+                    }
+                }
+            }
+            
+            // Start animation after a short delay to ensure everything is loaded
+            setTimeout(initTextRotation, 100);
+            
+            // Handle window resize with debouncing
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 250);
+            });
+            
+            // Pause animation when page is not visible (performance optimization)
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    // Page is hidden, pause animations
+                    anime.remove(textRotate);
+                    anime.remove(textContainer);
+                    if (underlineSvg) anime.remove(underlineSvg);
+                } else {
+                    // Page is visible again, restart
+                    setTimeout(initTextRotation, 100);
+                }
+            });
         });
         
         // Mobile menu functionality
