@@ -3548,3 +3548,87 @@ body.notification-visible .hero {
         top: -20px;
     }
 }
+
+/* Enhanced Preloader Styles for Better Performance */
+@media (prefers-reduced-motion: no-preference) {
+    .preloader-container {
+        animation: subtle-float 6s ease-in-out infinite;
+    }
+    
+    @keyframes subtle-float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-5px); }
+    }
+}
+
+/* Preloader optimizations for mobile */
+@media (max-width: 768px) {
+    .loader-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+    }
+    
+    .logo-inner {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+    }
+    
+    .loading-text {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    
+    .progress-bar {
+        width: 150px;
+    }
+    
+    .bg-element-1 {
+        width: 200px;
+        height: 200px;
+        top: -100px;
+        left: -100px;
+    }
+    
+    .bg-element-2 {
+        width: 120px;
+        height: 120px;
+        bottom: -60px;
+        right: -60px;
+    }
+    
+    .bg-element-3 {
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        right: -50px;
+    }
+}
+
+/* Smooth page transition after preloader */
+.main-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Only apply hidden state during loading */
+body.loading .main-content {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.main-content.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Preloader accessibility */
+@media (prefers-reduced-motion: reduce) {
+    #preloader * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

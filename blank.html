@@ -18,13 +18,145 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
     <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .preloader-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
+            border-radius: 20px;
+            margin: 0 auto 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 73, 0, 0.3);
+        }
+
+        .logo-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            opacity: 0;
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #FF4900;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .loading-text {
+            color: #ffffff;
+            font-family: 'Anybody', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            opacity: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 2rem auto 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #FF4900, #FF6B3D);
+            border-radius: 2px;
+        }
+
+        /* Animated background elements */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 73, 0, 0.05);
+        }
+
+        .bg-element-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+
+        .bg-element-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .bg-element-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: -75px;
+        }
+
+        /* Hide page content during loading */
+        body.loading {
+            overflow: hidden;
+        }
+
+        body.loading .main-content {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Fade out animation */
+        .preloader-fade-out {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        
         /* Page Specific Styles */
         .main-content {
             min-height: 60vh;
             padding: 120px 20px 80px;
             max-width: 1400px;
             margin: 0 auto;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
         .main-content h1 {
@@ -41,7 +173,36 @@
         }
     </style>
 </head>
-<body>
+<body class="loading" class="loading">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="bg-element bg-element-1"></div>
+        <div class="bg-element bg-element-2"></div>
+        <div class="bg-element bg-element-3"></div>
+        
+        <div class="preloader-container">
+            <div class="loader-logo">
+                <div class="logo-inner"></div>
+            </div>
+            
+            <div class="loading-dots">
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+                <div class="dot dot-4"></div>
+                <div class="dot dot-5"></div>
+            </div>
+            
+            <div class="loading-text">Loading</div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content-wrapper">
     <!-- Header Navigation -->
     <header class="primary-header">
         <div class="logo"></div>
@@ -151,8 +312,127 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    </div> <!-- End main-content-wrapper -->
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Preloader Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate background elements
+            anime({
+                targets: '.bg-element-1',
+                rotate: 360,
+                duration: 20000,
+                loop: true,
+                easing: 'linear'
+            });
+            
+            anime({
+                targets: '.bg-element-2',
+                rotate: -360,
+                duration: 15000,
+                loop: true,
+                easing: 'linear'
+            });
+            
+            anime({
+                targets: '.bg-element-3',
+                rotate: 360,
+                duration: 25000,
+                loop: true,
+                easing: 'linear'
+            });
+            
+            // Logo animation
+            anime({
+                targets: '.loader-logo',
+                scale: [0.8, 1],
+                rotateY: [0, 360],
+                duration: 2000,
+                easing: 'easeInOutQuad',
+                loop: true,
+                direction: 'alternate'
+            });
+            
+            // Logo inner reveal
+            anime({
+                targets: '.logo-inner',
+                opacity: [0, 1, 0],
+                scale: [0.5, 1, 0.5],
+                duration: 2000,
+                delay: 500,
+                loop: true,
+                easing: 'easeInOutQuad'
+            });
+            
+            // Loading dots animation
+            anime({
+                targets: '.dot',
+                opacity: [0.3, 1],
+                scale: [1, 1.2],
+                duration: 600,
+                delay: anime.stagger(100),
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutQuad'
+            });
+            
+            // Loading text fade in
+            anime({
+                targets: '.loading-text',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                delay: 1000,
+                easing: 'easeOutQuad'
+            });
+            
+            // Progress bar fill
+            anime({
+                targets: '.progress-fill',
+                width: ['0%', '100%'],
+                duration: 3000,
+                delay: 1500,
+                easing: 'easeInOutQuad'
+            });
+            
+            // Hide preloader after animations complete
+            setTimeout(function() {
+                // Fade out preloader
+                anime({
+                    targets: '#preloader',
+                    opacity: [1, 0],
+                    duration: 600,
+                    easing: 'easeOutQuad',
+                    complete: function() {
+                        document.getElementById('preloader').style.display = 'none';
+                        document.body.classList.remove('loading');
+                        
+                        // Animate main content in
+                        anime({
+                            targets: '.main-content',
+                            opacity: [0, 1],
+                            translateY: [30, 0],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+                        
+                        // Staggered animation for sections
+                        anime({
+                            targets: 'header, main, .cta-footer',
+                            opacity: [0, 1],
+                            translateY: [20, 0],
+                            duration: 600,
+                            delay: anime.stagger(200),
+                            easing: 'easeOutQuad'
+                        });
+                    }
+                });
+            }, 4500); // Total preloader duration: 4.5 seconds
+        });
+    </script>
 </body>
 </html>
