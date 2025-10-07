@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Component Demo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div style="padding: 2rem;">
+        <h1>Navigation Components Demo</h1>
+        
+        <h2>Mega Menu Component</h2>
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 2rem;">
+            <div id="mega-menu-demo"></div>
+        </div>
+        
+        <h2>Dropdown Component</h2>
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+            <div id="dropdown-demo"></div>
+        </div>
+        
+        <h2>Usage</h2>
+        <div style="background: #e9ecef; padding: 1rem; border-radius: 8px; font-family: monospace; white-space: pre-wrap; margin-top: 2rem;">
+&lt;!-- Include in your HTML --&gt;
+&lt;div id="mega-menu-placeholder"&gt;&lt;/div&gt;
+&lt;div id="dropdown-placeholder"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+// Load components
+async function loadComponent(componentName, targetId) {
+    try {
+        const response = await fetch(`components/${componentName}.html`);
+        const html = await response.text();
+        document.getElementById(targetId).innerHTML = html;
+    } catch (error) {
+        console.error(`Failed to load ${componentName}:`, error);
+    }
+}
+
+// Initialize after DOM loads
+document.addEventListener('DOMContentLoaded', async function() {
+    await Promise.all([
+        loadComponent('mega-menu', 'mega-menu-placeholder'),
+        loadComponent('drop-down', 'dropdown-placeholder')
+    ]);
+});
+&lt;/script&gt;
+        </div>
+    </div>
+    
+    <script>
+        // Component loading functionality
+        async function loadComponent(componentName, targetId) {
+            try {
+                const response = await fetch(`${componentName}.html`);
+                const html = await response.text();
+                document.getElementById(targetId).innerHTML = html;
+            } catch (error) {
+                console.error(`Failed to load ${componentName}:`, error);
+            }
+        }
+        
+        // Load components for demo
+        document.addEventListener('DOMContentLoaded', async function() {
+            await Promise.all([
+                loadComponent('mega-menu', 'mega-menu-demo'),
+                loadComponent('drop-down', 'dropdown-demo')
+            ]);
+        });
+    </script>
+</body>
+</html>
