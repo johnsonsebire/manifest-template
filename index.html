@@ -1398,8 +1398,11 @@
             const notificationClosed = localStorage.getItem('notificationClosed');
             
             if (notificationClosed !== 'true' && notificationTopbar) {
-                // Small delay to let preloader fade complete
+                // Show notification with smooth animation
                 setTimeout(() => {
+                    notificationTopbar.style.display = 'flex';
+                    // Trigger reflow for smooth animation
+                    notificationTopbar.offsetHeight;
                     notificationTopbar.classList.add('show');
                     document.body.classList.add('notification-visible');
                 }, 300);
@@ -1410,8 +1413,15 @@
         if (notificationClose) {
             notificationClose.addEventListener('click', function() {
                 if (notificationTopbar) {
+                    // Remove show class first for animation
                     notificationTopbar.classList.remove('show');
                     document.body.classList.remove('notification-visible');
+                    
+                    // Hide completely after animation completes
+                    setTimeout(() => {
+                        notificationTopbar.style.display = 'none';
+                    }, 400); // Match CSS transition duration
+                    
                     localStorage.setItem('notificationClosed', 'true');
                 }
             });
