@@ -28,14 +28,20 @@ body {
     left: 0;
     right: 0;
     width: 100%;
-    background: transparent;
+    background: #FFFCFA;
     z-index: 100;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* Transparent header variant for specific pages */
+.primary-header.transparent {
+    background: transparent;
     box-shadow: none;
 }
 
-/* Header with background on scroll */
-.primary-header.scrolled {
+/* Header with background on scroll (for transparent headers) */
+.primary-header.transparent.scrolled {
     background: #FFFCFA;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
