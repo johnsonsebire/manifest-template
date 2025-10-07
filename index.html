@@ -1757,7 +1757,8 @@
                     easing: 'easeOutQuad',
                     complete: function() {
                         document.getElementById('preloader').style.display = 'none';
-                        document.body.classList.remove('loading');
+                        // Keep overflow hidden during content animations to prevent scrollbar flash
+                        document.body.style.overflow = 'hidden';
                         
                         // Show notification after preloader if not previously closed
                         if (typeof window.showNotificationAfterPreloader === 'function') {
@@ -1780,7 +1781,12 @@
                             translateY: [20, 0],
                             duration: 600,
                             delay: anime.stagger(200),
-                            easing: 'easeOutQuad'
+                            easing: 'easeOutQuad',
+                            complete: function() {
+                                // Remove loading class and restore overflow after all animations complete
+                                document.body.classList.remove('loading');
+                                document.body.style.overflow = '';
+                            }
                         });
                     }
                 });
