@@ -3245,11 +3245,14 @@ body.notification-visible .hero {
 }
 
 @media (max-width: 768px) {
-    .primary-header { 
+    .primary-header,
+    .primary-header.transparent,
+    .primary-header.transparent.scrolled { 
         padding: 0 20px; 
         height: 80px;
         z-index: 1050; /* Higher than mobile nav to keep toggle visible */
-        background:#FFFCFA;
+        background: #FFFCFA !important; /* Force solid background on mobile */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important; /* Always show shadow on mobile */
     }
     .primary-header nav { display: none; }
     .header-right { display: none; }
