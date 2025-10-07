@@ -1527,8 +1527,14 @@
             
             let currentIndex = 0;
             let itemWidths = [];
-            let itemHeight = 74; // Base height from CSS
+            let itemHeight = 74; // Base height from CSS - will be updated based on screen size
             let animationTimeline;
+            
+            // Function to get current item height based on screen size
+            function getCurrentItemHeight() {
+                const isMobile = window.innerWidth <= 768;
+                return isMobile ? 48 : 74;
+            }
             
             // Function to measure text widths accurately
             function measureTextWidths() {
@@ -1597,6 +1603,9 @@
                 const nextIndex = (currentIndex + 1) % textItems.length;
                 const nextWidth = itemWidths[nextIndex];
                 
+                // Update item height for current screen size
+                itemHeight = getCurrentItemHeight();
+                
                 // First, animate the width change slightly before text movement for better visual flow
                 updateWidth(nextWidth, 300);
                 
@@ -1647,12 +1656,19 @@
             
             // Function to handle responsive changes
             function handleResize() {
+                // Update item height for current screen size
+                itemHeight = getCurrentItemHeight();
+                
                 // Re-measure widths on resize
                 measureTextWidths();
+                
                 // Update current width immediately
                 if (itemWidths[currentIndex]) {
                     updateWidth(itemWidths[currentIndex], 200);
                 }
+                
+                // Reset position with correct height
+                anime.set(textRotate, { translateY: `-${currentIndex * itemHeight}px` });
             }
             
             // Initialize the animation

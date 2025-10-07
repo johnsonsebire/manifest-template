@@ -3325,18 +3325,19 @@ body.notification-visible .hero {
     
     /* Adjust rotating text for mobile */
     .text-rotate-container {
-        height: 44px; /* Match the mobile calculated line-height of h1 (36px * 1.2 = 43.2px) */
+        height: 48px; /* Increased height to prevent text cutoff on mobile */
         overflow: visible; /* Show underline */
     }
     
     .text-rotate-inner {
-        height: 44px; /* Match the mobile calculated line-height of h1 */
+        height: 48px; /* Increased height to prevent text cutoff on mobile */
         overflow: hidden; /* Hide overflow text */
     }
     
     .text-rotate-item {
-        height: 44px;
-        line-height: 44px; /* Match the mobile calculated line-height */
+        height: 48px;
+        line-height: 48px; /* Increased line-height to prevent text cutoff on mobile */
+        font-size: 36px; /* Ensure font-size matches mobile h1 */
     }
     
     .underline-container {
@@ -3354,16 +3355,16 @@ body.notification-visible .hero {
             transform: translateY(0);
         }
         20%, 40% {
-            transform: translateY(-44px); /* Use exact pixel values for mobile */
+            transform: translateY(-48px); /* Updated for new 48px height */
         }
         45%, 65% {
-            transform: translateY(-88px); /* 2 × 44px */
+            transform: translateY(-96px); /* 2 × 48px */
         }
         70%, 90% {
-            transform: translateY(-132px); /* 3 × 44px */
+            transform: translateY(-144px); /* 3 × 48px */
         }
         95%, 100% {
-            transform: translateY(-176px); /* 4 × 44px */
+            transform: translateY(-192px); /* 4 × 48px */
         }
     }
     
