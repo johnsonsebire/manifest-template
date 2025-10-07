@@ -308,59 +308,579 @@
             line-height: 1.6;
         }
 
-        /* Team Section */
+        /* Our People Section */
+        .people-section {
+            padding: 6rem 0;
+            background: #fafafa;
+        }
+
+        .people-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .people-intro h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .people-intro p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
-        .team-card {
+        .team-member {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
         }
 
-        .team-card:hover {
-            transform: translateY(-10px);
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
-        .team-image {
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-member:hover::before {
+            opacity: 1;
+        }
+
+        .member-photo {
             width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #ff2200, #ff6b00);
+            height: 280px;
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-photo img {
+            transform: scale(1.05);
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 4rem;
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
         }
 
-        .team-info {
-            padding: 1.5rem;
+        .member-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 2rem 1.5rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .member-overlay {
+            transform: translateY(0);
+        }
+
+        .overlay-content {
             text-align: center;
         }
 
-        .team-name {
-            font-size: 1.3rem;
-            font-weight: 700;
+        .member-quick-info {
+            font-size: 0.9rem;
+            opacity: 0.9;
             margin-bottom: 0.5rem;
-            color: #333;
         }
 
-        .team-role {
+        .view-profile-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-profile-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .member-info {
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .member-role {
             font-size: 1rem;
-            color: #ff2200;
+            color: #FF4900;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .member-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
             margin-bottom: 1rem;
         }
 
-        .team-bio {
-            font-size: 0.95rem;
+        .specialty-tag {
+            background: #f8f9fa;
+            color: #666;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .member-brief {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: #FF4900;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Team Modal Styles */
+        .team-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .team-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+        }
+
+        .team-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #666;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: #FF4900;
+            color: white;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
+            color: white;
+            padding: 3rem 3rem 2rem;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .modal-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .modal-name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0 !important;
+            line-height: 1.2;
+            display: block;
+        }
+
+        .modal-role {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 0 0 1rem 0 !important;
+            line-height: 1.4;
+            display: block;
+        }
+
+        .modal-contact {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .modal-section {
+            margin-bottom: 3rem;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .bio-text {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #FF4900;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▪';
+            color: #FF4900;
+            font-weight: bold;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #FF4900, #FF6B3D);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #FF4900;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .experience-period {
+            font-size: 0.8rem;
+            color: #FF4900;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-company {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-description {
+            font-size: 0.9rem;
             color: #666;
             line-height: 1.6;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #FF4900, #FF6B3D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .achievement-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-description {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+                max-height: 95vh;
+            }
+
+            .modal-header {
+                padding: 2rem 2rem 1.5rem;
+            }
+
+            .modal-photo {
+                width: 120px;
+                height: 120px;
+            }
+
+            .modal-name {
+                font-size: 1.8rem;
+            }
+
+            .modal-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 1.5rem;
+            }
+
+            .modal-contact {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         /* Testimonials */
@@ -739,68 +1259,273 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section>
+    <!-- Our People Section -->
+    <section class="people-section">
         <div class="container">
-            <h2 class="section-title">Meet Our Team</h2>
-            <p class="section-subtitle">The brilliant minds behind our success</p>
+            <div class="people-intro">
+                <h2>Our People</h2>
+                <p>Meet the passionate professionals who drive innovation, creativity, and excellence in everything we do. Our diverse team brings together expertise from across the digital landscape to deliver exceptional results for our clients.</p>
+            </div>
             
             <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-image">
-                        <i class="fas fa-user-tie"></i>
+                <!-- CEO & Founder -->
+                <div class="team-member" data-member="kwame-asante">
+                    <div class="member-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="member-overlay">
+                            <div class="overlay-content">
+                                <div class="member-quick-info">10+ years experience • Accra, Ghana</div>
+                                <span class="view-profile-btn">
+                                    <i class="fas fa-eye"></i> View Profile
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Founding Team</h3>
-                        <p class="team-role">Leadership</p>
-                        <p class="team-bio">
-                            Our founding team brings together decades of experience in technology, business strategy, 
-                            and digital transformation.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Development Team</h3>
-                        <p class="team-role">Engineering</p>
-                        <p class="team-bio">
-                            Expert developers specializing in web, mobile, AI/ML, and enterprise application development.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-image">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <div class="team-info">
-                        <h3 class="team-name">Design Team</h3>
-                        <p class="team-role">UI/UX Design</p>
-                        <p class="team-bio">
-                            Creative designers focused on crafting beautiful, intuitive, and user-centered digital experiences.
-                        </p>
+                    <div class="member-info">
+                        <h3 class="member-name">Kwame Asante</h3>
+                        <p class="member-role">CEO & Founder</p>
+                        <div class="member-specialties">
+                            <span class="specialty-tag">Digital Strategy</span>
+                            <span class="specialty-tag">Business Development</span>
+                            <span class="specialty-tag">AI Innovation</span>
+                        </div>
+                        <p class="member-brief">Visionary leader driving digital transformation across Africa with expertise in AI solutions and sustainable business growth.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="team-card">
-                    <div class="team-image">
-                        <i class="fas fa-brain"></i>
+                <!-- CTO -->
+                <div class="team-member" data-member="ama-osei">
+                    <div class="member-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="member-overlay">
+                            <div class="overlay-content">
+                                <div class="member-quick-info">8+ years experience • Remote</div>
+                                <span class="view-profile-btn">
+                                    <i class="fas fa-eye"></i> View Profile
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="team-info">
-                        <h3 class="team-name">AI/ML Team</h3>
-                        <p class="team-role">Data Science & AI</p>
-                        <p class="team-bio">
-                            Data scientists and AI engineers building intelligent solutions that drive business value.
-                        </p>
+                    <div class="member-info">
+                        <h3 class="member-name">Ama Osei</h3>
+                        <p class="member-role">Chief Technology Officer</p>
+                        <div class="member-specialties">
+                            <span class="specialty-tag">System Architecture</span>
+                            <span class="specialty-tag">Cloud Computing</span>
+                            <span class="specialty-tag">DevOps</span>
+                        </div>
+                        <p class="member-brief">Tech innovator specializing in scalable cloud architectures and cutting-edge development methodologies.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Director -->
+                <div class="team-member" data-member="kofi-mensah">
+                    <div class="member-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="member-overlay">
+                            <div class="overlay-content">
+                                <div class="member-quick-info">12+ years experience • London, UK</div>
+                                <span class="view-profile-btn">
+                                    <i class="fas fa-eye"></i> View Profile
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Kofi Mensah</h3>
+                        <p class="member-role">Creative Director</p>
+                        <div class="member-specialties">
+                            <span class="specialty-tag">UI/UX Design</span>
+                            <span class="specialty-tag">Brand Identity</span>
+                            <span class="specialty-tag">Design Systems</span>
+                        </div>
+                        <p class="member-brief">Award-winning designer creating compelling digital experiences and memorable brand identities for global clients.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Developer -->
+                <div class="team-member" data-member="sarah-johnson">
+                    <div class="member-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="member-overlay">
+                            <div class="overlay-content">
+                                <div class="member-quick-info">7+ years experience • New York, USA</div>
+                                <span class="view-profile-btn">
+                                    <i class="fas fa-eye"></i> View Profile
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sarah Johnson</h3>
+                        <p class="member-role">Lead Full-Stack Developer</p>
+                        <div class="member-specialties">
+                            <span class="specialty-tag">React/Node.js</span>
+                            <span class="specialty-tag">Mobile Apps</span>
+                            <span class="specialty-tag">API Development</span>
+                        </div>
+                        <p class="member-brief">Full-stack expert building robust web and mobile applications with modern technologies and best practices.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-stack-overflow"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI/ML Specialist -->
+                <div class="team-member" data-member="david-opoku">
+                    <div class="member-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="member-overlay">
+                            <div class="overlay-content">
+                                <div class="member-quick-info">6+ years experience • Kumasi, Ghana</div>
+                                <span class="view-profile-btn">
+                                    <i class="fas fa-eye"></i> View Profile
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">David Opoku</h3>
+                        <p class="member-role">AI/ML Specialist</p>
+                        <div class="member-specialties">
+                            <span class="specialty-tag">Machine Learning</span>
+                            <span class="specialty-tag">Data Science</span>
+                            <span class="specialty-tag">Python/TensorFlow</span>
+                        </div>
+                        <p class="member-brief">Data scientist and ML engineer developing intelligent solutions that transform business operations and drive growth.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-kaggle"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing Manager -->
+                <div class="team-member" data-member="grace-addo">
+                    <div class="member-photo">
+                        <div class="photo-placeholder">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="member-overlay">
+                            <div class="overlay-content">
+                                <div class="member-quick-info">5+ years experience • Cape Coast, Ghana</div>
+                                <span class="view-profile-btn">
+                                    <i class="fas fa-eye"></i> View Profile
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Grace Addo</h3>
+                        <p class="member-role">Digital Marketing Manager</p>
+                        <div class="member-specialties">
+                            <span class="specialty-tag">SEO/SEM</span>
+                            <span class="specialty-tag">Social Media</span>
+                            <span class="specialty-tag">Analytics</span>
+                        </div>
+                        <p class="member-brief">Strategic marketing professional driving digital growth through data-driven campaigns and innovative engagement strategies.</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-google"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Team Member Modals -->
+    <div class="team-modal" id="teamModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTeamModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <div class="modal-photo">
+                    <div class="modal-photo-placeholder" id="modalPhotoPlaceholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <h2 class="modal-name" id="modalName">Team Member</h2>
+                <p class="modal-role" id="modalRole">Position</p>
+                <div class="modal-contact" id="modalContact">
+                    <!-- Contact information will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>
+                        <div class="section-icon"><i class="fas fa-user-circle"></i></div>
+                        About
+                    </h3>
+                    <p class="bio-text" id="modalBio">
+                        <!-- Bio content will be populated by JavaScript -->
+                    </p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>
+                        <div class="section-icon"><i class="fas fa-cogs"></i></div>
+                        Expertise & Skills
+                    </h3>
+                    <div class="skills-grid" id="modalSkills">
+                        <!-- Skills will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>
+                        <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+                        Professional Experience
+                    </h3>
+                    <div class="experience-timeline" id="modalExperience">
+                        <!-- Experience will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>
+                        <div class="section-icon"><i class="fas fa-trophy"></i></div>
+                        Achievements & Recognition
+                    </h3>
+                    <div class="achievements-grid" id="modalAchievements">
+                        <!-- Achievements will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Testimonials -->
     <section style="background: #f8f9fa;">
@@ -1135,12 +1860,494 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.timeline-item, .value-card, .team-card, .testimonial-card').forEach(el => {
+        document.querySelectorAll('.timeline-item, .value-card, .team-member, .testimonial-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease-out';
             observer.observe(el);
         });
+
+        // Team Member Modal Functionality
+        const teamMembers = {
+            'kwame-asante': {
+                name: 'Kwame Asante',
+                role: 'CEO & Founder',
+                photo: 'fas fa-user-tie',
+                contact: {
+                    email: 'kwame@manifestdigital.com',
+                    phone: '+233 24 123 4567',
+                    location: 'Accra, Ghana',
+                    linkedin: 'linkedin.com/in/kwame-asante'
+                },
+                bio: `Kwame is a visionary technology entrepreneur with over 10 years of experience in digital transformation and business strategy. He founded Manifest Digital with the mission to bridge the digital divide in Africa by providing world-class technology solutions to organizations across the continent.
+
+                Before founding Manifest, Kwame led digital initiatives at several multinational corporations, where he gained deep insights into the challenges organizations face when adopting new technologies. His expertise spans AI innovation, sustainable business growth, and strategic partnerships.
+
+                Kwame holds an MBA in International Business and is passionate about mentoring the next generation of African tech entrepreneurs. He's a frequent speaker at technology conferences and has been featured in leading business publications for his insights on digital transformation in emerging markets.`,
+                skills: {
+                    'Strategic Leadership': ['Business Strategy', 'Digital Transformation', 'Team Building', 'Stakeholder Management'],
+                    'Technology Expertise': ['AI & Machine Learning', 'Enterprise Architecture', 'Digital Innovation', 'Product Strategy'],
+                    'Business Development': ['Partnership Development', 'Market Expansion', 'Investment Relations', 'Client Relations']
+                },
+                experience: [
+                    {
+                        period: '2018 - Present',
+                        title: 'CEO & Founder',
+                        company: 'Manifest Digital',
+                        description: 'Founded and scaled a digital agency serving 100+ clients across Ghana, UK, and USA. Built a remote-first team of 25+ professionals delivering innovative technology solutions.'
+                    },
+                    {
+                        period: '2015 - 2018',
+                        title: 'Digital Strategy Director',
+                        company: 'TechCorp Africa',
+                        description: 'Led digital transformation initiatives for enterprise clients, resulting in 40% average efficiency improvements and $2M+ in cost savings.'
+                    },
+                    {
+                        period: '2012 - 2015',
+                        title: 'Senior Business Analyst',
+                        company: 'Global Innovations Ltd',
+                        description: 'Analyzed business processes and implemented technology solutions for international clients across finance, healthcare, and manufacturing sectors.'
+                    }
+                ],
+                achievements: [
+                    {
+                        icon: 'fas fa-award',
+                        title: 'Ghana Tech Entrepreneur of the Year',
+                        description: '2023 - Recognized for outstanding contribution to Ghana\'s tech ecosystem'
+                    },
+                    {
+                        icon: 'fas fa-users',
+                        title: '100+ Successful Projects',
+                        description: 'Led delivery of over 100 digital transformation projects across 3 continents'
+                    },
+                    {
+                        icon: 'fas fa-chart-line',
+                        title: '$5M+ Revenue Generated',
+                        description: 'Built Manifest Digital to $5M+ annual revenue in under 5 years'
+                    }
+                ]
+            },
+            'ama-osei': {
+                name: 'Ama Osei',
+                role: 'Chief Technology Officer',
+                photo: 'fas fa-code',
+                contact: {
+                    email: 'ama@manifestdigital.com',
+                    phone: '+233 20 987 6543',
+                    location: 'Remote (Ghana/UK)',
+                    github: 'github.com/ama-osei'
+                },
+                bio: `Ama is a seasoned technology leader with 8+ years of experience in system architecture, cloud computing, and DevOps. She's responsible for the technical vision and implementation of all technology solutions at Manifest Digital.
+
+                Her expertise in scalable cloud architectures and modern development methodologies has been instrumental in delivering robust, secure, and performant solutions for clients ranging from startups to enterprise organizations. Ama is particularly passionate about building systems that can scale globally while maintaining exceptional performance and security standards.
+
+                She holds a Master's degree in Computer Science and is a certified AWS Solutions Architect. Ama is also an advocate for women in technology and regularly mentors junior developers through various tech communities.`,
+                skills: {
+                    'Cloud Platforms': ['AWS', 'Google Cloud', 'Microsoft Azure', 'Docker/Kubernetes'],
+                    'Backend Technologies': ['Node.js', 'Python', 'Java', 'Go', 'Microservices'],
+                    'DevOps & Infrastructure': ['CI/CD', 'Infrastructure as Code', 'Monitoring', 'Security'],
+                    'Databases': ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch']
+                },
+                experience: [
+                    {
+                        period: '2019 - Present',
+                        title: 'Chief Technology Officer',
+                        company: 'Manifest Digital',
+                        description: 'Lead technical strategy and architecture decisions. Built scalable infrastructure serving 1M+ users across client applications.'
+                    },
+                    {
+                        period: '2017 - 2019',
+                        title: 'Senior Software Engineer',
+                        company: 'CloudTech Solutions',
+                        description: 'Designed and implemented cloud-native applications for enterprise clients, reducing infrastructure costs by 60% on average.'
+                    },
+                    {
+                        period: '2016 - 2017',
+                        title: 'Full-Stack Developer',
+                        company: 'StartupHub Ghana',
+                        description: 'Developed MVP applications for emerging startups, helping 15+ companies secure seed funding totaling $3M+.'
+                    }
+                ],
+                achievements: [
+                    {
+                        icon: 'fas fa-cloud',
+                        title: 'AWS Certified Solutions Architect',
+                        description: 'Professional level certification in cloud architecture and best practices'
+                    },
+                    {
+                        icon: 'fas fa-rocket',
+                        title: '99.9% Uptime Achievement',
+                        description: 'Maintained exceptional system reliability across all client applications'
+                    },
+                    {
+                        icon: 'fas fa-shield-alt',
+                        title: 'Zero Security Breaches',
+                        description: 'Implemented robust security measures with zero incidents in 4+ years'
+                    }
+                ]
+            },
+            'kofi-mensah': {
+                name: 'Kofi Mensah',
+                role: 'Creative Director',
+                photo: 'fas fa-palette',
+                contact: {
+                    email: 'kofi@manifestdigital.com',
+                    phone: '+44 20 7946 0958',
+                    location: 'London, UK',
+                    dribbble: 'dribbble.com/kofi-mensah'
+                },
+                bio: `Kofi is an award-winning creative director with 12+ years of experience in UI/UX design, brand identity, and design systems. His work has been recognized internationally, and he's passionate about creating digital experiences that are not only beautiful but also deeply functional and accessible.
+
+                Based in London, Kofi brings a global perspective to design while staying deeply connected to African aesthetics and cultural narratives. His designs have helped organizations across three continents build stronger connections with their audiences and achieve measurable business results.
+
+                Kofi is a graduate of the Royal College of Art and has worked with brands ranging from Fortune 500 companies to innovative African startups. He believes in design as a tool for social impact and regularly contributes to pro-bono projects supporting education and healthcare initiatives.`,
+                skills: {
+                    'Design Tools': ['Figma', 'Adobe Creative Suite', 'Sketch', 'Principle', 'Framer'],
+                    'Design Specialties': ['User Experience Design', 'User Interface Design', 'Design Systems', 'Brand Identity'],
+                    'Technical Skills': ['HTML/CSS', 'JavaScript', 'Design Tokens', 'Accessibility (WCAG)'],
+                    'Research & Strategy': ['User Research', 'Design Thinking', 'Information Architecture', 'Usability Testing']
+                },
+                experience: [
+                    {
+                        period: '2020 - Present',
+                        title: 'Creative Director',
+                        company: 'Manifest Digital',
+                        description: 'Lead creative vision and design strategy for 50+ client projects. Established design systems that improved development efficiency by 40%.'
+                    },
+                    {
+                        period: '2018 - 2020',
+                        title: 'Senior UX Designer',
+                        company: 'Digital London Agency',
+                        description: 'Designed user experiences for fintech and e-commerce clients, contributing to 25% average increase in user engagement.'
+                    },
+                    {
+                        period: '2015 - 2018',
+                        title: 'Brand Designer',
+                        company: 'Creative Collective',
+                        description: 'Developed brand identities for emerging businesses across Europe and Africa, helping clients establish strong market presence.'
+                    }
+                ],
+                achievements: [
+                    {
+                        icon: 'fas fa-trophy',
+                        title: 'Awwwards Site of the Day',
+                        description: 'Multiple recognitions for outstanding web design and user experience'
+                    },
+                    {
+                        icon: 'fas fa-eye',
+                        title: '5M+ Design Views',
+                        description: 'Portfolio work viewed over 5 million times across design platforms'
+                    },
+                    {
+                        icon: 'fas fa-users',
+                        title: 'Design Community Leader',
+                        description: 'Active contributor to design communities with 10K+ followers'
+                    }
+                ]
+            },
+            'sarah-johnson': {
+                name: 'Sarah Johnson',
+                role: 'Lead Full-Stack Developer',
+                photo: 'fas fa-laptop-code',
+                contact: {
+                    email: 'sarah@manifestdigital.com',
+                    phone: '+1 555 123 4567',
+                    location: 'New York, USA',
+                    github: 'github.com/sarah-johnson-dev'
+                },
+                bio: `Sarah is a highly skilled full-stack developer with 7+ years of experience building robust web and mobile applications. Her expertise spans modern JavaScript frameworks, API development, and mobile app development, making her a versatile technical leader.
+
+                She specializes in React, Node.js, and React Native, and has a passion for writing clean, maintainable code and implementing best practices. Sarah has led development teams on projects ranging from simple websites to complex enterprise applications serving millions of users.
+
+                Sarah holds a Bachelor's degree in Computer Science from NYU and is constantly learning new technologies. She's an active contributor to open-source projects and regularly shares her knowledge through technical blog posts and conference talks.`,
+                skills: {
+                    'Frontend Development': ['React', 'TypeScript', 'Next.js', 'Vue.js', 'HTML/CSS/SASS'],
+                    'Backend Development': ['Node.js', 'Express', 'GraphQL', 'REST APIs', 'Serverless'],
+                    'Mobile Development': ['React Native', 'Flutter', 'iOS/Android', 'Progressive Web Apps'],
+                    'Tools & Platforms': ['Git', 'webpack', 'Jest', 'Cypress', 'Vercel', 'Netlify']
+                },
+                experience: [
+                    {
+                        period: '2021 - Present',
+                        title: 'Lead Full-Stack Developer',
+                        company: 'Manifest Digital',
+                        description: 'Lead development of 30+ web and mobile applications. Mentored junior developers and established coding standards and best practices.'
+                    },
+                    {
+                        period: '2019 - 2021',
+                        title: 'Senior React Developer',
+                        company: 'TechStart NYC',
+                        description: 'Developed scalable React applications for B2B SaaS platforms, improving application performance by 50% through optimization techniques.'
+                    },
+                    {
+                        period: '2017 - 2019',
+                        title: 'Full-Stack Developer',
+                        company: 'WebSolutions Inc',
+                        description: 'Built full-stack applications using MERN stack, contributing to projects that generated $1M+ in revenue for clients.'
+                    }
+                ],
+                achievements: [
+                    {
+                        icon: 'fas fa-code-branch',
+                        title: '50+ Open Source Contributions',
+                        description: 'Active contributor to React, Node.js, and other open-source projects'
+                    },
+                    {
+                        icon: 'fas fa-mobile-alt',
+                        title: '10+ Mobile Apps Published',
+                        description: 'Successfully launched mobile applications with 100K+ combined downloads'
+                    },
+                    {
+                        icon: 'fas fa-graduation-cap',
+                        title: 'Tech Mentor & Speaker',
+                        description: 'Mentored 20+ developers and spoken at 5 major tech conferences'
+                    }
+                ]
+            },
+            'david-opoku': {
+                name: 'David Opoku',
+                role: 'AI/ML Specialist',
+                photo: 'fas fa-brain',
+                contact: {
+                    email: 'david@manifestdigital.com',
+                    phone: '+233 54 321 0987',
+                    location: 'Kumasi, Ghana',
+                    kaggle: 'kaggle.com/david-opoku'
+                },
+                bio: `David is a passionate AI/ML specialist with 6+ years of experience in data science, machine learning, and artificial intelligence. He's responsible for developing intelligent solutions that transform business operations and drive growth for Manifest Digital's clients.
+
+                His expertise includes predictive modeling, natural language processing, computer vision, and recommendation systems. David has successfully implemented AI solutions that have generated millions in value for clients across various industries including healthcare, finance, and e-commerce.
+
+                David holds a Master's degree in Data Science from KNUST and has published research papers on machine learning applications in emerging markets. He's passionate about using AI to solve real-world problems and democratizing access to AI technologies across Africa.`,
+                skills: {
+                    'Machine Learning': ['Supervised Learning', 'Deep Learning', 'Neural Networks', 'Computer Vision'],
+                    'Programming Languages': ['Python', 'R', 'SQL', 'JavaScript', 'Scala'],
+                    'ML Frameworks': ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Keras', 'XGBoost'],
+                    'Data Tools': ['Pandas', 'NumPy', 'Jupyter', 'Apache Spark', 'Tableau', 'Power BI']
+                },
+                experience: [
+                    {
+                        period: '2020 - Present',
+                        title: 'AI/ML Specialist',
+                        company: 'Manifest Digital',
+                        description: 'Developed 15+ AI-powered solutions including recommendation engines, predictive models, and chatbots, generating $2M+ in additional revenue for clients.'
+                    },
+                    {
+                        period: '2019 - 2020',
+                        title: 'Data Scientist',
+                        company: 'Ghana Analytics Hub',
+                        description: 'Built predictive models for financial institutions, reducing loan default rates by 30% and improving risk assessment accuracy.'
+                    },
+                    {
+                        period: '2018 - 2019',
+                        title: 'Junior ML Engineer',
+                        company: 'African AI Labs',
+                        description: 'Contributed to research projects on AI applications for agriculture and healthcare in West Africa.'
+                    }
+                ],
+                achievements: [
+                    {
+                        icon: 'fas fa-medal',
+                        title: 'Kaggle Expert',
+                        description: 'Achieved Expert status on Kaggle with top 5% rankings in multiple competitions'
+                    },
+                    {
+                        icon: 'fas fa-file-alt',
+                        title: '5 Research Publications',
+                        description: 'Published peer-reviewed papers on ML applications in emerging markets'
+                    },
+                    {
+                        icon: 'fas fa-robot',
+                        title: 'AI Impact Award',
+                        description: 'Recognized for developing AI solutions that improved healthcare outcomes in rural Ghana'
+                    }
+                ]
+            },
+            'grace-addo': {
+                name: 'Grace Addo',
+                role: 'Digital Marketing Manager',
+                photo: 'fas fa-chart-line',
+                contact: {
+                    email: 'grace@manifestdigital.com',
+                    phone: '+233 26 789 0123',
+                    location: 'Cape Coast, Ghana',
+                    linkedin: 'linkedin.com/in/grace-addo'
+                },
+                bio: `Grace is a strategic digital marketing professional with 5+ years of experience driving digital growth through data-driven campaigns and innovative engagement strategies. She's passionate about helping organizations build strong online presence and meaningful connections with their audiences.
+
+                Her expertise spans SEO/SEM, social media marketing, content strategy, and marketing analytics. Grace has successfully managed marketing campaigns that have generated over $3M in revenue for clients and helped numerous organizations achieve significant growth in their digital presence.
+
+                Grace holds a Bachelor's degree in Marketing from University of Ghana and is Google Ads and Analytics certified. She's particularly interested in the intersection of technology and marketing, and how emerging technologies can be leveraged to create more personalized and effective marketing experiences.`,
+                skills: {
+                    'Digital Marketing': ['SEO/SEM', 'Social Media Marketing', 'Content Strategy', 'Email Marketing'],
+                    'Analytics & Tools': ['Google Analytics', 'Google Ads', 'Facebook Ads', 'HubSpot', 'Mailchimp'],
+                    'Content Creation': ['Copywriting', 'Video Production', 'Graphic Design', 'Content Planning'],
+                    'Strategy & Growth': ['Marketing Automation', 'Conversion Optimization', 'A/B Testing', 'Growth Hacking']
+                },
+                experience: [
+                    {
+                        period: '2021 - Present',
+                        title: 'Digital Marketing Manager',
+                        company: 'Manifest Digital',
+                        description: 'Lead digital marketing strategies for 40+ clients, achieving average 150% increase in online engagement and 80% improvement in lead generation.'
+                    },
+                    {
+                        period: '2020 - 2021',
+                        title: 'Social Media Specialist',
+                        company: 'Creative Marketing Hub',
+                        description: 'Managed social media campaigns for 20+ brands, growing combined follower base by 300% and generating $500K+ in social commerce sales.'
+                    },
+                    {
+                        period: '2019 - 2020',
+                        title: 'Digital Marketing Assistant',
+                        company: 'Growth Agency Ghana',
+                        description: 'Supported marketing campaigns for local businesses, helping them establish online presence and achieve 50%+ growth in digital sales.'
+                    }
+                ],
+                achievements: [
+                    {
+                        icon: 'fas fa-search',
+                        title: 'Google Ads Certified',
+                        description: 'Certified in Google Ads with expertise in Search, Display, and Video advertising'
+                    },
+                    {
+                        icon: 'fas fa-chart-bar',
+                        title: '$3M+ Revenue Generated',
+                        description: 'Marketing campaigns directly contributed to over $3M in client revenue'
+                    },
+                    {
+                        icon: 'fas fa-bullhorn',
+                        title: 'Marketing Excellence Award',
+                        description: 'Recognized for outstanding digital marketing campaign performance in 2023'
+                    }
+                ]
+            }
+        };
+
+        // Team member click handlers
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('click', function() {
+                const memberId = this.dataset.member;
+                openTeamModal(memberId);
+            });
+        });
+
+        function openTeamModal(memberId) {
+            const member = teamMembers[memberId];
+            if (!member) return;
+
+            // Populate modal content
+            document.getElementById('modalName').textContent = member.name;
+            document.getElementById('modalRole').textContent = member.role;
+            
+            // Update photo placeholder
+            const photoPlaceholder = document.getElementById('modalPhotoPlaceholder');
+            photoPlaceholder.innerHTML = `<i class="${member.photo}"></i>`;
+            
+            // Populate contact information
+            const contactContainer = document.getElementById('modalContact');
+            contactContainer.innerHTML = '';
+            
+            Object.entries(member.contact).forEach(([key, value]) => {
+                const contactItem = document.createElement('div');
+                contactItem.className = 'contact-item';
+                
+                let icon;
+                switch(key) {
+                    case 'email': icon = 'fas fa-envelope'; break;
+                    case 'phone': icon = 'fas fa-phone'; break;
+                    case 'location': icon = 'fas fa-map-marker-alt'; break;
+                    case 'linkedin': icon = 'fab fa-linkedin'; break;
+                    case 'github': icon = 'fab fa-github'; break;
+                    case 'dribbble': icon = 'fab fa-dribbble'; break;
+                    case 'kaggle': icon = 'fab fa-kaggle'; break;
+                    default: icon = 'fas fa-link';
+                }
+                
+                contactItem.innerHTML = `<i class="${icon}"></i> ${value}`;
+                contactContainer.appendChild(contactItem);
+            });
+
+            // Populate bio
+            document.getElementById('modalBio').innerHTML = member.bio.replace(/\n\n/g, '</p><p>');
+
+            // Populate skills
+            const skillsContainer = document.getElementById('modalSkills');
+            skillsContainer.innerHTML = '';
+            
+            Object.entries(member.skills).forEach(([category, skills]) => {
+                const skillCategory = document.createElement('div');
+                skillCategory.className = 'skill-category';
+                skillCategory.innerHTML = `
+                    <h4>${category}</h4>
+                    <ul class="skill-list">
+                        ${skills.map(skill => `<li>${skill}</li>`).join('')}
+                    </ul>
+                `;
+                skillsContainer.appendChild(skillCategory);
+            });
+
+            // Populate experience
+            const experienceContainer = document.getElementById('modalExperience');
+            experienceContainer.innerHTML = '';
+            
+            member.experience.forEach(exp => {
+                const expItem = document.createElement('div');
+                expItem.className = 'experience-item';
+                expItem.innerHTML = `
+                    <div class="experience-period">${exp.period}</div>
+                    <div class="experience-title">${exp.title}</div>
+                    <div class="experience-company">${exp.company}</div>
+                    <div class="experience-description">${exp.description}</div>
+                `;
+                experienceContainer.appendChild(expItem);
+            });
+
+            // Populate achievements
+            const achievementsContainer = document.getElementById('modalAchievements');
+            achievementsContainer.innerHTML = '';
+            
+            member.achievements.forEach(achievement => {
+                const achItem = document.createElement('div');
+                achItem.className = 'achievement-item';
+                achItem.innerHTML = `
+                    <div class="achievement-icon">
+                        <i class="${achievement.icon}"></i>
+                    </div>
+                    <div class="achievement-title">${achievement.title}</div>
+                    <div class="achievement-description">${achievement.description}</div>
+                `;
+                achievementsContainer.appendChild(achItem);
+            });
+
+            // Show modal
+            const modal = document.getElementById('teamModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTeamModal() {
+            const modal = document.getElementById('teamModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on outside click
+        document.getElementById('teamModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeTeamModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeTeamModal();
+            }
+        });
+
+        // Make closeTeamModal globally available
+        window.closeTeamModal = closeTeamModal;
     </script>
 </body>
 </html>
