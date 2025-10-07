@@ -433,13 +433,13 @@ body {
     border-bottom: 2px solid #FF4900;
 }
 
-/* Service Grid Styles */
-.service-grid {
+/* Mega Menu Service Grid Styles */
+.mega-menu .service-grid {
     display: grid;
     gap: 16px;
 }
 
-.service-item {
+.mega-menu .service-item {
     display: flex;
     align-items: flex-start;
     gap: 16px;
@@ -451,28 +451,25 @@ body {
     border: 1px solid transparent;
 }
 
-.service-item:hover {
+.mega-menu .service-item:hover {
     text-decoration: none;
-}
-
-.service-item:hover {
     background-color: #f8f9fa;
     border-color: #FF4900;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(255, 73, 0, 0.1);
 }
 
-.service-item.active {
+.mega-menu .service-item.active {
     background-color: #fff5f2;
     border-color: #FF4900;
     box-shadow: 0 4px 15px rgba(255, 73, 0, 0.15);
 }
 
-.service-item.active i {
+.mega-menu .service-item.active i {
     color: #FF4900;
 }
 
-.service-item.active h4 {
+.mega-menu .service-item.active h4 {
     color: #FF4900;
 }
 
@@ -495,21 +492,21 @@ body {
     text-decoration: none !important;
 }
 
-.service-item i {
+.mega-menu .service-item i {
     font-size: 24px;
     color: #FF4900;
     margin-top: 4px;
     flex-shrink: 0;
 }
 
-.service-item h4 {
+.mega-menu .service-item h4 {
     font-size: 16px;
     font-weight: 600;
     margin: 0 0 4px 0;
     color: #1a1a1a;
 }
 
-.service-item p {
+.mega-menu .service-item p {
     font-size: 14px;
     color: #666;
     margin: 0;
@@ -1716,6 +1713,7 @@ body {
     filter: hue-rotate(10deg) saturate(1.3);
 }
 
+/* Main Page Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1724,7 +1722,7 @@ body {
     margin: 0 auto;
 }
 
-.service-item {
+.services-grid .service-item {
     text-align: left;
     position: relative;
     cursor: pointer;
@@ -1735,13 +1733,13 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.service-item:hover {
+.services-grid .service-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 20px rgba(255, 73, 0, 0.12);
     background: linear-gradient(135deg, #FCEDE5 0%, #FFF5F0 100%);
 }
 
-.service-item h3 {
+.services-grid .service-item h3 {
     font-weight: 700;
     font-size: 22px;
     line-height: 1.4;
@@ -1750,7 +1748,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.service-item:hover h3 {
+.services-grid .service-item:hover h3 {
     color: #FF4900;
 }
 
@@ -3653,7 +3651,7 @@ body.notification-visible .hero {
         gap: 40px;
     }
     
-    .service-item h3 {
+    .services-grid .service-item h3 {
         font-size: 24px;
         line-height: 32px;
     }
