@@ -396,6 +396,310 @@
             font-size: 18px;
             opacity: 0.95;
         }
+
+        /* Infinite Scroll Loading States */
+        .infinite-scroll-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .loading-spinner {
+            text-align: center;
+        }
+
+        .spinner-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .spinner-dots .dot {
+            width: 12px;
+            height: 12px;
+            background: #ff2200;
+            border-radius: 50%;
+            animation: dotBounce 1.4s ease-in-out infinite both;
+        }
+
+        .spinner-dots .dot:nth-child(1) { animation-delay: -0.32s; }
+        .spinner-dots .dot:nth-child(2) { animation-delay: -0.16s; }
+        .spinner-dots .dot:nth-child(3) { animation-delay: 0s; }
+
+        @keyframes dotBounce {
+            0%, 80%, 100% { 
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% { 
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Skeleton Cards */
+        .skeleton-cards-container {
+            margin: 40px 0;
+        }
+
+        .skeleton-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .skeleton-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skeleton-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: skeletonShimmer 1.2s infinite;
+        }
+
+        @keyframes skeletonShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .skeleton-image {
+            width: 100%;
+            height: 220px;
+            background: #e9ecef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton-category {
+            width: 80px;
+            height: 16px;
+            background: #e9ecef;
+            border-radius: 12px;
+            margin: 20px 20px 10px;
+        }
+
+        .skeleton-title {
+            width: 200px;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin: 0 20px 15px;
+        }
+
+        .skeleton-link {
+            width: 120px;
+            height: 36px;
+            background: #e9ecef;
+            border-radius: 25px;
+            margin: 0 20px 20px;
+        }
+
+        /* Error State */
+        .infinite-scroll-error {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            margin: 40px 0;
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .error-content i {
+            font-size: 48px;
+            color: #dc3545;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .error-content h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .error-content p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .btn-retry {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #ff2200;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-retry:hover {
+            background: #e01e00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 34, 0, 0.3);
+        }
+
+        .btn-retry:active {
+            transform: translateY(0);
+        }
+
+        /* End of Content */
+        .end-of-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            margin: 40px 0;
+        }
+
+        .end-content {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .end-content i {
+            font-size: 56px;
+            color: #28a745;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .end-content h3 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .end-content p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .btn-view-categories {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ff2200, #ff4400);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 34, 0, 0.2);
+        }
+
+        .btn-view-categories:hover {
+            background: linear-gradient(135deg, #e01e00, #e03d00);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 34, 0, 0.35);
+        }
+
+        .btn-view-categories:active {
+            transform: translateY(-1px);
+        }
+
+        /* Scroll Trigger */
+        .scroll-trigger {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Mobile Responsive Infinite Scroll */
+        @media (max-width: 768px) {
+            .skeleton-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+                gap: 20px;
+            }
+
+            .infinite-scroll-loading,
+            .infinite-scroll-error,
+            .end-of-content {
+                padding: 40px 20px;
+                margin: 30px 0;
+            }
+
+            .spinner-dots .dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .error-content h3,
+            .end-content h3 {
+                font-size: 22px;
+            }
+
+            .error-content p,
+            .end-content p {
+                font-size: 16px;
+            }
+
+            .btn-retry,
+            .btn-view-categories {
+                padding: 12px 20px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .end-content i {
+                font-size: 48px;
+            }
+
+            .error-content i {
+                font-size: 40px;
+            }
+
+            .end-content h3 {
+                font-size: 20px;
+            }
+
+            .error-content h3 {
+                font-size: 20px;
+            }
+        }
         
         .no-results {
             text-align: center;
@@ -895,487 +1199,59 @@
     <!-- Projects Grid Section -->
     <section class="projects-grid-section">
         <div class="projects-grid" id="projectsGrid">
-            <!-- Project Cards -->
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/myhelpyourhelp.png" alt="My Help Your Help Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>My Help Your Help Foundation</h3>
-                    <a href="https://myhelpyourhelp.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
+            <!-- Dynamic projects will be loaded here by the infinite scroll system -->
+        </div>
 
-            <div class="project-card" data-category="business">
-                <img src="images/ltimeproperties.png" alt="L-Time Properties">
-                <div class="project-card-content">
-                    <span class="project-category">Real Estate</span>
-                    <h3>L-Time Properties</h3>
-                    <a href="https://ltimepropertiesltd.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
+        <!-- Infinite Scroll Loading Indicators -->
+        <div class="infinite-scroll-loading" id="infiniteScrollLoading" style="display: none;">
+            <div class="loading-spinner">
+                <div class="spinner-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
                 </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/kokoplus.png" alt="Koko Plus Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>Koko Plus Foundation</h3>
-                    <a href="https://kokoplusfoundation.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="education">
-                <img src="images/goodnewslibrary.png" alt="Good News Library">
-                <div class="project-card-content">
-                    <span class="project-category">Education</span>
-                    <h3>Good News Library</h3>
-                    <a href="https://goodnewslibrary.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/barjultravels.png" alt="Barjul Travels">
-                <div class="project-card-content">
-                    <span class="project-category">Travel & Tourism</span>
-                    <h3>Barjul Travels</h3>
-                    <a href="https://barjultravels.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/yovighana.png" alt="YOVI Ghana">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>YOVI Ghana</h3>
-                    <a href="https://yovighana.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="tech">
-                <img src="images/projects/yensoftgh.png" alt="Yensoft Ghana">
-                <div class="project-card-content">
-                    <span class="project-category">Technology</span>
-                    <h3>Yensoft Ghana</h3>
-                    <a href="https://yensoftgh.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="education">
-                <img src="images/projects/vamg.png" alt="VAMG Research Institute">
-                <div class="project-card-content">
-                    <span class="project-category">Education</span>
-                    <h3>VAMG Research Institute</h3>
-                    <a href="https://vamgresearchinstitute.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/tradegrowth.png" alt="Trade Growth Network">
-                <div class="project-card-content">
-                    <span class="project-category">Business</span>
-                    <h3>Trade Growth Network</h3>
-                    <a href="https://tradegrowthnetwork.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/wateredgarden.png" alt="The Watered Garden Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>The Watered Garden Foundation</h3>
-                    <a href="https://thewateredgardenfoundation.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/thetraveloafrica.png" alt="The Travel O Africa">
-                <div class="project-card-content">
-                    <span class="project-category">Travel & Tourism</span>
-                    <h3>The Travel O Africa</h3>
-                    <a href="https://thetraveloafrica.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/thepushstudios.png" alt="The Push Studios">
-                <div class="project-card-content">
-                    <span class="project-category">Creative Agency</span>
-                    <h3>The Push Studios</h3>
-                    <a href="https://thepushstudios.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/fcbfoundation.png" alt="The FCB Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>The FCB Foundation</h3>
-                    <a href="https://thefcbfoundation.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="health">
-                <img src="images/projects/alphahealthgroup.png" alt="The Alpha Health Group">
-                <div class="project-card-content">
-                    <span class="project-category">Healthcare</span>
-                    <h3>The Alpha Health Group</h3>
-                    <a href="https://thealphahealthgroup.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/sovodeg.png" alt="SOVODEG">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>SOVODEG</h3>
-                    <a href="https://sovodeg.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="tech">
-                <img src="images/projects/samaktechnology.png" alt="Samak Technology">
-                <div class="project-card-content">
-                    <span class="project-category">Technology</span>
-                    <h3>Samak Technology</h3>
-                    <a href="https://samaktechnology.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/richardakita.png" alt="Richard Akita">
-                <div class="project-card-content">
-                    <span class="project-category">Personal Brand</span>
-                    <h3>Richard Akita</h3>
-                    <a href="https://richardakita.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/resourceinterlink.png" alt="Resource Interlink">
-                <div class="project-card-content">
-                    <span class="project-category">Business</span>
-                    <h3>Resource Interlink</h3>
-                    <a href="https://resourceinterlink.co.uk" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/relaxairlines.png" alt="Relax Airlines">
-                <div class="project-card-content">
-                    <span class="project-category">Travel & Tourism</span>
-                    <h3>Relax Airlines</h3>
-                    <a href="https://relaxairlines.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="education">
-                <img src="images/projects/pnmtc.png" alt="PNMTC">
-                <div class="project-card-content">
-                    <span class="project-category">Education</span>
-                    <h3>PNMTC</h3>
-                    <a href="https://pnmtc.edu.gh" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/peachera.png" alt="Peachera">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>Peachera</h3>
-                    <a href="https://peachera.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/nkunim.png" alt="Nkunim">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>Nkunim</h3>
-                    <a href="https://nkunim.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/marthasbeauty.png" alt="Martha's Beauty Supply">
-                <div class="project-card-content">
-                    <span class="project-category">E-Commerce</span>
-                    <h3>Martha's Beauty Supply</h3>
-                    <a href="https://marthasbeautysupply.us" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="tech">
-                <img src="images/projects/manifestghana.png" alt="Manifest Ghana">
-                <div class="project-card-content">
-                    <span class="project-category">Digital Agency</span>
-                    <h3>Manifest Ghana</h3>
-                    <a href="https://manifestghana.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/johnsonsebire.png" alt="Johnson Sebire">
-                <div class="project-card-content">
-                    <span class="project-category">Personal Brand</span>
-                    <h3>Johnson Sebire</h3>
-                    <a href="https://johnsonsebire.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="health">
-                <img src="images/projects/jaglahsterile.png" alt="Jaglah Sterile">
-                <div class="project-card-content">
-                    <span class="project-category">Healthcare</span>
-                    <h3>Jaglah Sterile</h3>
-                    <a href="https://jaglahsterile.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/jaglahfoundation.png" alt="Jaglah Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>Jaglah Foundation</h3>
-                    <a href="https://jaglahfoundation.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/hfliberia.png" alt="HF Liberia">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>HF Liberia</h3>
-                    <a href="https://hfliberia.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/globalhrconsulting.png" alt="Global HR Consulting">
-                <div class="project-card-content">
-                    <span class="project-category">Business</span>
-                    <h3>Global HR Consulting</h3>
-                    <a href="https://globalhrconsulting.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/globalazservices.png" alt="Global AZ Services">
-                <div class="project-card-content">
-                    <span class="project-category">Business</span>
-                    <h3>Global AZ Services</h3>
-                    <a href="https://globalazserviceslda.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/gettheartiste.png" alt="Get The Artiste">
-                <div class="project-card-content">
-                    <span class="project-category">Entertainment</span>
-                    <h3>Get The Artiste</h3>
-                    <a href="https://gettheartiste.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/fmsfoundation.png" alt="FMS Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>FMS Foundation</h3>
-                    <a href="https://fmsfoundation.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/everythingme.png" alt="Everything Me">
-                <div class="project-card-content">
-                    <span class="project-category">E-Commerce</span>
-                    <h3>Everything Me</h3>
-                    <a href="https://everything-me.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/coselloapparel.png" alt="Cosello Apparel">
-                <div class="project-card-content">
-                    <span class="project-category">E-Commerce</span>
-                    <h3>Cosello Apparel</h3>
-                    <a href="https://coselloapparel.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="business">
-                <img src="images/projects/coconutpointe.png" alt="Coconut Pointe">
-                <div class="project-card-content">
-                    <span class="project-category">Real Estate</span>
-                    <h3>Coconut Pointe</h3>
-                    <a href="https://coconutpointe.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="tech">
-                <img src="images/projects/cliqhost.png" alt="Cliq Host">
-                <div class="project-card-content">
-                    <span class="project-category">Technology</span>
-                    <h3>Cliq Host</h3>
-                    <a href="https://cliqhost.space" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/christianmissions.png" alt="Christian Missions Online">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>Christian Missions Online</h3>
-                    <a href="https://christianmissionsonline.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="nonprofit">
-                <img src="images/projects/chrissyfoundation.png" alt="Chrissy Foundation">
-                <div class="project-card-content">
-                    <span class="project-category">Nonprofit</span>
-                    <h3>Chrissy Foundation</h3>
-                    <a href="https://chrissyfoundation.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="education">
-                <img src="images/projects/ccemghana.png" alt="CCEM Ghana">
-                <div class="project-card-content">
-                    <span class="project-category">Education</span>
-                    <h3>CCEM Ghana</h3>
-                    <a href="https://ccemghana.org" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card" data-category="education">
-                <img src="images/projects/boschschool.png" alt="Bosch School of Ministry">
-                <div class="project-card-content">
-                    <span class="project-category">Education</span>
-                    <h3>Bosch School of Ministry</h3>
-                    <a href="https://boschschoolofministry.com" class="project-link" target="_blank">
-                        <span>Visit Website</span>
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                    </a>
-                </div>
+                <p class="loading-text">Loading more projects...</p>
             </div>
         </div>
+
+        <!-- Infinite Scroll Skeleton Cards -->
+        <div class="skeleton-cards-container" id="skeletonCards" style="display: none;">
+            <div class="skeleton-grid">
+                <!-- Skeleton cards will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Infinite Scroll Error State -->
+        <div class="infinite-scroll-error" id="infiniteScrollError" style="display: none;">
+            <div class="error-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Failed to load projects</h3>
+                <p>Please check your connection and try again.</p>
+                <button class="btn-retry" id="retryLoadMore">
+                    <i class="fas fa-redo"></i>
+                    <span>Retry</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- End of Content Message -->
+        <div class="end-of-content" id="endOfContent" style="display: none;">
+            <div class="end-content">
+                <i class="fas fa-check-circle"></i>
+                <h3>You've seen all projects!</h3>
+                <p>Browse our amazing portfolio of 40+ delivered projects.</p>
+                <button class="btn-view-categories" id="viewCategories">
+                    <i class="fas fa-filter"></i>
+                    <span>View Categories</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Intersection Observer Trigger -->
+        <div class="scroll-trigger" id="scrollTrigger" style="height: 1px; visibility: hidden;" aria-hidden="true"></div>
+
+        <!-- ARIA Live Region for Screen Readers -->
+        <div id="projectsLiveRegion" aria-live="polite" aria-atomic="false" class="sr-only"></div>
 
         <!-- No Results Message -->
         <div class="no-results" id="noResults" style="display: none;">
@@ -1997,5 +1873,12 @@
         // Show notification after preloader completion
         setTimeout(showNotificationAfterPreloader, 4500);
     </script>
+    
+    <!-- Infinite Scroll Scripts -->
+    <script src="components/projects-data-manager.js"></script>
+    <script src="components/infinite-projects-scroll.js"></script>
+    
+    <!-- Project Navigation Script -->
+    <script src="components/project-navigation.js"></script>
 </body>
 </html>
