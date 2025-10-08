@@ -25,7 +25,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     
     <style>
-        /* Preloader Styles */
+         /* Preloader Styles */
         #preloader {
             position: fixed;
             top: 0;
@@ -48,23 +48,30 @@
         .loader-logo {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #FF4900, #FF6B3D);
-            border-radius: 20px;
             margin: 0 auto 2rem;
             position: relative;
-            box-shadow: 0 10px 30px rgba(255, 73, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .logo-inner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 8px;
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
             opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.6s ease;
+        }
+        
+        .logo-image.loaded {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .loading-dots {
@@ -74,7 +81,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .dot {
+        .loading-dots .dot {
             width: 12px;
             height: 12px;
             background: #FF4900;
@@ -153,6 +160,7 @@
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         
+        
         /* Page Specific Styles */
         .main-content {
             min-height: 60vh;
@@ -178,6 +186,7 @@
 </head>
 <body class="loading" class="loading">
     <!-- Preloader -->
+  <!-- Preloader -->
     <div id="preloader">
         <div class="bg-element bg-element-1"></div>
         <div class="bg-element bg-element-2"></div>
@@ -185,7 +194,7 @@
         
         <div class="preloader-container">
             <div class="loader-logo">
-                <div class="logo-inner"></div>
+                <img src="images/logos/favicon.png" alt="Manifest Digital Logo" class="logo-image">
             </div>
             
             <div class="loading-dots">
@@ -208,16 +217,16 @@
     <div class="main-content-wrapper">
     <!-- Header Navigation -->
     <header class="primary-header">
-        <div class="logo"></div>
+        <a href="index.html" class="logo"></a>
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
-            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="ai-sensei-chat.html">AI Sensei</a>
             <a href="book-a-call.html">Book a Call</a>
         </nav>
         <div class="header-right">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
         
         <!-- Mobile menu toggle -->
@@ -323,6 +332,9 @@
     
     <!-- Preloader Animation Script -->
     <script>
+        // ========================
+        // Preloader Animation
+        // ========================
         document.addEventListener('DOMContentLoaded', function() {
             // Animate background elements
             anime({
@@ -349,31 +361,38 @@
                 easing: 'linear'
             });
             
-            // Logo animation
+            // Logo container animation
             anime({
                 targets: '.loader-logo',
-                scale: [0.8, 1],
+                scale: [0.9, 1],
                 rotateY: [0, 360],
-                duration: 2000,
+                duration: 3000,
                 easing: 'easeInOutQuad',
                 loop: true,
                 direction: 'alternate'
             });
             
-            // Logo inner reveal
+            // Logo image reveal with smooth entrance
+            setTimeout(() => {
+                const logoImage = document.querySelector('.logo-image');
+                if (logoImage) {
+                    logoImage.classList.add('loaded');
+                }
+            }, 500);
+            
+            // Logo image pulse animation
             anime({
-                targets: '.logo-inner',
-                opacity: [0, 1, 0],
-                scale: [0.5, 1, 0.5],
+                targets: '.logo-image',
+                scale: [1, 1.1, 1],
                 duration: 2000,
-                delay: 500,
+                delay: 1000,
                 loop: true,
                 easing: 'easeInOutQuad'
             });
             
-            // Loading dots animation
+            // Loading dots animation - target only preloader dots
             anime({
-                targets: '.dot',
+                targets: '.loading-dots .dot',
                 opacity: [0.3, 1],
                 scale: [1, 1.2],
                 duration: 600,
@@ -412,7 +431,13 @@
                     easing: 'easeOutQuad',
                     complete: function() {
                         document.getElementById('preloader').style.display = 'none';
-                        document.body.classList.remove('loading');
+                        // Keep overflow hidden during content animations to prevent scrollbar flash
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Show notification after preloader if not previously closed
+                        if (typeof window.showNotificationAfterPreloader === 'function') {
+                            window.showNotificationAfterPreloader();
+                        }
                         
                         // Animate main content in
                         anime({
@@ -430,7 +455,12 @@
                             translateY: [20, 0],
                             duration: 600,
                             delay: anime.stagger(200),
-                            easing: 'easeOutQuad'
+                            easing: 'easeOutQuad',
+                            complete: function() {
+                                // Remove loading class and restore overflow after all animations complete
+                                document.body.classList.remove('loading');
+                                document.body.style.overflow = '';
+                            }
                         });
                     }
                 });
