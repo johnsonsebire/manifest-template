@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--
+SIMPLE PRELOADER COMPONENT
+Usage: Include this file in your main HTML file with iframe or use the CSS/JS separately
+Features: Logo animation, dots loading, progress bar, fade out transition
+Dependencies: Anime.js, Font Awesome (optional)
+-->
+<head>
+     <!-- Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body class="loading">
+<div id="preloader-simple" class="preloader-component">
+    <!-- Animated Background Elements -->
+    <div class="bg-element bg-element-1"></div>
+    <div class="bg-element bg-element-2"></div>
+    <div class="bg-element bg-element-3"></div>
+    
+    <div class="preloader-container">
+        <div class="loader-logo">
+            <img src="../images/logos/favicon.png" alt="Logo" class="logo-image">
+        </div>
+        
+        <div class="loading-dots">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+            <div class="dot dot-4"></div>
+            <div class="dot dot-5"></div>
+        </div>
+        
+        <div class="loading-text">Loading</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Simple Preloader Styles */
+#preloader-simple {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.preloader-container {
+    text-align: center;
+    position: relative;
+}
+
+.loader-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.6s ease;
+}
+
+.logo-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.loading-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.loading-dots .dot {
+    width: 12px;
+    height: 12px;
+    background: #FF4900;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.loading-text {
+    color: #ffffff;
+    font-family: 'Anybody', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 2rem auto 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #FF4900, #FF6B3D);
+    border-radius: 2px;
+}
+
+/* Background Elements */
+.bg-element {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.bg-element-1 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #FF4900, #FF6B3D);
+    top: 20%;
+    left: 15%;
+}
+
+.bg-element-2 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #FF6B3D, #FF4900);
+    top: 60%;
+    right: 20%;
+}
+
+.bg-element-3 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(225deg, #FF4900, #FF8A65);
+    bottom: 25%;
+    left: 25%;
+}
+
+.preloader-fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+</style>
+
+<script>
+// Simple Preloader JavaScript (Requires Anime.js)
+function initSimplePreloader() {
+    if (typeof anime === 'undefined') {
+        console.warn('Anime.js is required for Simple Preloader animations');
+        return;
+    }
+
+    // Background elements rotation
+    anime({
+        targets: '.bg-element-1',
+        rotate: 360,
+        duration: 15000,
+        loop: true,
+        easing: 'linear'
+    });
+
+    anime({
+        targets: '.bg-element-2',
+        rotate: -360,
+        duration: 20000,
+        loop: true,
+        easing: 'linear'
+    });
+
+    anime({
+        targets: '.bg-element-3',
+        rotate: 360,
+        duration: 25000,
+        loop: true,
+        easing: 'linear'
+    });
+
+    // Logo container animation
+    anime({
+        targets: '.loader-logo',
+        scale: [0.9, 1],
+        rotateY: [0, 360],
+        duration: 3000,
+        easing: 'easeInOutQuad',
+        loop: true,
+        direction: 'alternate'
+    });
+
+    // Logo image reveal
+    setTimeout(() => {
+        const logoImage = document.querySelector('.logo-image');
+        if (logoImage) {
+            logoImage.classList.add('loaded');
+        }
+    }, 500);
+
+    // Logo image pulse
+    anime({
+        targets: '.logo-image',
+        scale: [1, 1.1, 1],
+        duration: 2000,
+        delay: 1000,
+        loop: true,
+        easing: 'easeInOutQuad'
+    });
+
+    // Loading dots animation
+    anime({
+        targets: '.loading-dots .dot',
+        opacity: [0.3, 1],
+        scale: [1, 1.2],
+        duration: 600,
+        delay: anime.stagger(100),
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutQuad'
+    });
+
+    // Loading text fade in
+    anime({
+        targets: '.loading-text',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        duration: 800,
+        delay: 1000,
+        easing: 'easeOutQuad'
+    });
+
+    // Progress bar fill
+    anime({
+        targets: '.progress-fill',
+        width: ['0%', '100%'],
+        duration: 3000,
+        delay: 1500,
+        easing: 'easeInOutQuad'
+    });
+
+    // Auto-hide preloader after 5 seconds
+    setTimeout(function() {
+        hideSimplePreloader();
+    }, 5000);
+}
+
+function hideSimplePreloader(callback) {
+    const preloader = document.getElementById('preloader-simple');
+    if (preloader) {
+        anime({
+            targets: preloader,
+            opacity: 0,
+            duration: 500,
+            easing: 'easeOutQuad',
+            complete: function() {
+                preloader.style.display = 'none';
+                if (callback) callback();
+            }
+        });
+    }
+}
+
+// Initialize on DOM load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSimplePreloader);
+} else {
+    initSimplePreloader();
+}
+</script>
+</body>
