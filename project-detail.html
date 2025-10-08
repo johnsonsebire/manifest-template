@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="KokoPlus digital transformation case study. Learn how we built a modern e-commerce platform that increased sales by 250% for Ghana's leading coconut products retailer.">
-    <meta name="keywords" content="e-commerce case study Ghana, digital transformation, KokoPlus, online retail success, web development Ghana">
+    <meta name="description"
+        content="KokoPlus digital transformation case study. Learn how we built a modern e-commerce platform that increased sales by 250% for Ghana's leading coconut products retailer.">
+    <meta name="keywords"
+        content="e-commerce case study Ghana, digital transformation, KokoPlus, online retail success, web development Ghana">
     <meta name="author" content="Manifest Digital">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="KokoPlus: Transforming Coconut Commerce in Ghana | Case Study">
-    <meta property="og:description" content="How we increased online sales by 250% through strategic digital transformation and modern e-commerce development.">
+    <meta property="og:description"
+        content="How we increased online sales by 250% through strategic digital transformation and modern e-commerce development.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://manifestghana.com/projects/kokoplus">
     <meta property="og:image" content="https://manifestghana.com/images/projects/kokoplus-case-study.jpg">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="KokoPlus: Transforming Coconut Commerce in Ghana">
     <meta name="twitter:description" content="250% increase in online sales through digital transformation">
-    
+
     <title>KokoPlus Case Study | E-commerce Success Story | Manifest Digital</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- Anime.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    
+
     <style>
         /* Preloader Styles */
         #preloader {
@@ -71,9 +76,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .preloader-content {
@@ -108,8 +121,13 @@
         }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
         }
 
         .preloader-logo img {
@@ -136,15 +154,27 @@
             animation: dotBounce 1.4s ease-in-out infinite both;
         }
 
-        .preloader-dot:nth-child(1) { animation-delay: -0.32s; }
-        .preloader-dot:nth-child(2) { animation-delay: -0.16s; }
-        .preloader-dot:nth-child(3) { animation-delay: 0s; }
+        .preloader-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .preloader-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        .preloader-dot:nth-child(3) {
+            animation-delay: 0s;
+        }
 
         @keyframes dotBounce {
-            0%, 80%, 100% {
+
+            0%,
+            80%,
+            100% {
                 transform: scale(0.8);
                 opacity: 0.5;
             }
+
             40% {
                 transform: scale(1.2);
                 opacity: 1;
@@ -181,8 +211,13 @@
         }
 
         @keyframes progressShine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         .preloader-text {
@@ -222,30 +257,40 @@
         }
 
         @keyframes rotateClockwise {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         @keyframes rotateCounterClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
         }
 
         /* Project Detail Page Specific Styles */
-        
+
         /* Breadcrumb */
         .breadcrumb-nav {
             background: #f8f9fa;
             padding: 20px 0;
             border-bottom: 1px solid #e9ecef;
         }
-        
+
         .breadcrumb-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .breadcrumb {
             margin: 0;
             padding: 0;
@@ -256,32 +301,32 @@
             gap: 10px;
             font-size: 14px;
         }
-        
+
         .breadcrumb-item {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .breadcrumb-item a {
             color: #666;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .breadcrumb-item a:hover {
             color: #ff2200;
         }
-        
+
         .breadcrumb-item.active {
             color: #1a1a1a;
             font-weight: 600;
         }
-        
+
         .breadcrumb-separator {
             color: #999;
         }
-        
+
         /* Project Hero */
         .project-hero {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -290,7 +335,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .project-hero::before {
             content: '';
             position: absolute;
@@ -299,11 +344,11 @@
             right: 0;
             bottom: 0;
             background: url('images/decorative/hero_left_mem_dots_f_circle3.svg') no-repeat left center,
-                        url('images/decorative/hero_right_circle-con3.svg') no-repeat right center;
+                url('images/decorative/hero_right_circle-con3.svg') no-repeat right center;
             opacity: 0.1;
             pointer-events: none;
         }
-        
+
         .project-hero-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -311,7 +356,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .project-category {
             display: inline-block;
             background: rgba(255, 34, 0, 0.2);
@@ -324,27 +369,27 @@
             letter-spacing: 1px;
             margin-bottom: 20px;
         }
-        
+
         .project-hero h1 {
             font-size: 56px;
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
         }
-        
+
         .project-tagline {
             font-size: 22px;
             opacity: 0.9;
             margin-bottom: 40px;
             max-width: 800px;
         }
-        
+
         .client-logo {
             height: 60px;
             margin-bottom: 30px;
             filter: brightness(0) invert(1);
         }
-        
+
         /* Project Meta */
         .project-meta {
             display: grid;
@@ -352,11 +397,11 @@
             gap: 40px;
             margin-top: 50px;
         }
-        
+
         .meta-item {
             text-align: center;
         }
-        
+
         .meta-label {
             font-size: 14px;
             text-transform: uppercase;
@@ -365,12 +410,12 @@
             margin-bottom: 10px;
             letter-spacing: 1px;
         }
-        
+
         .meta-value {
             font-size: 20px;
             font-weight: 700;
         }
-        
+
         /* Featured Image */
         .featured-image-section {
             max-width: 1400px;
@@ -379,14 +424,14 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .featured-image {
             width: 100%;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             object-fit: cover;
         }
-        
+
         /* Project Overview */
         .project-overview {
             max-width: 1400px;
@@ -396,21 +441,21 @@
             grid-template-columns: 2fr 1fr;
             gap: 60px;
         }
-        
+
         .overview-content h2 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 25px;
             color: #1a1a1a;
         }
-        
+
         .overview-content p {
             font-size: 18px;
             line-height: 1.8;
             color: #555;
             margin-bottom: 20px;
         }
-        
+
         .overview-sidebar {
             background: #f8f9fa;
             padding: 35px;
@@ -419,20 +464,20 @@
             position: sticky;
             top: 100px;
         }
-        
+
         .overview-sidebar h3 {
             font-size: 20px;
             font-weight: 800;
             margin-bottom: 20px;
             color: #1a1a1a;
         }
-        
+
         .info-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .info-list li {
             padding: 15px 0;
             border-bottom: 1px solid #e0e0e0;
@@ -440,62 +485,62 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .info-list li:last-child {
             border-bottom: none;
         }
-        
+
         .info-label {
             font-weight: 600;
             color: #666;
         }
-        
+
         .info-value {
             font-weight: 700;
             color: #1a1a1a;
         }
-        
+
         /* Challenge Section */
         .challenge-section {
             background: #f8f9fa;
             padding: 80px 20px;
         }
-        
+
         .challenge-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
         }
-        
+
         .section-title h2 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 15px;
             color: #1a1a1a;
         }
-        
+
         .section-title p {
             font-size: 18px;
             color: #666;
         }
-        
+
         .challenge-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .challenge-card {
             background: white;
             padding: 35px;
             border-radius: 15px;
             border-left: 4px solid #ff2200;
         }
-        
+
         .challenge-card h3 {
             font-size: 22px;
             font-weight: 800;
@@ -505,65 +550,65 @@
             align-items: center;
             gap: 12px;
         }
-        
+
         .challenge-card h3 i {
             color: #ff2200;
             font-size: 24px;
         }
-        
+
         .challenge-card p {
             font-size: 16px;
             line-height: 1.7;
             color: #666;
             margin: 0;
         }
-        
+
         /* Solution Section */
         .solution-section {
             max-width: 1400px;
             margin: 0 auto;
             padding: 80px 20px;
         }
-        
+
         .solution-content {
             max-width: 900px;
             margin: 0 auto 60px;
             text-align: center;
         }
-        
+
         .solution-content h2 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 20px;
             color: #1a1a1a;
         }
-        
+
         .solution-content p {
             font-size: 18px;
             line-height: 1.8;
             color: #666;
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
-        
+
         .feature-card {
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         .feature-icon {
             width: 60px;
             height: 60px;
@@ -574,84 +619,84 @@
             justify-content: center;
             margin-bottom: 20px;
         }
-        
+
         .feature-icon i {
             font-size: 28px;
             color: white;
         }
-        
+
         .feature-card h3 {
             font-size: 20px;
             font-weight: 800;
             margin-bottom: 12px;
             color: #1a1a1a;
         }
-        
+
         .feature-card p {
             font-size: 15px;
             line-height: 1.6;
             color: #666;
             margin: 0;
         }
-        
+
         /* Tech Stack Section */
         .tech-stack-section {
             background: #1a1a1a;
             padding: 80px 20px;
             color: white;
         }
-        
+
         .tech-stack-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
-        
+
         .tech-item {
             text-align: center;
             padding: 25px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             transition: all 0.3s ease;
         }
-        
+
         .tech-item:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
         }
-        
+
         .tech-item i {
             font-size: 48px;
             margin-bottom: 15px;
             color: #ff2200;
         }
-        
+
         .tech-item h4 {
             font-size: 16px;
             font-weight: 700;
             margin: 0;
         }
-        
+
         /* Results Section */
         .results-section {
             max-width: 1400px;
             margin: 0 auto;
             padding: 80px 20px;
         }
-        
+
         .results-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
-        
+
         .result-card {
             text-align: center;
             padding: 40px 30px;
@@ -660,12 +705,12 @@
             border: 2px solid transparent;
             transition: all 0.3s ease;
         }
-        
+
         .result-card:hover {
             border-color: #ff2200;
             transform: translateY(-5px);
         }
-        
+
         .result-number {
             font-size: 56px;
             font-weight: 800;
@@ -673,19 +718,19 @@
             margin-bottom: 10px;
             line-height: 1;
         }
-        
+
         .result-label {
             font-size: 18px;
             font-weight: 700;
             color: #1a1a1a;
             margin-bottom: 8px;
         }
-        
+
         .result-description {
             font-size: 15px;
             color: #666;
         }
-        
+
         /* Testimonial Section */
         .testimonial-section {
             background: linear-gradient(135deg, #ff2200, #ff6b00);
@@ -694,7 +739,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .testimonial-section::before {
             content: '"';
             position: absolute;
@@ -706,7 +751,7 @@
             opacity: 0.1;
             font-family: Georgia, serif;
         }
-        
+
         .testimonial-content {
             max-width: 900px;
             margin: 0 auto;
@@ -714,7 +759,7 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .testimonial-quote {
             font-size: 28px;
             font-weight: 600;
@@ -722,52 +767,52 @@
             margin-bottom: 30px;
             font-style: italic;
         }
-        
+
         .testimonial-author {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
         }
-        
+
         .author-avatar {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
             font-weight: 700;
         }
-        
+
         .author-info h4 {
             font-size: 20px;
             font-weight: 800;
             margin-bottom: 5px;
         }
-        
+
         .author-info p {
             font-size: 16px;
             opacity: 0.9;
             margin: 0;
         }
-        
+
         /* Gallery Section */
         .gallery-section {
             max-width: 1400px;
             margin: 0 auto;
             padding: 80px 20px;
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
             margin-top: 50px;
         }
-        
+
         .gallery-item {
             border-radius: 15px;
             overflow: hidden;
@@ -775,19 +820,19 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
+
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 300px;
             object-fit: cover;
             display: block;
         }
-        
+
         .gallery-item .overlay {
             position: absolute;
             top: 0;
@@ -801,34 +846,34 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .gallery-item:hover .overlay {
             opacity: 1;
         }
-        
+
         .gallery-item .overlay i {
             font-size: 48px;
             color: white;
         }
-        
+
         /* Related Projects */
         .related-projects {
             background: #f8f9fa;
             padding: 80px 20px;
         }
-        
+
         .related-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .related-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
-        
+
         .related-card {
             background: white;
             border-radius: 20px;
@@ -836,42 +881,42 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
+
         .related-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-        
+
         .related-card-image {
             width: 100%;
             height: 220px;
             object-fit: cover;
         }
-        
+
         .related-card-content {
             padding: 25px;
         }
-        
+
         .related-card .project-category {
             background: rgba(255, 34, 0, 0.1);
             margin-bottom: 12px;
             font-size: 12px;
             padding: 6px 16px;
         }
-        
+
         .related-card h3 {
             font-size: 22px;
             font-weight: 800;
             margin-bottom: 12px;
             color: #1a1a1a;
         }
-        
+
         .related-card p {
             font-size: 15px;
             color: #666;
             margin-bottom: 15px;
         }
-        
+
         .related-card .view-project {
             color: #ff2200;
             font-weight: 700;
@@ -879,57 +924,58 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .project-hero h1 {
                 font-size: 38px;
             }
-            
+
             .project-overview {
                 grid-template-columns: 1fr;
             }
-            
+
             .overview-sidebar {
                 position: static;
             }
-            
+
             .featured-image-section {
                 margin-top: 40px;
             }
         }
-        
+
         @media (max-width: 768px) {
             .project-hero h1 {
                 font-size: 32px;
             }
-            
+
             .project-tagline {
                 font-size: 18px;
             }
-            
+
             .section-title h2 {
                 font-size: 32px;
             }
-            
+
             .result-number {
                 font-size: 42px;
             }
-            
+
             .testimonial-quote {
                 font-size: 22px;
             }
-            
+
             .testimonial-author {
                 flex-direction: column;
             }
-            
+
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -967,18 +1013,18 @@
 
     <!-- Header Navigation -->
     <header class="primary-header">
-        <div class="logo"></div>
+        <a href="index.html" class="logo"></a>
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
-            <a href="ai-sensei.html">AI Sensei</a>
-            <a href="book-a-call.html">Book a Call</a>
+            <a href="ai-sensei-chat.html">AI Sensei</a>
+            <a href="book-a-call.html" class="active">Book a Call</a>
         </nav>
         <div class="header-right">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth/auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
-        
+
         <!-- Mobile menu toggle -->
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <span></span>
@@ -995,18 +1041,18 @@
 
     <!-- Mobile navigation overlay -->
     <div class="mobile-nav-overlay"></div>
-    
+
     <!-- Mobile navigation menu -->
     <div class="mobile-nav">
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="ai-sensei.html">AI Sensei</a>
-            <a href="book-a-call.html">Book a Call</a>
+            <a href="book-a-call.html" class="active">Book a Call</a>
         </nav>
         <div class="mobile-nav-buttons">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth/auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
     </div>
 
@@ -1026,11 +1072,13 @@
     <!-- Project Hero -->
     <section class="project-hero">
         <div class="project-hero-content">
-            <img src="images/logos/logo.png" alt="KokoPlus Logo" class="client-logo" onerror="this.style.display='none'">
+            <img src="images/logos/logo.png" alt="KokoPlus Logo" class="client-logo"
+                onerror="this.style.display='none'">
             <div class="project-category">E-commerce</div>
             <h1>KokoPlus: Transforming Coconut Commerce</h1>
-            <p class="project-tagline">A modern e-commerce platform that increased online sales by 250% and revolutionized how Ghanaians buy premium coconut products.</p>
-            
+            <p class="project-tagline">A modern e-commerce platform that increased online sales by 250% and
+                revolutionized how Ghanaians buy premium coconut products.</p>
+
             <div class="project-meta">
                 <div class="meta-item">
                     <div class="meta-label">Client</div>
@@ -1054,7 +1102,8 @@
 
     <!-- Featured Image -->
     <section class="featured-image-section">
-        <img src="images/projects/kokoplus.png" alt="KokoPlus Platform" class="featured-image" onerror="this.style.background='linear-gradient(135deg, #1a1a1a, #2d2d2d)'; this.style.height='500px'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<i class=\'fas fa-shopping-bag\' style=\'font-size:120px;color:#ff2200;\'></i>'">
+        <img src="images/projects/kokoplus.png" alt="KokoPlus Platform" class="featured-image"
+            onerror="this.style.background='linear-gradient(135deg, #1a1a1a, #2d2d2d)'; this.style.height='500px'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<i class=\'fas fa-shopping-bag\' style=\'font-size:120px;color:#ff2200;\'></i>'">
     </section>
 
     <!-- Project Overview -->
@@ -1062,16 +1111,23 @@
         <div class="overview-content">
             <h2>Project Overview</h2>
             <p>
-                KokoPlus, Ghana's leading coconut products retailer, approached us with a challenge: their existing website wasn't converting visitors into customers. With growing demand for their premium coconut oil, water, and other products, they needed a modern e-commerce platform that could scale with their ambitions.
+                KokoPlus, Ghana's leading coconut products retailer, approached us with a challenge: their existing
+                website wasn't converting visitors into customers. With growing demand for their premium coconut oil,
+                water, and other products, they needed a modern e-commerce platform that could scale with their
+                ambitions.
             </p>
             <p>
-                We partnered with KokoPlus to design and develop a comprehensive e-commerce solution that not only looked beautiful but also delivered exceptional user experience and drove sales. The platform needed to handle high traffic volumes, integrate with local payment gateways, and provide seamless mobile shopping experience.
+                We partnered with KokoPlus to design and develop a comprehensive e-commerce solution that not only
+                looked beautiful but also delivered exceptional user experience and drove sales. The platform needed to
+                handle high traffic volumes, integrate with local payment gateways, and provide seamless mobile shopping
+                experience.
             </p>
             <p>
-                The result exceeded all expectations: a 250% increase in online sales within the first 6 months, 180% growth in mobile conversions, and a significant improvement in customer satisfaction scores.
+                The result exceeded all expectations: a 250% increase in online sales within the first 6 months, 180%
+                growth in mobile conversions, and a significant improvement in customer satisfaction scores.
             </p>
         </div>
-        
+
         <div class="overview-sidebar">
             <h3>Project Details</h3>
             <ul class="info-list">
@@ -1106,36 +1162,42 @@
                 <h2>The Challenge</h2>
                 <p>Key obstacles we needed to overcome for KokoPlus</p>
             </div>
-            
+
             <div class="challenge-grid">
                 <div class="challenge-card">
                     <h3><i class="fas fa-chart-line"></i> Low Conversion Rate</h3>
-                    <p>The existing website had a conversion rate of only 0.8%, significantly below industry standards. Visitors were leaving without making purchases.</p>
+                    <p>The existing website had a conversion rate of only 0.8%, significantly below industry standards.
+                        Visitors were leaving without making purchases.</p>
                 </div>
-                
+
                 <div class="challenge-card">
                     <h3><i class="fas fa-mobile-alt"></i> Poor Mobile Experience</h3>
-                    <p>Over 75% of traffic came from mobile devices, but the site wasn't optimized for mobile shopping, leading to cart abandonment.</p>
+                    <p>Over 75% of traffic came from mobile devices, but the site wasn't optimized for mobile shopping,
+                        leading to cart abandonment.</p>
                 </div>
-                
+
                 <div class="challenge-card">
                     <h3><i class="fas fa-credit-card"></i> Payment Integration</h3>
-                    <p>Limited payment options and lack of integration with popular Ghanaian mobile money platforms were major barriers to purchase.</p>
+                    <p>Limited payment options and lack of integration with popular Ghanaian mobile money platforms were
+                        major barriers to purchase.</p>
                 </div>
-                
+
                 <div class="challenge-card">
                     <h3><i class="fas fa-truck"></i> Logistics Complexity</h3>
-                    <p>No system for managing delivery zones, calculating shipping costs, or tracking orders in real-time across Greater Accra.</p>
+                    <p>No system for managing delivery zones, calculating shipping costs, or tracking orders in
+                        real-time across Greater Accra.</p>
                 </div>
-                
+
                 <div class="challenge-card">
                     <h3><i class="fas fa-tachometer-alt"></i> Slow Performance</h3>
-                    <p>Page load times exceeded 8 seconds, causing high bounce rates and negatively impacting SEO rankings.</p>
+                    <p>Page load times exceeded 8 seconds, causing high bounce rates and negatively impacting SEO
+                        rankings.</p>
                 </div>
-                
+
                 <div class="challenge-card">
                     <h3><i class="fas fa-shield-alt"></i> Security Concerns</h3>
-                    <p>Lack of SSL encryption and outdated security measures made customers hesitant to enter payment information.</p>
+                    <p>Lack of SSL encryption and outdated security measures made customers hesitant to enter payment
+                        information.</p>
                 </div>
             </div>
         </div>
@@ -1145,42 +1207,47 @@
     <section class="solution-section">
         <div class="solution-content">
             <h2>Our Solution</h2>
-            <p>We developed a comprehensive e-commerce platform built on modern technology with a focus on user experience, performance, and conversion optimization.</p>
+            <p>We developed a comprehensive e-commerce platform built on modern technology with a focus on user
+                experience, performance, and conversion optimization.</p>
         </div>
-        
+
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-paint-brush"></i>
                 </div>
                 <h3>Modern UI/UX Design</h3>
-                <p>Intuitive navigation, clear product displays, and streamlined checkout process designed to maximize conversions.</p>
+                <p>Intuitive navigation, clear product displays, and streamlined checkout process designed to maximize
+                    conversions.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
                 <h3>Mobile-First Approach</h3>
-                <p>Fully responsive design optimized for mobile shopping with touch-friendly interfaces and fast load times.</p>
+                <p>Fully responsive design optimized for mobile shopping with touch-friendly interfaces and fast load
+                    times.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-credit-card"></i>
                 </div>
                 <h3>Multi-Payment Integration</h3>
-                <p>Support for Mobile Money (MTN, Vodafone), cards, and cash on delivery with secure payment processing.</p>
+                <p>Support for Mobile Money (MTN, Vodafone), cards, and cash on delivery with secure payment processing.
+                </p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <h3>Smart Shopping Cart</h3>
-                <p>Persistent cart across devices, saved items, quick reorder, and intelligent product recommendations.</p>
+                <p>Persistent cart across devices, saved items, quick reorder, and intelligent product recommendations.
+                </p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-search"></i>
@@ -1188,7 +1255,7 @@
                 <h3>Advanced Search & Filter</h3>
                 <p>Powerful search with autocomplete, category filters, and personalized product suggestions.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-chart-bar"></i>
@@ -1196,7 +1263,7 @@
                 <h3>Analytics Dashboard</h3>
                 <p>Real-time insights into sales, customer behavior, inventory levels, and business performance.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-truck"></i>
@@ -1204,7 +1271,7 @@
                 <h3>Delivery Management</h3>
                 <p>Automated shipping calculations, delivery zone mapping, and real-time order tracking.</p>
             </div>
-            
+
             <div class="feature-card">
                 <div class="feature-icon">
                     <i class="fas fa-bell"></i>
@@ -1222,7 +1289,7 @@
                 <h2>Technologies Used</h2>
                 <p style="color: rgba(255,255,255,0.9);">Modern, scalable technologies powering the platform</p>
             </div>
-            
+
             <div class="tech-grid">
                 <div class="tech-item">
                     <i class="fab fa-react"></i>
@@ -1258,38 +1325,38 @@
             <h2>The Results</h2>
             <p>Measurable impact delivered within 6 months of launch</p>
         </div>
-        
+
         <div class="results-grid">
             <div class="result-card">
                 <div class="result-number">250%</div>
                 <div class="result-label">Sales Increase</div>
                 <p class="result-description">Online revenue growth in first 6 months</p>
             </div>
-            
+
             <div class="result-card">
                 <div class="result-number">3.2%</div>
                 <div class="result-label">Conversion Rate</div>
                 <p class="result-description">Up from 0.8%, 4x improvement</p>
             </div>
-            
+
             <div class="result-card">
                 <div class="result-number">180%</div>
                 <div class="result-label">Mobile Conversions</div>
                 <p class="result-description">Dramatic increase in mobile sales</p>
             </div>
-            
+
             <div class="result-card">
                 <div class="result-number">1.8s</div>
                 <div class="result-label">Load Time</div>
                 <p class="result-description">Down from 8s, 77% faster</p>
             </div>
-            
+
             <div class="result-card">
                 <div class="result-number">15K+</div>
                 <div class="result-label">Active Users</div>
                 <p class="result-description">Monthly active customers</p>
             </div>
-            
+
             <div class="result-card">
                 <div class="result-number">4.8/5</div>
                 <div class="result-label">Customer Rating</div>
@@ -1302,7 +1369,9 @@
     <section class="testimonial-section">
         <div class="testimonial-content">
             <p class="testimonial-quote">
-                "Manifest Digital transformed our business. The new platform not only looks amazing but has tripled our online sales. Their team understood our vision and delivered beyond our expectations. The mobile experience is phenomenal, and our customers love it!"
+                "Manifest Digital transformed our business. The new platform not only looks amazing but has tripled our
+                online sales. Their team understood our vision and delivered beyond our expectations. The mobile
+                experience is phenomenal, and our customers love it!"
             </p>
             <div class="testimonial-author">
                 <div class="author-avatar">KA</div>
@@ -1320,24 +1389,27 @@
             <h2>Project Gallery</h2>
             <p>Screenshots and highlights from the platform</p>
         </div>
-        
+
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="images/projects/kokoplus.png" alt="Homepage" onerror="this.style.background='linear-gradient(135deg, #ff2200, #ff6b00)'; this.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;\'><i class=\'fas fa-home\' style=\'font-size:60px;color:white;\'></i></div>'">
+                <img src="images/projects/kokoplus.png" alt="Homepage"
+                    onerror="this.style.background='linear-gradient(135deg, #ff2200, #ff6b00)'; this.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;\'><i class=\'fas fa-home\' style=\'font-size:60px;color:white;\'></i></div>'">
                 <div class="overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
             </div>
-            
+
             <div class="gallery-item">
-                <img src="images/projects/kokoplus-mobile.png" alt="Mobile View" onerror="this.style.background='linear-gradient(135deg, #1a1a1a, #2d2d2d)'; this.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;\'><i class=\'fas fa-mobile-alt\' style=\'font-size:60px;color:#ff2200;\'></i></div>'">
+                <img src="images/projects/kokoplus-mobile.png" alt="Mobile View"
+                    onerror="this.style.background='linear-gradient(135deg, #1a1a1a, #2d2d2d)'; this.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;\'><i class=\'fas fa-mobile-alt\' style=\'font-size:60px;color:#ff2200;\'></i></div>'">
                 <div class="overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
             </div>
-            
+
             <div class="gallery-item">
-                <img src="images/projects/kokoplus-cart.png" alt="Shopping Cart" onerror="this.style.background='linear-gradient(135deg, #ff6b00, #ff2200)'; this.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;\'><i class=\'fas fa-shopping-cart\' style=\'font-size:60px;color:white;\'></i></div>'">
+                <img src="images/projects/kokoplus-cart.png" alt="Shopping Cart"
+                    onerror="this.style.background='linear-gradient(135deg, #ff6b00, #ff2200)'; this.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;\'><i class=\'fas fa-shopping-cart\' style=\'font-size:60px;color:white;\'></i></div>'">
                 <div class="overlay">
                     <i class="fas fa-search-plus"></i>
                 </div>
@@ -1352,10 +1424,11 @@
                 <h2>Related Projects</h2>
                 <p>Explore more of our successful digital transformations</p>
             </div>
-            
+
             <div class="related-grid">
                 <a href="#" class="related-card">
-                    <img src="images/projects/everythingme.png" alt="Everything.me" class="related-card-image" onerror="this.style.background='linear-gradient(135deg, #ff2200, #ff6b00)'; this.innerHTML='<i class=\'fas fa-store\' style=\'font-size:60px;color:white;margin:80px auto;display:block;text-align:center;\'></i>'">
+                    <img src="images/projects/everythingme.png" alt="Everything.me" class="related-card-image"
+                        onerror="this.style.background='linear-gradient(135deg, #ff2200, #ff6b00)'; this.innerHTML='<i class=\'fas fa-store\' style=\'font-size:60px;color:white;margin:80px auto;display:block;text-align:center;\'></i>'">
                     <div class="related-card-content">
                         <div class="project-category">E-commerce</div>
                         <h3>Everything.me</h3>
@@ -1365,7 +1438,8 @@
                 </a>
 
                 <a href="#" class="related-card">
-                    <img src="images/projects/gettheartiste.png" alt="GetTheArtiste" class="related-card-image" onerror="this.style.background='linear-gradient(135deg, #1a1a1a, #2d2d2d)'; this.innerHTML='<i class=\'fas fa-music\' style=\'font-size:60px;color:#ff2200;margin:80px auto;display:block;text-align:center;\'></i>'">
+                    <img src="images/projects/gettheartiste.png" alt="GetTheArtiste" class="related-card-image"
+                        onerror="this.style.background='linear-gradient(135deg, #1a1a1a, #2d2d2d)'; this.innerHTML='<i class=\'fas fa-music\' style=\'font-size:60px;color:#ff2200;margin:80px auto;display:block;text-align:center;\'></i>'">
                     <div class="related-card-content">
                         <div class="project-category">Entertainment</div>
                         <h3>GetTheArtiste</h3>
@@ -1375,7 +1449,8 @@
                 </a>
 
                 <a href="#" class="related-card">
-                    <img src="images/projects/cliqhost.png" alt="CliqHost" class="related-card-image" onerror="this.style.background='linear-gradient(135deg, #ff6b00, #ff2200)'; this.innerHTML='<i class=\'fas fa-server\' style=\'font-size:60px;color:white;margin:80px auto;display:block;text-align:center;\'></i>'">
+                    <img src="images/projects/cliqhost.png" alt="CliqHost" class="related-card-image"
+                        onerror="this.style.background='linear-gradient(135deg, #ff6b00, #ff2200)'; this.innerHTML='<i class=\'fas fa-server\' style=\'font-size:60px;color:white;margin:80px auto;display:block;text-align:center;\'></i>'">
                     <div class="related-card-content">
                         <div class="project-category">SaaS</div>
                         <h3>CliqHost</h3>
@@ -1392,10 +1467,13 @@
         <div class="cta">
             <!-- Decorative elements for CTA section -->
             <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-left">
-            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-top-right">
-            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-right-under">
-            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-left-under">
-            
+            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt=""
+                class="decorative-element cta-top-right">
+            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt=""
+                class="decorative-element cta-right-under">
+            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt=""
+                class="decorative-element cta-left-under">
+
             <h2>Ready to Transform Your Business?</h2>
             <a href="book-a-call.html" class="btn-cta">Start Your Project</a>
         </div>
@@ -1435,7 +1513,9 @@
                     <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="copyright"><p>Copyright 2025 - Manifest Digital</p></div>
+            <div class="copyright">
+                <p>Copyright 2025 - Manifest Digital</p>
+            </div>
         </footer>
     </section>
 
@@ -1450,7 +1530,7 @@
 
     <script>
         // Preloader Animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Animate progress bar
             anime({
                 targets: '.preloader-progress-bar',
@@ -1475,7 +1555,7 @@
                 scale: [0, 1],
                 opacity: [0, 1],
                 duration: 600,
-                delay: anime.stagger(100, {start: 800}),
+                delay: anime.stagger(100, { start: 800 }),
                 easing: 'easeOutElastic(1, .8)'
             });
 
@@ -1496,9 +1576,9 @@
                     opacity: 0,
                     duration: 800,
                     easing: 'easeInOutQuad',
-                    complete: function() {
+                    complete: function () {
                         document.getElementById('preloader').style.display = 'none';
-                        
+
                         // Animate main content
                         const mainContent = document.querySelector('body > *:not(#preloader):not(.notification-topbar)');
                         if (mainContent) {
@@ -1519,7 +1599,7 @@
         function showNotificationAfterPreloader() {
             // Check if notification was already closed
             const notificationClosed = localStorage.getItem('notificationClosed');
-            
+
             if (!notificationClosed) {
                 setTimeout(() => {
                     const notificationTopbar = document.querySelector('.notification-topbar');
@@ -1527,12 +1607,12 @@
                         notificationTopbar.classList.add('show');
                         document.body.classList.add('notification-visible');
                     }
-                    
+
                     // Handle notification close
                     const closeBtn = document.querySelector('.notification-close');
                     if (closeBtn && !closeBtn.hasAttribute('data-listener-added')) {
                         closeBtn.setAttribute('data-listener-added', 'true');
-                        closeBtn.addEventListener('click', function() {
+                        closeBtn.addEventListener('click', function () {
                             const notificationTopbar = document.querySelector('.notification-topbar');
                             if (notificationTopbar) {
                                 notificationTopbar.classList.remove('show');
@@ -1549,4 +1629,5 @@
         setTimeout(showNotificationAfterPreloader, 4500);
     </script>
 </body>
+
 </html>

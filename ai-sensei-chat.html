@@ -1782,11 +1782,24 @@
 
             messagesContainer.appendChild(messageElement);
             
-            // Smart scrolling: for AI messages, scroll to the beginning of the message
+            // Smart scrolling: for AI messages, scroll to show avatar + beginning of message
             // for user messages, scroll to bottom as usual
             if (sender === 'ai') {
-                // Scroll to show the beginning of the AI message
-                messageElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Use a longer delay to ensure the element is fully rendered
+                setTimeout(() => {
+                    // Calculate the position to show the message with avatar
+                    const messageRect = messageElement.getBoundingClientRect();
+                    const containerRect = messagesContainer.getBoundingClientRect();
+                    
+                    // Calculate target scroll position (message top - container top + current scroll - offset for avatar)
+                    const targetScrollTop = messageElement.offsetTop - 60; // 60px offset to show avatar
+                    
+                    // Scroll to the calculated position
+                    messagesContainer.scrollTo({
+                        top: Math.max(0, targetScrollTop),
+                        behavior: 'smooth'
+                    });
+                }, 200);
             } else {
                 // For user messages, scroll to bottom as usual
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;

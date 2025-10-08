@@ -1221,36 +1221,8 @@
         updateReadingTracker();
         
         // ========================
-        // Notification Topbar
+        // Notification Topbar (handled by showNotificationAfterPreloader function)
         // ========================
-        const notificationTopbar = document.querySelector('.notification-topbar');
-        const notificationClose = document.querySelector('.notification-close');
-        
-        // Check if notification was previously closed
-        const notificationClosed = localStorage.getItem('notificationClosed');
-        
-        if (notificationClosed === 'true') {
-            if (notificationTopbar) {
-                notificationTopbar.classList.remove('show');
-            }
-        } else {
-            // Show notification and adjust body
-            if (notificationTopbar) {
-                notificationTopbar.classList.add('show');
-                document.body.classList.add('notification-visible');
-            }
-        }
-        
-        // Close notification handler
-        if (notificationClose) {
-            notificationClose.addEventListener('click', function() {
-                if (notificationTopbar) {
-                    notificationTopbar.classList.remove('show');
-                    document.body.classList.remove('notification-visible');
-                    localStorage.setItem('notificationClosed', 'true');
-                }
-            });
-        }
         
         // ========================
         // Scroll to top functionality

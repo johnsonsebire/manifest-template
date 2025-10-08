@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read the latest insights on digital transformation, web development, AI, and technology trends from Manifest Digital's blog. Expert advice for businesses in Ghana and beyond.">
-    <meta name="keywords" content="digital transformation blog, web development Ghana, AI insights, tech blog, business technology, Manifest Digital blog">
+    <meta name="description"
+        content="Read the latest insights on digital transformation, web development, AI, and technology trends from Manifest Digital's blog. Expert advice for businesses in Ghana and beyond.">
+    <meta name="keywords"
+        content="digital transformation blog, web development Ghana, AI insights, tech blog, business technology, Manifest Digital blog">
     <meta name="author" content="Manifest Digital">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Blog | Insights & Updates - Manifest Digital">
-    <meta property="og:description" content="Expert insights on digital transformation, web development, AI, and technology trends from Ghana's leading digital agency.">
+    <meta property="og:description"
+        content="Expert insights on digital transformation, web development, AI, and technology trends from Ghana's leading digital agency.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://manifestghana.com/blog">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Blog | Manifest Digital">
-    <meta name="twitter:description" content="Expert insights on digital transformation, AI, and technology trends from Ghana's leading digital agency.">
-    
+    <meta name="twitter:description"
+        content="Expert insights on digital transformation, AI, and technology trends from Ghana's leading digital agency.">
+
     <title>Blog | Latest Insights & Updates - Manifest Digital</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- Anime.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    
+
     <style>
         /* Preloader Styles */
         #preloader {
@@ -70,9 +76,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .preloader-content {
@@ -107,8 +121,13 @@
         }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
         }
 
         .preloader-logo img {
@@ -135,15 +154,27 @@
             animation: dotBounce 1.4s ease-in-out infinite both;
         }
 
-        .preloader-dot:nth-child(1) { animation-delay: -0.32s; }
-        .preloader-dot:nth-child(2) { animation-delay: -0.16s; }
-        .preloader-dot:nth-child(3) { animation-delay: 0s; }
+        .preloader-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .preloader-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        .preloader-dot:nth-child(3) {
+            animation-delay: 0s;
+        }
 
         @keyframes dotBounce {
-            0%, 80%, 100% {
+
+            0%,
+            80%,
+            100% {
                 transform: scale(0.8);
                 opacity: 0.5;
             }
+
             40% {
                 transform: scale(1.2);
                 opacity: 1;
@@ -180,8 +211,13 @@
         }
 
         @keyframes progressShine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         .preloader-text {
@@ -221,20 +257,30 @@
         }
 
         @keyframes rotateClockwise {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
 
         @keyframes rotateCounterClockwise {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(-360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-360deg);
+            }
         }
 
         /* Blog Page Specific Styles */
-        
+
         .blog-hero {
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(45, 45, 45, 0.95)),
-                        url('images/decorative/hero_top_mem_stripe_circle2.png') no-repeat center;
+                url('images/decorative/hero_top_mem_stripe_circle2.png') no-repeat center;
             background-size: cover;
             padding: 120px 0 80px;
             text-align: center;
@@ -242,7 +288,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .blog-hero::before {
             content: '';
             position: absolute;
@@ -252,31 +298,31 @@
             bottom: 0;
             background: radial-gradient(circle at 30% 50%, rgba(255, 34, 0, 0.1) 0%, transparent 50%);
         }
-        
+
         .blog-hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .blog-hero h1 {
             font-size: 64px;
             font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
         }
-        
+
         .blog-hero p {
             font-size: 20px;
             opacity: 0.9;
             margin-bottom: 0;
         }
-        
+
         .blog-hero .highlight {
             color: #ff2200;
         }
-        
+
         /* Blog Filters Section */
         .blog-filters {
             padding: 40px 0;
@@ -285,9 +331,9 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-        
+
         .filters-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -298,13 +344,13 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-        
+
         .filter-buttons {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .filter-btn {
             padding: 10px 24px;
             background: transparent;
@@ -316,7 +362,7 @@
             color: #333;
             font-size: 15px;
         }
-        
+
         .filter-btn:hover,
         .filter-btn.active {
             background: #ff2200;
@@ -324,11 +370,11 @@
             color: white;
             transform: translateY(-2px);
         }
-        
+
         .search-box {
             position: relative;
         }
-        
+
         .search-box input {
             padding: 10px 20px 10px 45px;
             border: 2px solid #ddd;
@@ -337,12 +383,12 @@
             font-size: 16px;
             transition: border-color 0.3s ease;
         }
-        
+
         .search-box input:focus {
             outline: none;
             border-color: #ff2200;
         }
-        
+
         .search-box i {
             position: absolute;
             left: 18px;
@@ -350,33 +396,33 @@
             transform: translateY(-50%);
             color: #999;
         }
-        
+
         /* Blog Grid Section */
         .blog-grid-section {
             max-width: 1400px;
             margin: 0 auto;
             padding: 60px 20px;
         }
-        
+
         .section-header {
             text-align: center;
             margin-bottom: 50px;
         }
-        
+
         .section-header h2 {
             font-size: 42px;
             font-weight: 800;
             margin-bottom: 15px;
             color: #1a1a1a;
         }
-        
+
         .section-header p {
             font-size: 18px;
             color: #666;
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
         /* Featured Article */
         .featured-article {
             margin-bottom: 60px;
@@ -386,35 +432,35 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
+
         .featured-article:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .featured-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0;
         }
-        
+
         .featured-image {
             position: relative;
             overflow: hidden;
             min-height: 400px;
         }
-        
+
         .featured-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .featured-article:hover .featured-image img {
             transform: scale(1.1);
         }
-        
+
         .featured-badge {
             position: absolute;
             top: 20px;
@@ -427,14 +473,14 @@
             font-size: 14px;
             z-index: 2;
         }
-        
+
         .featured-text {
             padding: 60px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        
+
         .featured-category {
             color: #ff2200;
             font-weight: 700;
@@ -443,7 +489,7 @@
             letter-spacing: 1px;
             margin-bottom: 15px;
         }
-        
+
         .featured-text h3 {
             font-size: 36px;
             font-weight: 800;
@@ -451,14 +497,14 @@
             color: #1a1a1a;
             line-height: 1.3;
         }
-        
+
         .featured-text p {
             font-size: 18px;
             color: #666;
             margin-bottom: 25px;
             line-height: 1.7;
         }
-        
+
         .article-meta {
             display: flex;
             align-items: center;
@@ -467,17 +513,17 @@
             font-size: 15px;
             color: #999;
         }
-        
+
         .article-meta span {
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .article-meta i {
             color: #ff2200;
         }
-        
+
         .read-more-btn {
             display: inline-flex;
             align-items: center;
@@ -491,13 +537,13 @@
             transition: all 0.3s ease;
             align-self: flex-start;
         }
-        
+
         .read-more-btn:hover {
             background: #cc1b00;
             color: white;
             transform: translateX(5px);
         }
-        
+
         /* Blog Articles Grid */
         .blog-grid {
             display: grid;
@@ -505,40 +551,40 @@
             gap: 40px;
             margin-bottom: 60px;
         }
-        
+
         .blog-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
         }
-        
+
         .blog-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .blog-card-image {
             position: relative;
             overflow: hidden;
             height: 250px;
             background: #f0f0f0;
         }
-        
+
         .blog-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .blog-card:hover .blog-card-image img {
             transform: scale(1.1);
         }
-        
+
         .card-category-badge {
             position: absolute;
             top: 15px;
@@ -552,14 +598,14 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
         .blog-card-content {
             padding: 30px;
             flex: 1;
             display: flex;
             flex-direction: column;
         }
-        
+
         .blog-card-content h3 {
             font-size: 22px;
             font-weight: 800;
@@ -567,17 +613,17 @@
             color: #1a1a1a;
             line-height: 1.4;
         }
-        
+
         .blog-card-content h3 a {
             color: inherit;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .blog-card-content h3 a:hover {
             color: #ff2200;
         }
-        
+
         .blog-card-excerpt {
             color: #666;
             font-size: 16px;
@@ -585,7 +631,7 @@
             margin-bottom: 20px;
             flex: 1;
         }
-        
+
         .blog-card-footer {
             display: flex;
             justify-content: space-between;
@@ -595,13 +641,13 @@
             font-size: 14px;
             color: #999;
         }
-        
+
         .author-info {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .author-avatar {
             width: 35px;
             height: 35px;
@@ -614,13 +660,13 @@
             font-weight: 700;
             font-size: 14px;
         }
-        
+
         .reading-time {
             display: flex;
             align-items: center;
             gap: 5px;
         }
-        
+
         /* Pagination */
         .pagination-section {
             display: flex;
@@ -629,7 +675,7 @@
             gap: 10px;
             margin-top: 60px;
         }
-        
+
         .pagination-btn {
             padding: 12px 20px;
             background: white;
@@ -641,24 +687,24 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        
+
         .pagination-btn:hover {
             background: #ff2200;
             border-color: #ff2200;
             color: white;
         }
-        
+
         .pagination-btn.active {
             background: #ff2200;
             border-color: #ff2200;
             color: white;
         }
-        
+
         .pagination-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
+
         /* Newsletter Section */
         .newsletter-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
@@ -667,7 +713,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .newsletter-section::before {
             content: '';
             position: absolute;
@@ -676,10 +722,10 @@
             right: 0;
             bottom: 0;
             background: url('images/decorative/cta_left_mem_dots_f_circle2.svg') no-repeat left center,
-                        url('images/decorative/cta_top_right_mem_dots_f_tri (1).svg') no-repeat right top;
+                url('images/decorative/cta_top_right_mem_dots_f_tri (1).svg') no-repeat right top;
             opacity: 0.1;
         }
-        
+
         .newsletter-content {
             max-width: 800px;
             margin: 0 auto;
@@ -687,27 +733,27 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .newsletter-content h2 {
             font-size: 42px;
             font-weight: 800;
             color: white;
             margin-bottom: 20px;
         }
-        
+
         .newsletter-content p {
             font-size: 18px;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 40px;
         }
-        
+
         .newsletter-form {
             display: flex;
             gap: 15px;
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
         .newsletter-form input {
             flex: 1;
             padding: 16px 24px;
@@ -717,11 +763,11 @@
             outline: none;
             transition: border-color 0.3s ease;
         }
-        
+
         .newsletter-form input:focus {
             border-color: #ff2200;
         }
-        
+
         .newsletter-form button {
             padding: 16px 40px;
             background: #ff2200;
@@ -734,109 +780,119 @@
             transition: all 0.3s ease;
             white-space: nowrap;
         }
-        
+
         .newsletter-form button:hover {
             background: #cc1b00;
             transform: translateY(-2px);
         }
-        
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .blog-hero h1 {
                 font-size: 48px;
             }
-            
+
             .featured-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .featured-text {
                 padding: 40px;
             }
-            
+
             .featured-text h3 {
                 font-size: 28px;
             }
-            
+
             .blog-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
                 gap: 30px;
             }
         }
-        
+
         @media (max-width: 768px) {
             .blog-hero h1 {
                 font-size: 36px;
             }
-            
+
             .blog-hero p {
                 font-size: 16px;
             }
-            
+
             .filters-container {
                 flex-direction: column;
                 align-items: stretch;
             }
-            
+
             .filter-buttons {
                 justify-content: center;
             }
-            
+
             .search-box input {
                 width: 100%;
             }
-            
+
             .featured-text {
                 padding: 30px;
             }
-            
+
             .featured-text h3 {
                 font-size: 24px;
             }
-            
+
             .featured-text p {
                 font-size: 16px;
             }
-            
+
             .blog-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .newsletter-content h2 {
                 font-size: 32px;
             }
-            
+
             .newsletter-form {
                 flex-direction: column;
             }
-            
+
             .section-header h2 {
                 font-size: 32px;
             }
         }
-        
+
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .blog-card,
         .featured-article {
             animation: fadeInUp 0.6s ease-out;
         }
-        
-        .blog-card:nth-child(2) { animation-delay: 0.1s; }
-        .blog-card:nth-child(3) { animation-delay: 0.2s; }
-        .blog-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .blog-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .blog-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .blog-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
     </style>
 </head>
+
 <body>
     <!-- Preloader -->
     <div id="preloader">
@@ -874,18 +930,18 @@
 
     <!-- Header Navigation -->
     <header class="primary-header">
-        <div class="logo"></div>
+        <a href="index.html" class="logo"></a>
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
-            <a href="ai-sensei.html">AI Sensei</a>
-            <a href="book-a-call.html">Book a Call</a>
+            <a href="ai-sensei-chat.html">AI Sensei</a>
+            <a href="book-a-call.html" class="active">Book a Call</a>
         </nav>
         <div class="header-right">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth/auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
-        
+
         <!-- Mobile menu toggle -->
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
             <span></span>
@@ -902,18 +958,18 @@
 
     <!-- Mobile navigation overlay -->
     <div class="mobile-nav-overlay"></div>
-    
+
     <!-- Mobile navigation menu -->
     <div class="mobile-nav">
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="ai-sensei.html">AI Sensei</a>
-            <a href="book-a-call.html">Book a Call</a>
+            <a href="book-a-call.html" class="active">Book a Call</a>
         </nav>
         <div class="mobile-nav-buttons">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth/auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
     </div>
 
@@ -921,7 +977,8 @@
     <section class="blog-hero">
         <div class="blog-hero-content">
             <h1>Our <span class="highlight">Blog</span></h1>
-            <p>Insights on digital transformation, web development, AI, and technology trends to help your business thrive in the digital age.</p>
+            <p>Insights on digital transformation, web development, AI, and technology trends to help your business
+                thrive in the digital age.</p>
         </div>
     </section>
 
@@ -954,7 +1011,9 @@
                 <div class="featured-text">
                     <div class="featured-category">AI & Machine Learning</div>
                     <h3>How AI is Transforming Business Operations in Ghana</h3>
-                    <p>Discover how Ghanaian businesses are leveraging artificial intelligence and machine learning to automate processes, reduce costs by up to 70%, and deliver exceptional customer experiences 24/7.</p>
+                    <p>Discover how Ghanaian businesses are leveraging artificial intelligence and machine learning to
+                        automate processes, reduce costs by up to 70%, and deliver exceptional customer experiences
+                        24/7.</p>
                     <div class="article-meta">
                         <span><i class="fas fa-calendar"></i> October 1, 2025</span>
                         <span><i class="fas fa-clock"></i> 8 min read</span>
@@ -983,7 +1042,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">The Rise of Progressive Web Apps (PWAs) in 2025</a></h3>
-                    <p class="blog-card-excerpt">Progressive Web Apps are revolutionizing how businesses deliver mobile experiences. Learn why PWAs are becoming the go-to solution for African startups.</p>
+                    <p class="blog-card-excerpt">Progressive Web Apps are revolutionizing how businesses deliver mobile
+                        experiences. Learn why PWAs are becoming the go-to solution for African startups.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">KA</div>
@@ -1005,7 +1065,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">5 Digital Marketing Strategies for Ghanaian Nonprofits</a></h3>
-                    <p class="blog-card-excerpt">Effective digital marketing doesn't require a massive budget. Discover proven strategies that help nonprofits amplify their impact and reach donors.</p>
+                    <p class="blog-card-excerpt">Effective digital marketing doesn't require a massive budget. Discover
+                        proven strategies that help nonprofits amplify their impact and reach donors.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">AM</div>
@@ -1027,7 +1088,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">Case Study: Building Good News Library's Digital Platform</a></h3>
-                    <p class="blog-card-excerpt">How we helped Good News Library reach thousands of readers with a custom content management system and mobile-first design approach.</p>
+                    <p class="blog-card-excerpt">How we helped Good News Library reach thousands of readers with a
+                        custom content management system and mobile-first design approach.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">KO</div>
@@ -1049,7 +1111,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">Building Intelligent Chatbots for Customer Service</a></h3>
-                    <p class="blog-card-excerpt">Learn how AI-powered chatbots can handle 80% of routine customer inquiries, freeing your team to focus on complex issues and strategic work.</p>
+                    <p class="blog-card-excerpt">Learn how AI-powered chatbots can handle 80% of routine customer
+                        inquiries, freeing your team to focus on complex issues and strategic work.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">EA</div>
@@ -1071,7 +1134,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">Optimizing Website Performance for African Internet Speeds</a></h3>
-                    <p class="blog-card-excerpt">A practical guide to making your website lightning-fast even on slower connections. Essential techniques every African web developer should know.</p>
+                    <p class="blog-card-excerpt">A practical guide to making your website lightning-fast even on slower
+                        connections. Essential techniques every African web developer should know.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">YB</div>
@@ -1093,7 +1157,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">Why Mobile-First Design Matters in Africa</a></h3>
-                    <p class="blog-card-excerpt">With over 70% of African internet users accessing the web via mobile devices, mobile-first design isn't optional—it's essential for success.</p>
+                    <p class="blog-card-excerpt">With over 70% of African internet users accessing the web via mobile
+                        devices, mobile-first design isn't optional—it's essential for success.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">AB</div>
@@ -1115,7 +1180,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">Data-Driven Decision Making for Small Businesses</a></h3>
-                    <p class="blog-card-excerpt">Transform your business with data analytics. Learn how to collect, analyze, and act on customer data to drive growth and improve ROI.</p>
+                    <p class="blog-card-excerpt">Transform your business with data analytics. Learn how to collect,
+                        analyze, and act on customer data to drive growth and improve ROI.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">KN</div>
@@ -1137,7 +1203,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">How KokoPlus Scaled to 10,000+ Users with Cloud Infrastructure</a></h3>
-                    <p class="blog-card-excerpt">Discover how we helped KokoPlus build a scalable, secure platform that handles thousands of concurrent users without breaking a sweat.</p>
+                    <p class="blog-card-excerpt">Discover how we helped KokoPlus build a scalable, secure platform that
+                        handles thousands of concurrent users without breaking a sweat.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">FA</div>
@@ -1159,7 +1226,8 @@
                 </div>
                 <div class="blog-card-content">
                     <h3><a href="#">Predictive Analytics: Forecasting Business Trends with AI</a></h3>
-                    <p class="blog-card-excerpt">Use machine learning to predict customer behavior, optimize inventory, and make smarter business decisions with predictive analytics tools.</p>
+                    <p class="blog-card-excerpt">Use machine learning to predict customer behavior, optimize inventory,
+                        and make smarter business decisions with predictive analytics tools.</p>
                     <div class="blog-card-footer">
                         <div class="author-info">
                             <div class="author-avatar">NQ</div>
@@ -1193,7 +1261,8 @@
     <section class="newsletter-section">
         <div class="newsletter-content">
             <h2>Stay Updated</h2>
-            <p>Get the latest insights, tutorials, and case studies delivered straight to your inbox. Join 1,000+ subscribers.</p>
+            <p>Get the latest insights, tutorials, and case studies delivered straight to your inbox. Join 1,000+
+                subscribers.</p>
             <form class="newsletter-form" id="newsletterForm">
                 <input type="email" placeholder="Enter your email address" required>
                 <button type="submit">Subscribe</button>
@@ -1206,10 +1275,13 @@
         <div class="cta">
             <!-- Decorative elements for CTA section -->
             <img src="images/decorative/cta_left_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-left">
-            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-top-right">
-            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt="" class="decorative-element cta-right-under">
-            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt="" class="decorative-element cta-left-under">
-            
+            <img src="images/decorative/cta_top_right_mem_dots_f_tri (1).svg" alt=""
+                class="decorative-element cta-top-right">
+            <img src="images/decorative/right_under_cta_mem_dots_f_circle2.svg" alt=""
+                class="decorative-element cta-right-under">
+            <img src="images/decorative/left_under_cta_mem_dots_f_tri (1).svg" alt=""
+                class="decorative-element cta-left-under">
+
             <h2>Ready to start your project?</h2>
             <a href="book-a-call.html" class="btn-cta">Book Your Call Now</a>
         </div>
@@ -1249,7 +1321,9 @@
                     <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="copyright"><p>Copyright 2025 - Manifest Digital</p></div>
+            <div class="copyright">
+                <p>Copyright 2025 - Manifest Digital</p>
+            </div>
         </footer>
     </section>
 
@@ -1261,7 +1335,7 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
-    
+
     <script>
         // Blog Filter Functionality
         const filterButtons = document.querySelectorAll('.filter-btn');
@@ -1297,14 +1371,14 @@
 
         // Search Functionality
         const searchInput = document.getElementById('blogSearch');
-        
+
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            
+
             blogCards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
                 const excerpt = card.querySelector('.blog-card-excerpt').textContent.toLowerCase();
-                
+
                 if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
                     card.style.display = 'flex';
                 } else {
@@ -1315,7 +1389,7 @@
             // Handle featured article
             const featuredTitle = featuredArticle.querySelector('h3').textContent.toLowerCase();
             const featuredText = featuredArticle.querySelector('.featured-text p').textContent.toLowerCase();
-            
+
             if (featuredTitle.includes(searchTerm) || featuredText.includes(searchTerm)) {
                 featuredArticle.style.display = 'block';
             } else {
@@ -1325,11 +1399,11 @@
 
         // Newsletter Form Submission
         const newsletterForm = document.getElementById('newsletterForm');
-        
+
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = newsletterForm.querySelector('input[type="email"]').value;
-            
+
             // Here you would typically send this to your backend
             alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
             newsletterForm.reset();
@@ -1373,7 +1447,7 @@
         });
 
         // Preloader Animation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Animate progress bar
             anime({
                 targets: '.preloader-progress-bar',
@@ -1398,7 +1472,7 @@
                 scale: [0, 1],
                 opacity: [0, 1],
                 duration: 600,
-                delay: anime.stagger(100, {start: 800}),
+                delay: anime.stagger(100, { start: 800 }),
                 easing: 'easeOutElastic(1, .8)'
             });
 
@@ -1419,9 +1493,9 @@
                     opacity: 0,
                     duration: 800,
                     easing: 'easeInOutQuad',
-                    complete: function() {
+                    complete: function () {
                         document.getElementById('preloader').style.display = 'none';
-                        
+
                         // Animate main content
                         const mainContent = document.querySelector('body > *:not(#preloader):not(.notification-topbar)');
                         if (mainContent) {
@@ -1442,7 +1516,7 @@
         function showNotificationAfterPreloader() {
             // Check if notification was already closed
             const notificationClosed = localStorage.getItem('notificationClosed');
-            
+
             if (!notificationClosed) {
                 setTimeout(() => {
                     const notificationTopbar = document.querySelector('.notification-topbar');
@@ -1450,12 +1524,12 @@
                         notificationTopbar.classList.add('show');
                         document.body.classList.add('notification-visible');
                     }
-                    
+
                     // Handle notification close
                     const closeBtn = document.querySelector('.notification-close');
                     if (closeBtn && !closeBtn.hasAttribute('data-listener-added')) {
                         closeBtn.setAttribute('data-listener-added', 'true');
-                        closeBtn.addEventListener('click', function() {
+                        closeBtn.addEventListener('click', function () {
                             const notificationTopbar = document.querySelector('.notification-topbar');
                             if (notificationTopbar) {
                                 notificationTopbar.classList.remove('show');
@@ -1472,4 +1546,5 @@
         setTimeout(showNotificationAfterPreloader, 4500);
     </script>
 </body>
+
 </html>

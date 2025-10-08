@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/logos/favicon.png">
+    <link rel="icon" type="image/x-icon" href="../images/logos/favicon.png">
     
     <title>Login & Register | Manifest Digital</title>
     
@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
    
 
     <!-- Anime.js CDN -->
@@ -176,8 +176,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('images/decorative/hero_left_mem_dots_f_circle3.svg') no-repeat left center,
-                        url('images/decorative/hero_right_circle-con3.svg') no-repeat right center;
+            background: url('../images/decorative/hero_left_mem_dots_f_circle3.svg') no-repeat left center,
+                        url('../images/decorative/hero_right_circle-con3.svg') no-repeat right center;
             background-size: 300px, 250px;
             opacity: 0.1;
             z-index: 1;
@@ -534,7 +534,7 @@
         
         <div class="preloader-container">
             <div class="loader-logo">
-                <img src="images/logos/favicon.png" alt="Manifest Digital Logo" class="logo-image">
+                <img src="../images/logos/favicon.png" alt="Manifest Digital Logo" class="logo-image">
             </div>
             
             <div class="loading-dots">
@@ -569,16 +569,16 @@
     </div>
     
     <header class="primary-header">
-        <div class="logo"></div>
+        <a href="../index.html" class="logo"></a>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="ai-sensei.html">AI Sensei</a>
-            <a href="book-a-call.html">Book a Call</a>
+            <a href="../index.html">Home</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../ai-sensei-chat.html">AI Sensei</a>
+            <a href="../book-a-call.html">Book a Call</a>
         </nav>
         <div class="header-right">
             <a href="auth.html" class="login active">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="../quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
         
         <!-- Mobile menu toggle -->
@@ -601,14 +601,14 @@
     <!-- Mobile navigation menu -->
     <div class="mobile-nav">
         <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="ai-sensei.html">AI Sensei</a>
-            <a href="book-a-call.html">Book a Call</a>
+            <a href="../index.html">Home</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../ai-sensei-chat.html">AI Sensei</a>
+            <a href="../book-a-call.html">Book a Call</a>
         </nav>
         <div class="mobile-nav-buttons">
             <a href="auth.html" class="login active">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="../quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
     </div>
 
@@ -965,37 +965,7 @@
             });
         });
 
-          // ========================
-        // Notification Topbar
-        // ========================
-        const notificationTopbar = document.querySelector('.notification-topbar');
-        const notificationClose = document.querySelector('.notification-close');
-        
-        // Check if notification was previously closed
-        const notificationClosed = localStorage.getItem('notificationClosed');
-        
-        if (notificationClosed === 'true') {
-            if (notificationTopbar) {
-                notificationTopbar.classList.remove('show');
-            }
-        } else {
-            // Show notification and adjust body
-            if (notificationTopbar) {
-                notificationTopbar.classList.add('show');
-                document.body.classList.add('notification-visible');
-            }
-        }
-        
-        // Close notification handler
-        if (notificationClose) {
-            notificationClose.addEventListener('click', function() {
-                if (notificationTopbar) {
-                    notificationTopbar.classList.remove('show');
-                    document.body.classList.remove('notification-visible');
-                    localStorage.setItem('notificationClosed', 'true');
-                }
-            });
-        }
+      
         
     </script>
     

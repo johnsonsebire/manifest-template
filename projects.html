@@ -486,16 +486,16 @@
     </div>
     
     <header class="primary-header">
-        <div class="logo"></div>
+        <a href="index.html" class="logo"></a>
         <nav>
             <a href="index.html">Home</a>
             <a href="projects.html" class="active">Projects</a>
-            <a href="ai-sensei.html">AI Sensei</a>
+            <a href="ai-sensei-chat.html">AI Sensei</a>
             <a href="book-a-call.html">Book a Call</a>
         </nav>
         <div class="header-right">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth/auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
         
         <!-- Mobile menu toggle -->
@@ -524,8 +524,8 @@
             <a href="book-a-call.html">Book a Call</a>
         </nav>
         <div class="mobile-nav-buttons">
-            <a href="#" class="login">Login</a>
-            <a href="#" class="btn-primary">Get a Quote</a>
+            <a href="auth/auth.html" class="login">Login</a>
+            <a href="quote-request.html" class="btn-primary">Get a Quote</a>
         </div>
     </div>
 
@@ -1152,36 +1152,8 @@
         updateReadingTracker();
         
         // ========================
-        // Notification Topbar
+        // Notification Topbar (handled by showNotificationAfterPreloader function)
         // ========================
-        const notificationTopbar = document.querySelector('.notification-topbar');
-        const notificationClose = document.querySelector('.notification-close');
-        
-        // Check if notification was previously closed
-        const notificationClosed = localStorage.getItem('notificationClosed');
-        
-        if (notificationClosed === 'true') {
-            if (notificationTopbar) {
-                notificationTopbar.classList.remove('show');
-            }
-        } else {
-            // Show notification and adjust body
-            if (notificationTopbar) {
-                notificationTopbar.classList.add('show');
-                document.body.classList.add('notification-visible');
-            }
-        }
-        
-        // Close notification handler
-        if (notificationClose) {
-            notificationClose.addEventListener('click', function() {
-                if (notificationTopbar) {
-                    notificationTopbar.classList.remove('show');
-                    document.body.classList.remove('notification-visible');
-                    localStorage.setItem('notificationClosed', 'true');
-                }
-            });
-        }
         
         // ========================
         // Scroll to top functionality
