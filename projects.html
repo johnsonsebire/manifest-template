@@ -231,7 +231,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* Prevent wrapping to new line */
             gap: 20px;
         }
         
@@ -261,15 +261,20 @@
         
         .search-box {
             position: relative;
+            flex: 0 0 calc(40% - 20px); /* Take remaining space minus gap */
+            min-width: 200px; /* Minimum width for usability */
+            display: flex; /* Ensure proper alignment of child elements */
+            align-items: center; /* Center the input vertically */
         }
         
         .search-box input {
-            padding: 10px 20px 10px 45px;
+            padding: 12px 20px 12px 45px; /* Match filter button vertical padding */
             border: 2px solid #ddd;
             border-radius: 50px;
-            width: 300px;
+            width: 100%; /* Fill the container width */
             font-size: 16px;
             transition: border-color 0.3s ease;
+            box-sizing: border-box; /* Include padding in width calculation */
         }
         
         .search-box input:focus {
@@ -428,9 +433,10 @@
             align-items: center;
             justify-content: center;
             gap: 16px;
-            margin-bottom: 24px;
             max-width: 100%;
             position: relative;
+            flex: 0 0 60%; /* Take exactly 60% of available space */
+            min-width: 0; /* Allow shrinking if needed */
         }
 
         /* Navigation Arrows */
@@ -664,9 +670,19 @@
         
         /* Tablet Adjustments */
         @media (max-width: 1024px) {
+            .filters-container {
+                padding: 0 16px;
+                gap: 16px; /* Slightly reduce gap for smaller screens */
+            }
+            
             .projects-filters-wrapper {
                 gap: 12px;
-                padding: 0 16px;
+                flex: 0 0 58%; /* Slightly reduce for tablet */
+            }
+            
+            .search-box {
+                flex: 0 0 calc(42% - 16px); /* Adjust for smaller gap */
+                min-width: 180px; /* Reduce minimum width for tablet */
             }
             
             .projects-filters-nav {
@@ -676,7 +692,7 @@
             }
             
             .projects-filters-container {
-                max-width: calc(100vw - 120px);
+                max-width: calc(100% - 96px); /* Account for nav buttons */
             }
             
             .projects-filters-tabs {
@@ -701,16 +717,22 @@
             .filters-container {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 16px; /* Maintain consistent spacing */
             }
             
             /* Hide desktop scrollable filters on mobile */
             .projects-filters-wrapper {
                 display: none;
+                flex: none; /* Reset flex constraints */
             }
             
             /* Show mobile dropdown */
             .projects-filters-mobile-dropdown {
                 display: block;
+            }
+            
+            .search-box {
+                flex: none; /* Reset flex constraints */
             }
             
             .search-box input {
