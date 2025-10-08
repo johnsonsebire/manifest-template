@@ -359,11 +359,37 @@
             align-items: center;
             gap: 8px;
             margin-top: 12px;
+            position: relative;
             transition: color 0.3s ease;
+            /* Remove any inherited transforms, shadows, or outlines */
+            transform: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            border: none !important;
+        }
+        
+        .project-card .project-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #ff2200, #ff4422);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .project-card .project-link:hover {
             color: #ff2200;
+            /* Ensure no inherited hover effects */
+            transform: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+            border: none !important;
+        }
+        
+        .project-card .project-link:hover::after {
+            width: calc(100% - 20px); /* Account for icon space */
         }
         
         .project-card .project-link i {
