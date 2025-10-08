@@ -1883,6 +1883,7 @@ body {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     max-width: calc(100vw - 140px); /* Account for arrows and padding */
+    padding: 8px 0; /* Add vertical spacing for hover effects and shadows */
 }
 
 .pricing-tabs-container::-webkit-scrollbar {
@@ -1897,6 +1898,7 @@ body {
     gap: 12px;
     min-width: max-content;
     padding: 0;
+    margin: 4px 0; /* Additional margin for better shadow visibility */
 }
 
 .pricing-tab {
@@ -2055,6 +2057,7 @@ body {
     .pricing-tabs-container {
         max-width: calc(100vw - 120px);
         -webkit-overflow-scrolling: touch; /* Smooth touch scrolling */
+        padding: 6px 0; /* Slightly smaller padding for tablets */
     }
     
     .pricing-tabs {
