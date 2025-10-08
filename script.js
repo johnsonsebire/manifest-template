@@ -710,6 +710,245 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ========================
+    // Scrollable Pricing Tabs Navigation
+    // ========================
+    const pricingTabsContainer = document.querySelector('.pricing-tabs-container');
+    const pricingNavLeft = document.querySelector('.pricing-tabs-nav-left');
+    const pricingNavRight = document.querySelector('.pricing-tabs-nav-right');
+    
+    if (pricingTabsContainer && pricingNavLeft && pricingNavRight) {
+        // Calculate scroll amount (approximately 2-3 tabs width)
+        function calculateScrollAmount() {
+            const containerWidth = pricingTabsContainer.clientWidth;
+            return Math.max(containerWidth * 0.6, 200); // Minimum 200px scroll
+        }
+        
+        // Update arrow states based on scroll position
+        function updateArrowStates() {
+            const container = pricingTabsContainer;
+            const scrollLeft = container.scrollLeft;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            
+            // Left arrow state
+            if (scrollLeft <= 0) {
+                pricingNavLeft.disabled = true;
+                pricingNavLeft.setAttribute('aria-disabled', 'true');
+            } else {
+                pricingNavLeft.disabled = false;
+                pricingNavLeft.setAttribute('aria-disabled', 'false');
+            }
+            
+            // Right arrow state
+            if (scrollLeft >= maxScroll - 1) { // Small buffer for rounding errors
+                pricingNavRight.disabled = true;
+                pricingNavRight.setAttribute('aria-disabled', 'true');
+            } else {
+                pricingNavRight.disabled = false;
+                pricingNavRight.setAttribute('aria-disabled', 'false');
+            }
+        }
+        
+        // Scroll left function
+        function scrollLeft() {
+            if (!pricingNavLeft.disabled) {
+                const scrollAmount = calculateScrollAmount();
+                pricingTabsContainer.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Scroll right function
+        function scrollRight() {
+            if (!pricingNavRight.disabled) {
+                const scrollAmount = calculateScrollAmount();
+                pricingTabsContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Event listeners for arrow buttons
+        pricingNavLeft.addEventListener('click', scrollLeft);
+        pricingNavRight.addEventListener('click', scrollRight);
+        
+        // Update arrow states on scroll
+        pricingTabsContainer.addEventListener('scroll', updateArrowStates, { passive: true });
+        
+        // Update arrow states on window resize
+        window.addEventListener('resize', () => {
+            // Debounced resize handler
+            clearTimeout(window.pricingTabsResizeTimeout);
+            window.pricingTabsResizeTimeout = setTimeout(updateArrowStates, 150);
+        });
+        
+        // Initial update of arrow states
+        setTimeout(updateArrowStates, 100); // Small delay to ensure layout is complete
+        
+        // Keyboard navigation for tabs
+        const pricingTabsInner = document.querySelector('.pricing-tabs');
+        if (pricingTabsInner) {
+            pricingTabsInner.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    
+                    const focusedTab = document.activeElement;
+                    if (focusedTab && focusedTab.classList.contains('pricing-tab')) {
+                        const allTabs = Array.from(pricingTabs);
+                        const currentIndex = allTabs.indexOf(focusedTab);
+                        
+                        let nextIndex;
+                        if (e.key === 'ArrowLeft') {
+                            nextIndex = currentIndex > 0 ? currentIndex - 1 : allTabs.length - 1;
+                        } else {
+                            nextIndex = currentIndex < allTabs.length - 1 ? currentIndex + 1 : 0;
+                        }
+                        
+                        const nextTab = allTabs[nextIndex];
+                        nextTab.focus();
+                        
+                        // Ensure the focused tab is visible
+                        const tabRect = nextTab.getBoundingClientRect();
+                        const containerRect = pricingTabsContainer.getBoundingClientRect();
+                        
+                        if (tabRect.left < containerRect.left) {
+                            // Tab is to the left, scroll left
+                            pricingTabsContainer.scrollBy({
+                                left: tabRect.left - containerRect.left - 20,
+                                behavior: 'smooth'
+                            });
+                        } else if (tabRect.right > containerRect.right) {
+                            // Tab is to the right, scroll right
+                            pricingTabsContainer.scrollBy({
+                                left: tabRect.right - containerRect.right + 20,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    // ========================
+    // Mobile Pricing Dropdown
+    // ========================
+    const mobileDropdown = document.querySelector('.pricing-tabs-mobile-dropdown');
+    const dropdownSelected = document.querySelector('.pricing-dropdown-selected');
+    const dropdownOptions = document.querySelector('.pricing-dropdown-options');
+    const dropdownItems = document.querySelectorAll('.pricing-dropdown-option');
+    
+    if (mobileDropdown && dropdownSelected && dropdownOptions) {
+        // Toggle dropdown
+        function toggleDropdown() {
+            const isOpen = dropdownSelected.getAttribute('aria-expanded') === 'true';
+            
+            if (isOpen) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+        
+        // Open dropdown
+        function openDropdown() {
+            dropdownSelected.setAttribute('aria-expanded', 'true');
+            dropdownOptions.classList.add('show');
+            
+            // Focus first option
+            const firstOption = dropdownOptions.querySelector('.pricing-dropdown-option');
+            if (firstOption) {
+                setTimeout(() => firstOption.focus(), 100);
+            }
+        }
+        
+        // Close dropdown
+        function closeDropdown() {
+            dropdownSelected.setAttribute('aria-expanded', 'false');
+            dropdownOptions.classList.remove('show');
+        }
+        
+        // Select option
+        function selectOption(option) {
+            const targetTab = option.getAttribute('data-tab');
+            const optionText = option.textContent;
+            
+            // Update selected text
+            const selectedText = dropdownSelected.querySelector('.selected-text');
+            if (selectedText) {
+                selectedText.textContent = optionText;
+            }
+            
+            // Update active states
+            dropdownItems.forEach(item => item.classList.remove('active'));
+            option.classList.add('active');
+            
+            // Update tab content (reuse existing logic)
+            pricingTabs.forEach(t => t.classList.remove('active'));
+            pricingContents.forEach(c => c.classList.remove('active'));
+            
+            // Find corresponding desktop tab to mark as active
+            const correspondingTab = document.querySelector(`.pricing-tab[data-tab="${targetTab}"]`);
+            if (correspondingTab) {
+                correspondingTab.classList.add('active');
+            }
+            
+            document.getElementById(targetTab).classList.add('active');
+            
+            closeDropdown();
+        }
+        
+        // Event listeners
+        dropdownSelected.addEventListener('click', toggleDropdown);
+        
+        dropdownItems.forEach(option => {
+            option.addEventListener('click', () => selectOption(option));
+            
+            // Keyboard navigation for dropdown options
+            option.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectOption(option);
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeDropdown();
+                    dropdownSelected.focus();
+                } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const allOptions = Array.from(dropdownItems);
+                    const currentIndex = allOptions.indexOf(option);
+                    
+                    let nextIndex;
+                    if (e.key === 'ArrowDown') {
+                        nextIndex = currentIndex < allOptions.length - 1 ? currentIndex + 1 : 0;
+                    } else {
+                        nextIndex = currentIndex > 0 ? currentIndex - 1 : allOptions.length - 1;
+                    }
+                    
+                    allOptions[nextIndex].focus();
+                }
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileDropdown.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+        
+        // Close dropdown on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && dropdownSelected.getAttribute('aria-expanded') === 'true') {
+                closeDropdown();
+                dropdownSelected.focus();
+            }
+        });
+    }
+
     // Smooth scroll to pricing section with header offset
     const viewPricingBtn = document.getElementById('view-pricing-btn');
     if (viewPricingBtn) {
