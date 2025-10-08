@@ -22,6 +22,16 @@ class ProjectsDataManager {
      */
     async loadData() {
         try {
+            // Use performance optimizer cache if available
+            if (window.projectsPerformanceOptimizer?.cache?.data?.has('projects-data')) {
+                const cachedData = window.projectsPerformanceOptimizer.cache.data.get('projects-data');
+                if (Date.now() - cachedData.timestamp < 30 * 60 * 1000) { // 30 minutes
+                    this.data = JSON.parse(cachedData.data);
+                    console.log('📦 Loaded projects data from cache');
+                    return;
+                }
+            }
+
             // Embedded data to avoid CORS issues with file:// protocol
             this.data = {
                 "metadata": {
@@ -526,6 +536,16 @@ class ProjectsDataManager {
             };
             
             this.filteredProjects = [...this.data.projects];
+            
+            // Cache the data if performance optimizer is available
+            if (window.projectsPerformanceOptimizer?.cache?.data) {
+                window.projectsPerformanceOptimizer.cache.data.set('projects-data', {
+                    data: JSON.stringify(this.data),
+                    timestamp: Date.now()
+                });
+                console.log('💾 Cached projects data for performance');
+            }
+            
             return this.data;
         } catch (error) {
             console.error('Failed to load projects data:', error);

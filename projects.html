@@ -35,6 +35,11 @@
 
     <!-- Anime.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Performance Optimizer -->
+    <script src="components/projects-performance-optimizer.js"></script>
+    <!-- Performance Monitoring Dashboard -->
+    <!-- <script src="components/performance-monitoring-dashboard.js"></script> -->
     <style>
           /* Preloader Styles */
         #preloader {
@@ -69,6 +74,41 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Lazy Loading Styles */
+        .lazy-loading {
+            opacity: 0.5;
+            filter: blur(2px);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        .lazy-loaded {
+            opacity: 1 !important;
+            filter: blur(0) !important;
+        }
+
+        .lazy-error {
+            opacity: 0.3;
+            filter: grayscale(100%);
+        }
+
+        .image-fallback {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        /* Performance-optimized image transitions */
+        .project-card img {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            will-change: transform, opacity;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.02);
         }
 
         .logo-image {

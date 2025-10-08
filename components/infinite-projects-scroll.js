@@ -301,9 +301,17 @@ class InfiniteProjectsScroll {
     }
 
     /**
-     * Setup lazy loading for images
+     * Setup lazy loading for images (delegated to performance optimizer)
      */
     setupLazyLoading() {
+        // Check if performance optimizer is handling lazy loading
+        if (window.projectsPerformanceOptimizer) {
+            // Performance optimizer handles all lazy loading
+            console.log('🖼️ Lazy loading handled by performance optimizer');
+            return;
+        }
+
+        // Fallback lazy loading implementation
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
