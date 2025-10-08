@@ -155,20 +155,8 @@ class InfiniteProjectsScroll {
      * Integrate with existing filter system
      */
     integrateWithExistingFilters() {
-        // Override the existing filterProjects function to work with infinite scroll
-        if (typeof window.filterProjects === 'function') {
-            const originalFilterProjects = window.filterProjects;
-            
-            window.filterProjects = (category, searchTerm) => {
-                // Call original function for immediate UI updates
-                originalFilterProjects(category, searchTerm);
-                
-                // Handle infinite scroll state
-                if (this.isInitialized) {
-                    this.handleFilterChange({ category, searchTerm });
-                }
-            };
-        }
+        // The filter system now directly calls handleFilterChange through the global reference
+        // No need to override since the filterProjects function in projects.html handles this
     }
 
     /**
@@ -180,19 +168,43 @@ class InfiniteProjectsScroll {
         this.currentFilter = category;
         this.currentSearch = searchTerm;
         
+        // Clear the projects grid
+        this.projectsGrid.innerHTML = '';
+        
         // Reset infinite scroll state
         this.resetInfiniteScrollState();
         
-        // Let the existing filter function handle the display
-        // We just need to ensure infinite scroll is ready for the filtered results
+        // Filter projects and reload initial batch
         if (this.dataManager) {
-            const filteredProjects = this.dataManager.filterProjects(category, searchTerm);
-            const hasResults = filteredProjects.length > 0;
+            // Filter projects returns the initial batch of filtered projects
+            const initialProjects = this.dataManager.filterProjects(category, searchTerm);
             
-            if (hasResults && this.dataManager.hasMore()) {
-                this.showScrollTrigger();
+            if (initialProjects.length > 0) {
+                // Render the initial batch of filtered projects
+                this.renderProjects(initialProjects);
+                
+                // Show/hide scroll trigger based on whether there are more filtered projects
+                if (this.dataManager.hasMore()) {
+                    this.showScrollTrigger();
+                } else {
+                    this.hideScrollTrigger();
+                }
+                
+                // Hide no results message
+                if (this.noResults) {
+                    this.noResults.style.display = 'none';
+                }
+                
+                // Get total count of filtered projects for announcement
+                const totalFiltered = this.dataManager.getTotalFilteredCount();
+                this.announceToScreenReader(`Showing ${totalFiltered} projects for ${category === 'all' ? 'all categories' : category}`);
             } else {
+                // No results found
                 this.hideScrollTrigger();
+                if (this.noResults) {
+                    this.noResults.style.display = 'block';
+                }
+                this.announceToScreenReader('No projects found matching your criteria');
             }
         }
     }

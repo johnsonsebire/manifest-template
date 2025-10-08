@@ -621,6 +621,14 @@ class ProjectsDataManager {
     }
 
     /**
+     * Get total count of filtered projects
+     * @returns {number} Total count of filtered projects
+     */
+    getTotalFilteredCount() {
+        return this.filteredProjects.length;
+    }
+
+    /**
      * Get project by ID
      * @param {number} id - Project ID
      * @returns {Object|null} Project data

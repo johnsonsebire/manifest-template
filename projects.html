@@ -1675,31 +1675,21 @@
         
         function filterProjects() {
             const searchTerm = searchInput.value.toLowerCase();
-            let visibleCount = 0;
             
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                
-                // Check if card matches filter and search
-                const matchesFilter = currentFilter === 'all' || category === currentFilter;
-                const matchesSearch = title.includes(searchTerm);
-                
-                if (matchesFilter && matchesSearch) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
+            // Trigger filter change event for infinite scroll system
+            document.dispatchEvent(new CustomEvent('projectsFiltered', {
+                detail: {
+                    category: currentFilter,
+                    searchTerm: searchTerm
                 }
-            });
+            }));
             
-            // Show/hide no results message
-            if (visibleCount === 0) {
-                projectsGrid.style.display = 'none';
-                noResults.style.display = 'block';
-            } else {
-                projectsGrid.style.display = 'grid';
-                noResults.style.display = 'none';
+            // Clear current projects and reload with filter
+            if (window.infiniteProjectsScroll) {
+                window.infiniteProjectsScroll.handleFilterChange({
+                    category: currentFilter,
+                    searchTerm: searchTerm
+                });
             }
         }
     </script>
