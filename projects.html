@@ -409,6 +409,286 @@
             margin-bottom: 10px;
         }
         
+        /* Screen Reader Only */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Projects Filters - Desktop Scrollable Structure */
+        .projects-filters-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            max-width: 100%;
+            position: relative;
+        }
+
+        /* Navigation Arrows */
+        .projects-filters-nav {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid #E5E5E5;
+            color: #666666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .projects-filters-nav:hover:not([disabled]) {
+            border-color: #ff2200;
+            color: #ff2200;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 34, 0, 0.2);
+        }
+
+        .projects-filters-nav:active:not([disabled]) {
+            transform: translateY(0px) scale(0.95);
+            box-shadow: 0 2px 6px rgba(255, 34, 0, 0.3);
+            transition: all 0.1s ease;
+        }
+
+        .projects-filters-nav[disabled] {
+            opacity: 0.4;
+            cursor: not-allowed;
+            border-color: #E5E5E5;
+            color: #CCCCCC;
+        }
+
+        /* Scrollable Container */
+        .projects-filters-container {
+            flex: 1;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            max-width: calc(100vw - 140px);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .projects-filters-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Scroll Indicators */
+        .projects-filters-container::before,
+        .projects-filters-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            pointer-events: none;
+            z-index: 2;
+            transition: opacity 0.3s ease;
+        }
+
+        .projects-filters-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+        }
+
+        .projects-filters-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 1;
+        }
+
+        .projects-filters-container.can-scroll-left::before {
+            opacity: 1;
+        }
+
+        .projects-filters-container.can-scroll-right::after {
+            opacity: 1;
+        }
+
+        .projects-filters-container:not(.can-scroll-left)::before {
+            opacity: 0;
+        }
+
+        .projects-filters-container:not(.can-scroll-right)::after {
+            opacity: 0;
+        }
+
+        /* Inner Filters Container */
+        .projects-filters-tabs {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            gap: 15px;
+            min-width: max-content;
+            padding: 0;
+            margin: 4px 0;
+        }
+
+        /* Enhanced Filter Buttons */
+        .projects-filters-tabs .filter-btn {
+            background: #FFFFFF;
+            border: 2px solid #E5E5E5;
+            color: #666666;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        .projects-filters-tabs .filter-btn:hover {
+            border-color: #ff2200;
+            color: #ff2200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 34, 0, 0.15);
+        }
+
+        .projects-filters-tabs .filter-btn:active {
+            transform: translateY(-1px) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        .projects-filters-tabs .filter-btn.active {
+            background: linear-gradient(135deg, #ff2200 0%, #ff4435 100%);
+            border-color: #ff2200;
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(255, 34, 0, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .projects-filters-tabs .filter-btn.active:hover {
+            box-shadow: 0 6px 20px rgba(255, 34, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Dropdown */
+        .projects-filters-mobile-dropdown {
+            display: none;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .projects-dropdown-selected {
+            width: 100%;
+            background: #FFFFFF;
+            border: 2px solid #E5E5E5;
+            border-radius: 50px;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333333;
+            transition: all 0.3s ease;
+        }
+
+        .projects-dropdown-selected:hover {
+            border-color: #ff2200;
+            color: #ff2200;
+        }
+
+        .projects-dropdown-selected[aria-expanded="true"] {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            border-color: #ff2200;
+            color: #ff2200;
+        }
+
+        .projects-dropdown-selected[aria-expanded="true"] .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .projects-dropdown-options {
+            display: none;
+            background: #FFFFFF;
+            border: 2px solid #ff2200;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 8px 24px rgba(255, 34, 0, 0.15);
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+        }
+
+        .projects-dropdown-selected[aria-expanded="true"] + .projects-dropdown-options {
+            display: block;
+        }
+
+        .projects-dropdown-option {
+            padding: 16px 24px;
+            cursor: pointer;
+            border-bottom: 1px solid #F5F5F5;
+            transition: all 0.2s ease;
+            color: #666666;
+        }
+
+        .projects-dropdown-option:hover {
+            background: #FFF5F5;
+            color: #ff2200;
+        }
+
+        .projects-dropdown-option.active {
+            background: linear-gradient(135deg, #ff2200 0%, #ff4435 100%);
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .projects-dropdown-option:last-child {
+            border-bottom: none;
+        }
+        
+        /* Tablet Adjustments */
+        @media (max-width: 1024px) {
+            .projects-filters-wrapper {
+                gap: 12px;
+                padding: 0 16px;
+            }
+            
+            .projects-filters-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+            
+            .projects-filters-container {
+                max-width: calc(100vw - 120px);
+            }
+            
+            .projects-filters-tabs {
+                gap: 12px;
+            }
+            
+            .projects-filters-tabs .filter-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        
         @media (max-width: 768px) {
             .projects-hero h1 {
                 font-size: 36px;
@@ -423,8 +703,14 @@
                 align-items: stretch;
             }
             
-            .filter-buttons {
-                justify-content: center;
+            /* Hide desktop scrollable filters on mobile */
+            .projects-filters-wrapper {
+                display: none;
+            }
+            
+            /* Show mobile dropdown */
+            .projects-filters-mobile-dropdown {
+                display: block;
             }
             
             .search-box input {
@@ -538,14 +824,45 @@
     <!-- Filters Section -->
     <section class="projects-filters">
         <div class="filters-container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="nonprofit">Nonprofits</button>
-                <button class="filter-btn" data-filter="business">Business</button>
-                <button class="filter-btn" data-filter="education">Education</button>
-                <button class="filter-btn" data-filter="health">Healthcare</button>
-                <button class="filter-btn" data-filter="tech">Technology</button>
+            <!-- Desktop Scrollable Filters -->
+            <div class="projects-filters-wrapper">
+                <button class="projects-filters-nav projects-filters-nav-left" aria-label="Scroll filters left" disabled>
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <div class="projects-filters-container">
+                    <div class="projects-filters-tabs">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="nonprofit">Nonprofits</button>
+                        <button class="filter-btn" data-filter="business">Business</button>
+                        <button class="filter-btn" data-filter="education">Education</button>
+                        <button class="filter-btn" data-filter="health">Healthcare</button>
+                        <button class="filter-btn" data-filter="tech">Technology</button>
+                    </div>
+                </div>
+                <button class="projects-filters-nav projects-filters-nav-right" aria-label="Scroll filters right">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
             </div>
+            
+            <!-- Mobile Dropdown Alternative -->
+            <div class="projects-filters-mobile-dropdown">
+                <button class="projects-dropdown-selected" aria-expanded="false" aria-haspopup="listbox" role="combobox" aria-labelledby="projects-dropdown-label">
+                    <span class="selected-text">All Projects</span>
+                    <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+                </button>
+                <div class="projects-dropdown-options" role="listbox" aria-labelledby="projects-dropdown-label">
+                    <div class="projects-dropdown-option active" role="option" data-filter="all" tabindex="0">All Projects</div>
+                    <div class="projects-dropdown-option" role="option" data-filter="nonprofit" tabindex="0">Nonprofits</div>
+                    <div class="projects-dropdown-option" role="option" data-filter="business" tabindex="0">Business</div>
+                    <div class="projects-dropdown-option" role="option" data-filter="education" tabindex="0">Education</div>
+                    <div class="projects-dropdown-option" role="option" data-filter="health" tabindex="0">Healthcare</div>
+                    <div class="projects-dropdown-option" role="option" data-filter="tech" tabindex="0">Technology</div>
+                </div>
+            </div>
+            
+            <!-- Hidden label for accessibility -->
+            <div id="projects-dropdown-label" class="sr-only">Select project category</div>
+            
             <div class="search-box">
                 <i class="fas fa-search"></i>
                 <input type="text" id="projectSearch" placeholder="Search projects...">
@@ -1237,6 +1554,192 @@
         });
         
         // ========================
+        // Scrollable Projects Filters
+        // ========================
+        class ScrollableProjectsFilters {
+            constructor() {
+                this.wrapper = document.querySelector('.projects-filters-wrapper');
+                this.container = document.querySelector('.projects-filters-container');
+                this.leftNav = document.querySelector('.projects-filters-nav-left');
+                this.rightNav = document.querySelector('.projects-filters-nav-right');
+                this.mobileDropdown = document.querySelector('.projects-filters-mobile-dropdown');
+                this.dropdownSelected = document.querySelector('.projects-dropdown-selected');
+                this.dropdownOptions = document.querySelector('.projects-dropdown-options');
+                this.dropdownOptionsItems = document.querySelectorAll('.projects-dropdown-option');
+                
+                if (this.wrapper) {
+                    this.init();
+                }
+            }
+            
+            init() {
+                this.bindEvents();
+                this.updateScrollIndicators();
+                // Initial check for scroll state
+                setTimeout(() => this.updateScrollIndicators(), 100);
+            }
+            
+            bindEvents() {
+                // Desktop scroll navigation
+                if (this.leftNav) {
+                    this.leftNav.addEventListener('click', () => this.scrollLeft());
+                }
+                
+                if (this.rightNav) {
+                    this.rightNav.addEventListener('click', () => this.scrollRight());
+                }
+                
+                // Container scroll listener
+                if (this.container) {
+                    this.container.addEventListener('scroll', () => {
+                        this.updateScrollIndicators();
+                    }, { passive: true });
+                    
+                    // Update on resize
+                    window.addEventListener('resize', () => {
+                        setTimeout(() => this.updateScrollIndicators(), 100);
+                    }, { passive: true });
+                }
+                
+                // Mobile dropdown functionality
+                if (this.dropdownSelected) {
+                    this.dropdownSelected.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.toggleMobileDropdown();
+                    });
+                }
+                
+                // Mobile dropdown options
+                this.dropdownOptionsItems.forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.selectMobileOption(option);
+                    });
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (this.mobileDropdown && !this.mobileDropdown.contains(e.target)) {
+                        this.closeMobileDropdown();
+                    }
+                });
+                
+                // Keyboard navigation
+                if (this.container) {
+                    this.container.addEventListener('keydown', (e) => {
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            this.scrollLeft();
+                        } else if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            this.scrollRight();
+                        }
+                    });
+                }
+            }
+            
+            scrollLeft() {
+                if (this.container) {
+                    const scrollAmount = this.container.clientWidth * 0.8;
+                    this.container.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            scrollRight() {
+                if (this.container) {
+                    const scrollAmount = this.container.clientWidth * 0.8;
+                    this.container.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            updateScrollIndicators() {
+                if (!this.container || !this.leftNav || !this.rightNav) return;
+                
+                const { scrollLeft, scrollWidth, clientWidth } = this.container;
+                const canScrollLeft = scrollLeft > 0;
+                const canScrollRight = scrollLeft < scrollWidth - clientWidth - 1;
+                
+                // Update navigation buttons
+                this.leftNav.disabled = !canScrollLeft;
+                this.rightNav.disabled = !canScrollRight;
+                
+                // Update container classes for gradient indicators
+                this.container.classList.toggle('can-scroll-left', canScrollLeft);
+                this.container.classList.toggle('can-scroll-right', canScrollRight);
+            }
+            
+            toggleMobileDropdown() {
+                if (this.dropdownSelected && this.dropdownOptions) {
+                    const isExpanded = this.dropdownSelected.getAttribute('aria-expanded') === 'true';
+                    this.dropdownSelected.setAttribute('aria-expanded', !isExpanded);
+                    
+                    if (!isExpanded) {
+                        this.dropdownOptions.style.display = 'block';
+                    } else {
+                        this.dropdownOptions.style.display = 'none';
+                    }
+                }
+            }
+            
+            closeMobileDropdown() {
+                if (this.dropdownSelected && this.dropdownOptions) {
+                    this.dropdownSelected.setAttribute('aria-expanded', 'false');
+                    this.dropdownOptions.style.display = 'none';
+                }
+            }
+            
+            selectMobileOption(option) {
+                const filterValue = option.getAttribute('data-filter');
+                const filterText = option.textContent;
+                
+                // Update selected text
+                if (this.dropdownSelected) {
+                    const selectedText = this.dropdownSelected.querySelector('.selected-text');
+                    if (selectedText) {
+                        selectedText.textContent = filterText;
+                    }
+                }
+                
+                // Update active states
+                this.dropdownOptionsItems.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                
+                // Close dropdown
+                this.closeMobileDropdown();
+                
+                // Trigger filter functionality (simulate desktop button click)
+                const desktopButton = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+                if (desktopButton) {
+                    desktopButton.click();
+                }
+            }
+            
+            // Method to sync mobile dropdown with desktop filter selection
+            syncMobileDropdown(filterValue) {
+                const option = document.querySelector(`.projects-dropdown-option[data-filter="${filterValue}"]`);
+                if (option && this.dropdownSelected) {
+                    const selectedText = this.dropdownSelected.querySelector('.selected-text');
+                    if (selectedText) {
+                        selectedText.textContent = option.textContent;
+                    }
+                    
+                    // Update active states
+                    this.dropdownOptionsItems.forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                }
+            }
+        }
+        
+        // Initialize scrollable filters
+        const scrollableFilters = new ScrollableProjectsFilters();
+        
+        // ========================
         // Projects Filter & Search
         // ========================
         const filterButtons = document.querySelectorAll('.filter-btn');
@@ -1256,6 +1759,11 @@
                 
                 // Get filter value
                 currentFilter = this.getAttribute('data-filter');
+                
+                // Sync mobile dropdown with desktop selection
+                if (scrollableFilters) {
+                    scrollableFilters.syncMobileDropdown(currentFilter);
+                }
                 
                 // Apply filter
                 filterProjects();
