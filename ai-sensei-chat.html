@@ -1267,20 +1267,24 @@
 
         /* Adjust positioning when notification is visible */
         body.notification-visible {
-            padding-top: 0;
+            padding-top: 0; /* Don't add body padding, adjust individual elements */
         }
 
         body.notification-visible .minimal-header {
-            position: fixed;
-            top: 56px;
-            left: 0;
-            right: 0;
-            width: 100%;
+            top: 76px; /* Move below notification bar (56px + 20px original spacing) */
         }
 
-        /* Add top spacing for page content when notification is visible */
+        body.notification-visible .header-controls {
+            top: 76px; /* Move header controls below notification bar as well */
+        }
+
         body.notification-visible .chat-container {
-            padding-top: 56px; /* Add space for notification bar */
+            padding-top: 56px; /* Add space for notification at top of chat area */
+        }
+
+        /* Ensure chat sidebar doesn't get cut off */
+        body.notification-visible .chat-sidebar {
+            margin-top: 56px; /* Push sidebar content down */
         }
     </style>
 </head>
