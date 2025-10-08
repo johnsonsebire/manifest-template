@@ -691,16 +691,46 @@
         <h2 class="animate-on-scroll">Transparent Pricing, Exceptional Value</h2>
         <p class="pricing-subheading animate-on-scroll">Choose the perfect plan for your organization. Scale up or down anytime—no contracts, no surprises.</p>
         
-        <!-- Pricing Tabs -->
-        <div class="pricing-tabs animate-on-scroll">
-            <button class="pricing-tab active" data-tab="websites">Websites</button>
-            <button class="pricing-tab" data-tab="uiux">UI/UX Design</button>
-            <button class="pricing-tab" data-tab="hosting">Hosting</button>
-            <button class="pricing-tab" data-tab="domains">Domain Names</button>
-            <button class="pricing-tab" data-tab="apps">App Development</button>
-            <button class="pricing-tab" data-tab="consulting">Consulting Services</button>
-            <button class="pricing-tab" data-tab="training">Training Services</button>
+        <!-- Desktop Pricing Tabs with Navigation -->
+        <div class="pricing-tabs-wrapper animate-on-scroll">
+            <button class="pricing-tabs-nav pricing-tabs-nav-left" aria-label="Scroll tabs left" disabled>
+                <i class="fas fa-chevron-left" aria-hidden="true"></i>
+            </button>
+            <div class="pricing-tabs-container">
+                <div class="pricing-tabs">
+                    <button class="pricing-tab active" data-tab="websites">Websites</button>
+                    <button class="pricing-tab" data-tab="uiux">UI/UX Design</button>
+                    <button class="pricing-tab" data-tab="hosting">Hosting</button>
+                    <button class="pricing-tab" data-tab="domains">Domain Names</button>
+                    <button class="pricing-tab" data-tab="apps">App Development</button>
+                    <button class="pricing-tab" data-tab="consulting">Consulting Services</button>
+                    <button class="pricing-tab" data-tab="training">Training Services</button>
+                </div>
+            </div>
+            <button class="pricing-tabs-nav pricing-tabs-nav-right" aria-label="Scroll tabs right">
+                <i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </button>
         </div>
+        
+        <!-- Mobile Pricing Dropdown (hidden by default, shown on mobile) -->
+        <div class="pricing-tabs-mobile-dropdown animate-on-scroll">
+            <button class="pricing-dropdown-selected" aria-expanded="false" aria-haspopup="listbox" role="combobox" aria-labelledby="pricing-dropdown-label">
+                <span class="selected-text">Websites</span>
+                <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+            </button>
+            <div class="pricing-dropdown-options" role="listbox" aria-labelledby="pricing-dropdown-label">
+                <div class="pricing-dropdown-option active" role="option" data-tab="websites" tabindex="0">Websites</div>
+                <div class="pricing-dropdown-option" role="option" data-tab="uiux" tabindex="0">UI/UX Design</div>
+                <div class="pricing-dropdown-option" role="option" data-tab="hosting" tabindex="0">Hosting</div>
+                <div class="pricing-dropdown-option" role="option" data-tab="domains" tabindex="0">Domain Names</div>
+                <div class="pricing-dropdown-option" role="option" data-tab="apps" tabindex="0">App Development</div>
+                <div class="pricing-dropdown-option" role="option" data-tab="consulting" tabindex="0">Consulting Services</div>
+                <div class="pricing-dropdown-option" role="option" data-tab="training" tabindex="0">Training Services</div>
+            </div>
+        </div>
+        
+        <!-- Hidden label for accessibility -->
+        <div id="pricing-dropdown-label" class="sr-only">Select pricing category</div>
         
         <!-- Websites Pricing -->
         <div class="pricing-content active" id="websites">
