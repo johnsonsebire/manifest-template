@@ -1775,7 +1775,7 @@
                     <i class="fas fa-${sender === 'ai' ? 'robot' : 'user'}"></i>
                 </div>
                 <div class="message-content ${sender}">
-                    ${content.replace(/\n/g, '<br>')}
+                    ${content.replace(/\\n/g, '<br>').replace(/\n/g, '<br>')}
                     <div class="message-time">${currentTime}</div>
                 </div>
             `;
