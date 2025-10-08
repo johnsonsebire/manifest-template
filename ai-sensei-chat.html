@@ -1286,6 +1286,74 @@
         body.notification-visible .chat-sidebar {
             margin-top: 56px; /* Push sidebar content down */
         }
+
+        /* Mobile notification spacing adjustments */
+        @media (max-width: 992px) {
+            /* Ensure notification bar stays at very top */
+            .notification-topbar {
+                position: fixed;
+                top: 0;
+                z-index: 10000; /* Higher than everything else */
+            }
+
+            /* Push logo/header below notification bar */
+            body.notification-visible .minimal-header {
+                top: 150px; /* Account for taller notification bar */
+            }
+
+            body.notification-visible .header-controls {
+                top: 150px; /* Match header positioning */
+            }
+
+            /* Adjust sidebar to not overlap with notification */
+            body.notification-visible .chat-sidebar {
+                top: 150px;
+                margin-top: 0;
+            }
+
+            /* Adjust main chat content */
+            body.notification-visible .chat-main {
+                margin-top: 56px; /* Push down by notification height */
+            }
+
+            body.notification-visible .chat-header {
+                padding-top: 120px; /* Reduce from 146px to give logo more space */
+            }
+
+            body.notification-visible .welcome-container {
+                padding-top: 100px; /* Reduce from 116px to prevent too much spacing */
+                min-height: calc(100vh - 200px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Additional mobile spacing for smaller screens */
+            body.notification-visible .minimal-header {
+                top: 150px; /* Account for taller notification bar */
+                padding-top:20px;
+                padding-bottom:20px;
+            }
+
+            body.notification-visible .header-controls {
+                top: 150px; /* Match header positioning */
+                padding-top:20px;
+                 padding-bottom:20px;
+            }
+
+            body.notification-visible .chat-container {
+                margin-top: 56px; /* Use margin instead of padding for better control */
+            }
+
+            body.notification-visible .welcome-container {
+                padding-top: 15px; /* Consistent with larger mobile */
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            body.notification-visible .chat-header {
+                padding-top: 70px; /* Consistent with larger mobile */
+            }
+        }
     </style>
 </head>
 <body>
