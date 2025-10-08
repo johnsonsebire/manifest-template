@@ -32,7 +32,204 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     
+    <!-- Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
     <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .preloader-container {
+            text-align: center;
+            position: relative;
+            z-index: 10001;
+        }
+
+        .preloader-bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff2200, #ff5533, #ff2200, #cc1100);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease-in-out infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .preloader-content {
+            position: relative;
+            z-index: 10002;
+        }
+
+        .preloader-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preloader-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 34, 0, 0.1), transparent);
+            animation: shimmer 2s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .preloader-logo img {
+            width: 60px;
+            height: auto;
+            filter: brightness(0) invert(1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .preloader-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .preloader-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: dotBounce 1.4s ease-in-out infinite both;
+        }
+
+        .preloader-dot:nth-child(1) { animation-delay: -0.32s; }
+        .preloader-dot:nth-child(2) { animation-delay: -0.16s; }
+        .preloader-dot:nth-child(3) { animation-delay: 0s; }
+
+        @keyframes dotBounce {
+            0%, 80%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .preloader-progress {
+            width: 250px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 30px auto 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preloader-progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff2200, #ff5533);
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .preloader-progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: progressShine 1.5s ease-in-out infinite;
+        }
+
+        @keyframes progressShine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .preloader-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+        }
+
+        .preloader-rotating-border {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            border: 2px solid transparent;
+            border-top: 2px solid rgba(255, 34, 0, 0.6);
+            border-right: 2px solid rgba(255, 34, 0, 0.3);
+            border-radius: 50%;
+            animation: rotateClockwise 3s linear infinite;
+        }
+
+        .preloader-rotating-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 2px solid transparent;
+            border-bottom: 2px solid rgba(255, 85, 51, 0.4);
+            border-left: 2px solid rgba(255, 85, 51, 0.2);
+            border-radius: 50%;
+            animation: rotateCounterClockwise 2s linear infinite;
+        }
+
+        @keyframes rotateClockwise {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes rotateCounterClockwise {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
         /* Policies Page Specific Styles */
         
         .policies-hero {
@@ -260,6 +457,40 @@
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-bg-animation"></div>
+        <div class="preloader-rotating-border"></div>
+        <div class="preloader-container">
+            <div class="preloader-content">
+                <div class="preloader-logo">
+                    <img src="images/logos/logo.png" alt="Manifest Digital">
+                </div>
+                <div class="preloader-dots">
+                    <div class="preloader-dot"></div>
+                    <div class="preloader-dot"></div>
+                    <div class="preloader-dot"></div>
+                </div>
+                <div class="preloader-progress">
+                    <div class="preloader-progress-bar"></div>
+                </div>
+                <div class="preloader-text">Loading amazing experiences...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Topbar -->
+    <div class="notification-topbar">
+        <span class="notification-icon">🎉</span>
+        <div class="notification-content">
+            <span class="notification-text">
+                Launch Special: First month 20% off + free brand consultation (GH₵500 value) • Limited spots available
+            </span>
+            <a href="#" class="notification-cta">Claim Offer</a>
+        </div>
+        <button class="notification-close" aria-label="Close notification">×</button>
+    </div>
+
     <!-- Header Navigation -->
     <header class="primary-header">
         <div class="logo"></div>
@@ -874,6 +1105,105 @@
                 }
             }
         });
+
+        // Preloader Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bar
+            anime({
+                targets: '.preloader-progress-bar',
+                width: '100%',
+                duration: 3000,
+                easing: 'easeInOutQuad'
+            });
+
+            // Animate logo
+            anime({
+                targets: '.preloader-logo',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 1000,
+                easing: 'easeOutElastic(1, .8)',
+                delay: 500
+            });
+
+            // Animate dots
+            anime({
+                targets: '.preloader-dot',
+                scale: [0, 1],
+                opacity: [0, 1],
+                duration: 600,
+                delay: anime.stagger(100, {start: 800}),
+                easing: 'easeOutElastic(1, .8)'
+            });
+
+            // Animate text
+            anime({
+                targets: '.preloader-text',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                delay: 1200,
+                easing: 'easeOutQuad'
+            });
+
+            // Hide preloader and show content
+            setTimeout(() => {
+                anime({
+                    targets: '#preloader',
+                    opacity: 0,
+                    duration: 800,
+                    easing: 'easeInOutQuad',
+                    complete: function() {
+                        document.getElementById('preloader').style.display = 'none';
+                        
+                        // Animate main content
+                        const mainContent = document.querySelector('body > *:not(#preloader):not(.notification-topbar)');
+                        if (mainContent) {
+                            anime({
+                                targets: mainContent,
+                                opacity: [0, 1],
+                                translateY: [30, 0],
+                                duration: 1000,
+                                easing: 'easeOutQuad'
+                            });
+                        }
+                    }
+                });
+            }, 4500); // Total preloader duration: 4.5 seconds
+        });
+
+        // Notification bar timing after preloader
+        function showNotificationAfterPreloader() {
+            // Check if notification was already closed
+            const notificationClosed = localStorage.getItem('notificationClosed');
+            
+            if (!notificationClosed) {
+                setTimeout(() => {
+                    const notificationTopbar = document.querySelector('.notification-topbar');
+                    if (notificationTopbar) {
+                        notificationTopbar.classList.add('show');
+                        document.body.classList.add('notification-visible');
+                    }
+                    
+                    // Handle notification close
+                    const closeBtn = document.querySelector('.notification-close');
+                    if (closeBtn && !closeBtn.hasAttribute('data-listener-added')) {
+                        closeBtn.setAttribute('data-listener-added', 'true');
+                        closeBtn.addEventListener('click', function() {
+                            const notificationTopbar = document.querySelector('.notification-topbar');
+                            if (notificationTopbar) {
+                                notificationTopbar.classList.remove('show');
+                                document.body.classList.remove('notification-visible');
+                                localStorage.setItem('notificationClosed', 'true');
+                            }
+                        });
+                    }
+                }, 300); // Show notification 300ms after preloader finishes
+            }
+        }
+
+        // Show notification after preloader completion
+        setTimeout(showNotificationAfterPreloader, 4500);
     </script>
 </body>
 </html>
