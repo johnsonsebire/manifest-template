@@ -699,6 +699,13 @@ document.addEventListener('DOMContentLoaded', () => {
     pricingTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const targetTab = tab.getAttribute('data-tab');
+            
+            // Add brief loading state for smooth transition
+            const container = document.querySelector('.pricing-tabs-container');
+            if (container) {
+                container.classList.add('loading');
+                setTimeout(() => container.classList.remove('loading'), 200);
+            }
 
             // Remove active class from all tabs and contents
             pricingTabs.forEach(t => t.classList.remove('active'));
@@ -713,9 +720,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     // Scrollable Pricing Tabs Navigation
     // ========================
+    
+    // Performance: Throttle utility function
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+    
+    // Cache DOM elements for better performance
     const pricingTabsContainer = document.querySelector('.pricing-tabs-container');
     const pricingNavLeft = document.querySelector('.pricing-tabs-nav-left');
     const pricingNavRight = document.querySelector('.pricing-tabs-nav-right');
+    const pricingTabsWrapper = document.querySelector('.pricing-tabs-wrapper');
     
     if (pricingTabsContainer && pricingNavLeft && pricingNavRight) {
         // Calculate scroll amount (approximately 2-3 tabs width)
@@ -724,34 +748,44 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.max(containerWidth * 0.6, 200); // Minimum 200px scroll
         }
         
-        // Update arrow states based on scroll position
+        // Update arrow states and scroll indicators based on scroll position
         function updateArrowStates() {
             const container = pricingTabsContainer;
             const scrollLeft = container.scrollLeft;
             const maxScroll = container.scrollWidth - container.clientWidth;
             
-            // Left arrow state
+            // Left arrow state and scroll indicator
             if (scrollLeft <= 0) {
                 pricingNavLeft.disabled = true;
                 pricingNavLeft.setAttribute('aria-disabled', 'true');
+                container.classList.remove('can-scroll-left');
             } else {
                 pricingNavLeft.disabled = false;
                 pricingNavLeft.setAttribute('aria-disabled', 'false');
+                container.classList.add('can-scroll-left');
             }
             
-            // Right arrow state
+            // Right arrow state and scroll indicator
             if (scrollLeft >= maxScroll - 1) { // Small buffer for rounding errors
                 pricingNavRight.disabled = true;
                 pricingNavRight.setAttribute('aria-disabled', 'true');
+                container.classList.remove('can-scroll-right');
             } else {
                 pricingNavRight.disabled = false;
                 pricingNavRight.setAttribute('aria-disabled', 'false');
+                container.classList.add('can-scroll-right');
             }
         }
         
-        // Scroll left function
+        // Scroll left function with enhanced feedback
         function scrollLeft() {
             if (!pricingNavLeft.disabled) {
+                // Add visual feedback
+                pricingNavLeft.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    pricingNavLeft.style.transform = '';
+                }, 150);
+                
                 const scrollAmount = calculateScrollAmount();
                 pricingTabsContainer.scrollBy({
                     left: -scrollAmount,
@@ -760,9 +794,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // Scroll right function
+        // Scroll right function with enhanced feedback
         function scrollRight() {
             if (!pricingNavRight.disabled) {
+                // Add visual feedback
+                pricingNavRight.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    pricingNavRight.style.transform = '';
+                }, 150);
+                
                 const scrollAmount = calculateScrollAmount();
                 pricingTabsContainer.scrollBy({
                     left: scrollAmount,
@@ -775,8 +815,11 @@ document.addEventListener('DOMContentLoaded', () => {
         pricingNavLeft.addEventListener('click', scrollLeft);
         pricingNavRight.addEventListener('click', scrollRight);
         
-        // Update arrow states on scroll
-        pricingTabsContainer.addEventListener('scroll', updateArrowStates, { passive: true });
+        // Throttled scroll handler for better performance
+        const throttledArrowUpdate = throttle(updateArrowStates, 16); // 60fps (1000/60 ≈ 16ms)
+        
+        // Update arrow states on scroll with throttling
+        pricingTabsContainer.addEventListener('scroll', throttledArrowUpdate, { passive: true });
         
         // Update arrow states on window resize
         window.addEventListener('resize', () => {

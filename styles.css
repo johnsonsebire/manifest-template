@@ -1836,6 +1836,7 @@ body {
     margin-bottom: 48px;
     padding: 0 20px;
     max-width: 100%;
+    position: relative;
 }
 
 /* Navigation Arrows */
@@ -1863,6 +1864,17 @@ body {
 }
 
 .pricing-tabs-nav:active:not([disabled]) {
+    transform: translateY(0px) scale(0.95);
+    box-shadow: 0 2px 6px rgba(255, 73, 0, 0.3);
+    transition: all 0.1s ease;
+}
+
+.pricing-tabs-nav:focus:not([disabled]) {
+    outline: 2px solid #FF4900;
+    outline-offset: 2px;
+}
+
+.pricing-tabs-nav:active:not([disabled]) {
     transform: translateY(0);
     box-shadow: 0 2px 8px rgba(255, 73, 0, 0.3);
 }
@@ -1884,10 +1896,69 @@ body {
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     max-width: calc(100vw - 140px); /* Account for arrows and padding */
     padding: 8px 0; /* Add vertical spacing for hover effects and shadows */
+    position: relative;
+}
+
+/* Scroll Indicators - Gradient Fade Effects */
+.pricing-tabs-container::before,
+.pricing-tabs-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.pricing-tabs-container::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(245, 245, 245, 1) 0%, rgba(245, 245, 245, 0) 100%);
+    opacity: 0; /* Hidden by default, shown when can scroll left */
+}
+
+.pricing-tabs-container::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(245, 245, 245, 1) 0%, rgba(245, 245, 245, 0) 100%);
+    opacity: 1; /* Shown by default if content overflows */
+}
+
+/* Dynamic classes for scroll indicators */
+.pricing-tabs-container.can-scroll-left::before {
+    opacity: 1;
+}
+
+.pricing-tabs-container.can-scroll-right::after {
+    opacity: 1;
+}
+
+.pricing-tabs-container:not(.can-scroll-left)::before {
+    opacity: 0;
+}
+
+.pricing-tabs-container:not(.can-scroll-right)::after {
+    opacity: 0;
 }
 
 .pricing-tabs-container::-webkit-scrollbar {
     display: none; /* Webkit browsers */
+}
+
+/* Enhanced micro-interactions */
+.pricing-tabs-container.loading {
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.pricing-tabs-nav:active:not([disabled]) {
+    animation: pulse 0.3s ease;
 }
 
 /* Inner Tabs Container */
@@ -1918,6 +1989,12 @@ body {
     border-color: #FF4900;
     color: #FF4900;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 73, 0, 0.15);
+}
+
+.pricing-tab:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
 }
 
 .pricing-tab.active {
@@ -1925,6 +2002,22 @@ body {
     border-color: #FF4900;
     color: #FFFFFF;
     box-shadow: 0 4px 12px rgba(255, 73, 0, 0.3);
+    transform: translateY(-1px);
+}
+
+.pricing-tab.active:hover {
+    box-shadow: 0 6px 20px rgba(255, 73, 0, 0.4);
+    transform: translateY(-3px);
+}
+
+.pricing-tab:focus {
+    outline: 2px solid #FF4900;
+    outline-offset: 3px;
+    border-radius: 50px;
+}
+
+.pricing-tab:focus:not(:hover) {
+    box-shadow: 0 0 0 3px rgba(255, 73, 0, 0.1);
 }
 
 /* Mobile Pricing Dropdown - Hidden by default */
@@ -2017,6 +2110,9 @@ body {
 .pricing-dropdown-option:hover {
     background: #FFF5F3;
     color: #FF4900;
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+    box-shadow: inset 3px 0 0 #FF4900;
 }
 
 .pricing-dropdown-option.active {
