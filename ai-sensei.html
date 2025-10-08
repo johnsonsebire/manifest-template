@@ -753,7 +753,7 @@
     <div class="reading-tracker"></div>
     
     <!-- Notification Topbar -->
-    <div class="notification-topbar show">
+    <div class="notification-topbar">
         <span class="notification-icon">🎉</span>
         <div class="notification-content">
             <span class="notification-text">
@@ -1488,6 +1488,39 @@
                 });
             }, 4500); // Total preloader duration: 4.5 seconds
         });
+
+        // Notification bar timing after preloader
+        function showNotificationAfterPreloader() {
+            // Check if notification was already closed
+            const notificationClosed = localStorage.getItem('notificationClosed');
+            
+            if (!notificationClosed) {
+                setTimeout(() => {
+                    const notificationTopbar = document.querySelector('.notification-topbar');
+                    if (notificationTopbar) {
+                        notificationTopbar.classList.add('show');
+                        document.body.classList.add('notification-visible');
+                    }
+                    
+                    // Handle notification close
+                    const closeBtn = document.querySelector('.notification-close');
+                    if (closeBtn && !closeBtn.hasAttribute('data-listener-added')) {
+                        closeBtn.setAttribute('data-listener-added', 'true');
+                        closeBtn.addEventListener('click', function() {
+                            const notificationTopbar = document.querySelector('.notification-topbar');
+                            if (notificationTopbar) {
+                                notificationTopbar.classList.remove('show');
+                                document.body.classList.remove('notification-visible');
+                                localStorage.setItem('notificationClosed', 'true');
+                            }
+                        });
+                    }
+                }, 300); // Show notification 300ms after preloader finishes
+            }
+        }
+
+        // Show notification after preloader completion
+        setTimeout(showNotificationAfterPreloader, 4500);
     </script>
 </body>
 </html>
