@@ -1781,7 +1781,16 @@
             `;
 
             messagesContainer.appendChild(messageElement);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Smart scrolling: for AI messages, scroll to the beginning of the message
+            // for user messages, scroll to bottom as usual
+            if (sender === 'ai') {
+                // Scroll to show the beginning of the AI message
+                messageElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                // For user messages, scroll to bottom as usual
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
 
             // Add to chat history
             chatHistory.push({
