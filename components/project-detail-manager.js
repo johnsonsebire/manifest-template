@@ -517,40 +517,343 @@ class ProjectDetailManager {
         const errorContainer = document.createElement('div');
         errorContainer.className = 'project-detail-error';
         errorContainer.innerHTML = `
-            <div class="error-content">
-                <i class="fas fa-exclamation-triangle"></i>
-                <h2>Project Not Found</h2>
-                <p>${message}</p>
-                <div class="error-actions">
-                    <a href="projects.html" class="btn btn-primary">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Projects
-                    </a>
-                    <button onclick="window.location.reload()" class="btn btn-outline-primary">
-                        <i class="fas fa-refresh"></i>
-                        Try Again
-                    </button>
+            <div class="error-background">
+                <div class="error-decorative-elements">
+                    <img src="images/decorative/hero_left_mem_dots_f_circle3.svg" alt="" class="error-decoration error-left">
+                    <img src="images/decorative/hero_right_circle-con3.svg" alt="" class="error-decoration error-right">
+                    <img src="images/decorative/mem_donut.svg" alt="" class="error-decoration error-center">
+                </div>
+                <div class="error-content">
+                    <div class="error-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h2>Project Not Found</h2>
+                    <p class="error-message">${message}</p>
+                    <div class="error-actions">
+                        <a href="projects.html" class="btn-error-primary">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Projects
+                        </a>
+                        <button onclick="window.location.reload()" class="btn-error-secondary">
+                            <i class="fas fa-redo-alt"></i>
+                            Try Again
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
 
-        // Add error styles
-        errorContainer.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            color: white;
-            text-align: center;
+        // Add comprehensive error styles
+        const errorStyles = document.createElement('style');
+        errorStyles.textContent = `
+            .project-detail-error {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                font-family: 'Anybody', sans-serif;
+                overflow: hidden;
+            }
+
+            .error-background {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .error-decorative-elements {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                opacity: 0.1;
+            }
+
+            .error-decoration {
+                position: absolute;
+                opacity: 0.3;
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .error-left {
+                top: 20%;
+                left: 10%;
+                width: 120px;
+                height: 120px;
+                animation-delay: 0s;
+            }
+
+            .error-right {
+                top: 15%;
+                right: 15%;
+                width: 100px;
+                height: 100px;
+                animation-delay: 2s;
+            }
+
+            .error-center {
+                bottom: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 80px;
+                animation-delay: 4s;
+            }
+
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                25% { transform: translateY(-10px) rotate(2deg); }
+                50% { transform: translateY(5px) rotate(-1deg); }
+                75% { transform: translateY(-5px) rotate(1deg); }
+            }
+
+            .error-content {
+                position: relative;
+                z-index: 10;
+                text-align: center;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 60px 40px;
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 24px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(20px);
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                animation: errorContentFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @keyframes errorContentFadeIn {
+                0% {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.95);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            .error-icon {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 30px;
+                background: linear-gradient(135deg, #ff2200 0%, #ff6b00 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            .error-icon::before {
+                content: '';
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                right: -5px;
+                bottom: -5px;
+                background: linear-gradient(135deg, #ff2200, #ff6b00);
+                border-radius: 50%;
+                opacity: 0.3;
+                animation: pulseRing 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+
+            @keyframes pulseRing {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.3;
+                }
+                50% {
+                    transform: scale(1.1);
+                    opacity: 0.1;
+                }
+                100% {
+                    transform: scale(1.2);
+                    opacity: 0;
+                }
+            }
+
+            .error-icon i {
+                font-size: 48px;
+                color: white;
+                position: relative;
+                z-index: 2;
+            }
+
+            .error-content h2 {
+                font-size: 2.5rem;
+                font-weight: 800;
+                color: white;
+                margin: 0 0 20px 0;
+                background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                letter-spacing: -0.02em;
+            }
+
+            .error-message {
+                font-size: 1.125rem;
+                color: #cccccc;
+                margin: 0 0 40px 0;
+                line-height: 1.6;
+                font-weight: 400;
+            }
+
+            .error-actions {
+                display: flex;
+                gap: 16px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .btn-error-primary,
+            .btn-error-secondary {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 28px;
+                border-radius: 12px;
+                font-weight: 600;
+                font-size: 1rem;
+                text-decoration: none;
+                border: 2px solid transparent;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                min-width: 160px;
+                justify-content: center;
+            }
+
+            .btn-error-primary {
+                background: linear-gradient(135deg, #ff2200 0%, #ff6b00 100%);
+                color: white;
+                box-shadow: 0 4px 15px rgba(255, 34, 0, 0.3);
+            }
+
+            .btn-error-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(255, 34, 0, 0.4);
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn-error-primary:active {
+                transform: translateY(0);
+            }
+
+            .btn-error-secondary {
+                background: rgba(255, 255, 255, 0.05);
+                color: #ffffff;
+                border-color: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+
+            .btn-error-secondary:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.3);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+                color: #ffffff;
+            }
+
+            .btn-error-secondary:active {
+                transform: translateY(0);
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+                .error-content {
+                    margin: 20px;
+                    padding: 40px 24px;
+                    max-width: none;
+                }
+
+                .error-content h2 {
+                    font-size: 2rem;
+                }
+
+                .error-message {
+                    font-size: 1rem;
+                }
+
+                .error-actions {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .btn-error-primary,
+                .btn-error-secondary {
+                    width: 100%;
+                    max-width: 280px;
+                }
+
+                .error-icon {
+                    width: 100px;
+                    height: 100px;
+                    margin-bottom: 24px;
+                }
+
+                .error-icon i {
+                    font-size: 40px;
+                }
+
+                .error-left,
+                .error-right,
+                .error-center {
+                    display: none;
+                }
+            }
+
+            /* Dark theme support */
+            @media (prefers-color-scheme: dark) {
+                .project-detail-error {
+                    background: linear-gradient(135deg, #000000 0%, #111111 50%, #1a1a1a 100%);
+                }
+            }
+
+            /* Reduced motion support */
+            @media (prefers-reduced-motion: reduce) {
+                .error-decoration,
+                .error-icon,
+                .error-content {
+                    animation: none;
+                }
+                
+                .btn-error-primary:hover,
+                .btn-error-secondary:hover {
+                    transform: none;
+                }
+            }
         `;
 
+        document.head.appendChild(errorStyles);
         document.body.appendChild(errorContainer);
+
+        // Animate in after a brief delay
+        setTimeout(() => {
+            errorContainer.style.opacity = '1';
+        }, 100);
     }
 
     /**
